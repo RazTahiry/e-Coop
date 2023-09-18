@@ -2,6 +2,9 @@
 
 #include <QApplication>
 #include <QtWidgets>
+#include <QWidget>
+#include <QFile>
+#include <QtUiTools/QUiLoader>
 
 int main(int argc, char *argv[])
 {

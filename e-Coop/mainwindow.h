@@ -15,6 +15,31 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_accueilBtn_clicked();
+
+    void on_GestionTrajetBtn_clicked();
+
+    void on_reservationBtn_clicked();
+
+    void on_historiqueBtn_clicked();
+
+    void on_aproposBtn_clicked();
+
+    void on_homeIcon_clicked();
+
+    void on_mapIcon_clicked();
+
+    void on_reserveIcon_clicked();
+
+    void on_historiqueIcon_clicked();
+
+    void on_infoIcon_clicked();
+
+    void on_quitterBtn_clicked();
+
+    void on_quitIcon_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
