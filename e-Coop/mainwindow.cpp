@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ajoutvehicule.h"
+#include "ajouttrajet.h"
+#include "ajoutjoursvoyage.h"
+#include "ajoutheurevoyage.h"
 
 #include <QMessageBox>
 #include <QPushButton>
@@ -87,4 +91,34 @@ void MainWindow::on_quitIcon_clicked()
     }
 }
 
+void MainWindow::on_ajoutVehBtn_clicked()
+{
+    ajoutVehicule addVehicule;
+    addVehicule.setModal(true);
+    addVehicule.setWindowTitle("Ajout des véhicules");
+    addVehicule.exec();
+}
 
+void MainWindow::on_ajoutTrajBtn_clicked()
+{
+    ajoutTrajet addTrajet;
+    addTrajet.setModal(true);
+    addTrajet.setWindowTitle("Ajout des trajets");
+    addTrajet.exec();
+}
+
+void MainWindow::on_ajoutJourBtn_clicked()
+{
+    ajoutJoursVoyage addJours;
+    addJours.setModal(true);
+    addJours.setWindowTitle("Ajout de jour du voyage");
+    addJours.exec();
+}
+
+void MainWindow::on_ajoutHeureBtn_clicked()
+{
+    ajoutHeureVoyage addHeure;
+    addHeure.setModal(true);
+    addHeure.setWindowTitle("Ajout d'heure de départ du voyage");
+    addHeure.exec();
+}

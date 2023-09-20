@@ -40,6 +40,14 @@ private slots:
 
     void on_quitIcon_clicked();
 
+    void on_ajoutVehBtn_clicked();
+
+    void on_ajoutTrajBtn_clicked();
+
+    void on_ajoutJourBtn_clicked();
+
+    void on_ajoutHeureBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
