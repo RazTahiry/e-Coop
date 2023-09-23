@@ -4,6 +4,7 @@
 #include "ajouttrajet.h"
 #include "ajoutjoursvoyage.h"
 #include "ajoutheurevoyage.h"
+#include "connexionBD.h"
 
 #include <QMessageBox>
 #include <QPushButton>
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->iconMenubarContainer->hide();
+    //connectingDatabase();
 }
 
 MainWindow::~MainWindow()
@@ -96,6 +98,14 @@ void MainWindow::on_ajoutVehBtn_clicked()
     ajoutVehicule addVehicule;
     addVehicule.setModal(true);
     addVehicule.setWindowTitle("Ajout des véhicules");
+    /*if(connectingDatabase() == true)
+    {
+        qDebug() << "Database connected!";
+    }
+    else
+    {
+        qDebug() << "Database not connected!";
+    }*/
     addVehicule.exec();
 }
 

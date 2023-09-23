@@ -12,3 +12,8 @@ ajoutVehicule::~ajoutVehicule()
 {
     delete ui;
 }
+
+void ajoutVehicule::on_annulerBtn_clicked()
+{
+    ajoutVehicule::close();
+}

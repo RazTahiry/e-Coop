@@ -15,6 +15,9 @@ public:
     explicit ajoutVehicule(QWidget *parent = nullptr);
     ~ajoutVehicule();
 
+private slots:
+    void on_annulerBtn_clicked();
+
 private:
     Ui::ajoutVehicule *ui;
 };

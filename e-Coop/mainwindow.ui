@@ -1513,7 +1513,7 @@ border: none;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>468</width>
+                <width>758</width>
                 <height>669</height>
                </rect>
               </property>
@@ -1571,6 +1571,9 @@ border: none;</string>
                       <height>500</height>
                      </size>
                     </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -1622,11 +1625,38 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QListWidget" name="listWidget">
+                         <widget class="QTableWidget" name="tableWidget">
                           <property name="styleSheet">
-                           <string notr="true">border-radius: 0;
-border: 1px solid rgb(46, 79, 79);</string>
+                           <string notr="true">border: 1px solid rgb(46, 79, 79);
+border-radius: 0;</string>
                           </property>
+                          <attribute name="horizontalHeaderCascadingSectionResizes">
+                           <bool>false</bool>
+                          </attribute>
+                          <attribute name="horizontalHeaderDefaultSectionSize">
+                           <number>115</number>
+                          </attribute>
+                          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                           <bool>false</bool>
+                          </attribute>
+                          <attribute name="verticalHeaderCascadingSectionResizes">
+                           <bool>false</bool>
+                          </attribute>
+                          <column>
+                           <property name="text">
+                            <string>N° Matriculation</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Nombre des places</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Chauffeur</string>
+                           </property>
+                          </column>
                          </widget>
                         </item>
                         <item>
@@ -1736,10 +1766,10 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QListWidget" name="listWidget_4">
+                         <widget class="QTableWidget" name="tableWidget_4">
                           <property name="styleSheet">
-                           <string notr="true">border-radius: 0;
-border: 1px solid rgb(46, 79, 79);</string>
+                           <string notr="true">border: 1px solid rgb(46, 79, 79);
+border-radius: 0;</string>
                           </property>
                          </widget>
                         </item>
@@ -1848,10 +1878,10 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QListWidget" name="listWidget_3">
+                         <widget class="QTableWidget" name="tableWidget_3">
                           <property name="styleSheet">
-                           <string notr="true">border-radius: 0;
-border: 1px solid rgb(46, 79, 79);</string>
+                           <string notr="true">border: 1px solid rgb(46, 79, 79);
+border-radius: 0;</string>
                           </property>
                          </widget>
                         </item>
@@ -1960,10 +1990,10 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QListWidget" name="listWidget_2">
+                         <widget class="QTableWidget" name="tableWidget_2">
                           <property name="styleSheet">
-                           <string notr="true">border-radius: 0;
-border: 1px solid rgb(46, 79, 79);</string>
+                           <string notr="true">border: 1px solid rgb(46, 79, 79);
+border-radius: 0;</string>
                           </property>
                          </widget>
                         </item>
@@ -2083,7 +2113,8 @@ border-radius: 10px;</string>
                        </property>
                        <property name="font">
                         <font>
-                         <pointsize>12</pointsize>
+                         <family>Tahoma</family>
+                         <pointsize>13</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -2134,7 +2165,7 @@ border-radius: 10px;</string>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_8">
                      <item row="0" column="0">
-                      <widget class="QListView" name="listView"/>
+                      <widget class="QTableView" name="tableView"/>
                      </item>
                     </layout>
                    </widget>
@@ -2357,7 +2388,67 @@ border: none;</string>
                <number>5</number>
               </property>
               <item>
-               <widget class="QWidget" name="listePlace" native="true"/>
+               <widget class="QWidget" name="listePlace" native="true">
+                <layout class="QGridLayout" name="gridLayout_14">
+                 <item row="0" column="0">
+                  <widget class="QTabWidget" name="tabWidget">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <widget class="QWidget" name="tab">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <attribute name="title">
+                     <string>Tab 1</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_15">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QTableView" name="tableView_2"/>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_2">
+                    <attribute name="title">
+                     <string>Tab 2</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_16">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QTableView" name="tableView_3"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
               <item>
                <widget class="QWidget" name="formContainer" native="true">
@@ -2697,10 +2788,54 @@ border-radius: none;</string>
                            <pointsize>10</pointsize>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: none;</string>
                          </property>
+                         <property name="editable">
+                          <bool>false</bool>
+                         </property>
+                         <property name="sizeAdjustPolicy">
+                          <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Sélectionner</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Parents</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Grand Parents</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Frère/Soeur</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Enfants</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Epoux(se)</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Autres</string>
+                          </property>
+                         </item>
                         </widget>
                        </item>
                        <item row="0" column="1" rowspan="2">
@@ -2838,6 +2973,9 @@ border-radius: none;</string>
                            <pointsize>10</pointsize>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: none;</string>
@@ -2891,6 +3029,9 @@ border-radius: none;</string>
                            <pointsize>10</pointsize>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: none;</string>
@@ -2936,6 +3077,9 @@ border-radius: none;</string>
                           <font>
                            <pointsize>10</pointsize>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(255, 255, 255);
@@ -3031,56 +3175,6 @@ border: none;</string>
                          </property>
                         </widget>
                        </item>
-                       <item row="0" column="1">
-                        <widget class="QLineEdit" name="nbPlaceReserve">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>50</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: none;</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="4">
-                        <widget class="QComboBox" name="fraieBool">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: none;</string>
-                         </property>
-                        </widget>
-                       </item>
                        <item row="0" column="5">
                         <spacer name="horizontalSpacer_7">
                          <property name="orientation">
@@ -3106,6 +3200,64 @@ border-radius: none;</string>
                           </size>
                          </property>
                         </spacer>
+                       </item>
+                       <item row="0" column="4">
+                        <widget class="QComboBox" name="fraieBool">
+                         <property name="minimumSize">
+                          <size>
+                           <width>80</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>80</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: none;</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Non Payé</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Payé</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QSpinBox" name="spinBox">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid rgb(46, 79, 79);</string>
+                         </property>
+                        </widget>
                        </item>
                       </layout>
                      </widget>
