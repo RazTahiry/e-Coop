@@ -16,27 +16,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ajoutheurevoyage.cpp \
-    ajoutjoursvoyage.cpp \
-    ajouttrajet.cpp \
-    ajoutvehicule.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    ajoutheurevoyage.h \
-    ajoutjoursvoyage.h \
-    ajouttrajet.h \
-    ajoutvehicule.h \
     connexionBD.h \
     mainwindow.h
 
 FORMS += \
-    ajoutheurevoyage.ui \
-    ajoutjoursvoyage.ui \
-    ajouttrajet.ui \
-    ajoutvehicule.ui \
-    iconUserClicked.ui \
     mainwindow.ui
 
 # Default rules for deployment.
