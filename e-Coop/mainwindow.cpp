@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "connexionBD.h"
 
 #include <QMessageBox>
 #include <QPushButton>
@@ -12,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->iconMenubarContainer->hide();
-    //connectingDatabase();
 }
 
 MainWindow::~MainWindow()

@@ -20,7 +20,6 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
-    connexionBD.h \
     mainwindow.h
 
 FORMS += \
