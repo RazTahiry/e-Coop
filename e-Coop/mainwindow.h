@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QtDebug>
+#include <QtSql>
+#include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,6 +17,27 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    QSqlDatabase db;
+    bool openDb()
+    {
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("database.db");
+        if (db.open())
+        {
+            qDebug() << "Database connected...";
+            return true;
+        }
+        else
+        {
+            qDebug() << "Database not connected...";
+            return false;
+        }
+    }
+    void closeDb()
+    {
+        db.close();
+    }
 
 private slots:
     void on_accueilBtn_clicked();

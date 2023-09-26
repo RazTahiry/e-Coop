@@ -11,11 +11,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->iconMenubarContainer->hide();
+    this->openDb();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    this->closeDb();
 }
 
 void MainWindow::on_accueilBtn_clicked()
@@ -87,7 +89,6 @@ void MainWindow::on_quitIcon_clicked()
         QApplication::quit();
     }
 }
-
 
 void MainWindow::on_settingBtn_clicked()
 {
