@@ -17,18 +17,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cooperative.cpp \
+    dbmanager.cpp \
     identificateur.cpp \
     main.cpp \
     mainwindow.cpp \
-    passager.cpp \
+    reservation.cpp \
     trajets.cpp \
     vehicule.cpp
 
 HEADERS += \
     cooperative.h \
+    dbmanager.h \
     identificateur.h \
     mainwindow.h \
-    passager.h \
+    reservation.h \
     trajets.h \
     vehicule.h
 

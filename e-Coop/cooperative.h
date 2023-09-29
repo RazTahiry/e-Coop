@@ -7,14 +7,9 @@ class Cooperative : public Identificateur
 {
     public:
         Cooperative();
-        Cooperative(QString nom, QString contact, QString ref_coop, QString address);
+        Cooperative(QString ref_coop, QString nom, QString contact, QString address);
 
-        QString get_ref_coop();
-        QString get_address();
-
-        void set_ref_cop(QString ref_coop);
-        void set_address(QString address);
-
+        void majCoop(QString nom, QString contact, QString address);
         void reinitialiser();
 
     private:

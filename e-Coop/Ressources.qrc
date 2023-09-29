@@ -288,7 +288,7 @@
         <file>Bold Icons/zoom-in.svg</file>
         <file>Bold Icons/zoom-out.svg</file>
     </qresource>
-    <qresource prefix="/database">
+    <qresource prefix="/Database">
         <file>database.db</file>
     </qresource>
 </RCC>

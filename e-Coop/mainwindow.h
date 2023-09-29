@@ -2,9 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtDebug>
 #include <QtSql>
-#include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,59 +12,56 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    public:
+        MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
 
-    QSqlDatabase db;
-    bool openDb()
-    {
-        db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("database.db");
-        if (db.open())
-        {
-            qDebug() << "Database connected...";
-            return true;
-        }
-        else
-        {
-            qDebug() << "Database not connected...";
-            return false;
-        }
-    }
-    void closeDb()
-    {
-        db.close();
-    }
+    private slots:
+        void on_accueilBtn_clicked();
 
-private slots:
-    void on_accueilBtn_clicked();
+        void on_GestionTrajetBtn_clicked();
 
-    void on_GestionTrajetBtn_clicked();
+        void on_historiqueBtn_clicked();
 
-    void on_reservationBtn_clicked();
+        void on_aproposBtn_clicked();
 
-    void on_historiqueBtn_clicked();
+        void on_homeIcon_clicked();
 
-    void on_aproposBtn_clicked();
+        void on_mapIcon_clicked();
 
-    void on_homeIcon_clicked();
+        void on_historiqueIcon_clicked();
 
-    void on_mapIcon_clicked();
+        void on_infoIcon_clicked();
 
-    void on_reserveIcon_clicked();
+        void on_quitterBtn_clicked();
 
-    void on_historiqueIcon_clicked();
+        void on_quitIcon_clicked();
 
-    void on_infoIcon_clicked();
+        void on_settingBtn_clicked();
 
-    void on_quitterBtn_clicked();
+        void on_ajoutVehiculeBtn_clicked();
 
-    void on_quitIcon_clicked();
+        void on_validerCoop_clicked();
 
-    void on_settingBtn_clicked();
+        void on_resetCoop_clicked();
+
+        void on_majVehiculeBtn_clicked();
+
+        void on_supprVehiculeBtn_clicked();
+
+        void on_annulerVehiculeBtn_clicked();
+
+        void on_majTrajetBtn_clicked();
+
+        void on_ajoutTrajetBtn_clicked();
+
+        void on_supprTrajetBtn_clicked();
+
+        void on_annulerTrajetBtn_clicked();
+
+        void on_reserver_clicked();
 
 private:
-    Ui::MainWindow *ui;
+        Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

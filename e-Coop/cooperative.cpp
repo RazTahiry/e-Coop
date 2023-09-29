@@ -1,4 +1,10 @@
 #include "cooperative.h"
+#include "dbmanager.h"
+
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
 
 Cooperative::Cooperative()
 {
@@ -6,38 +12,56 @@ Cooperative::Cooperative()
     this->_address = "";
 }
 
-Cooperative::Cooperative(QString nom, QString contact,
-                         QString ref_coop, QString address):
+Cooperative::Cooperative(QString ref_coop, QString nom,
+                         QString contact, QString address):
     Identificateur(nom, contact)
 {
     this->_ref_coop = ref_coop;
     this->_address = address;
 }
 
-QString Cooperative::get_ref_coop()
+void Cooperative::majCoop(QString nom, QString contact, QString address)
 {
-    return _ref_coop;
-}
+    DbManager db(pathToDB);
+    if(db.isOpen())
+    {
+        qDebug() << "Database opened...";
 
-QString Cooperative::get_address()
-{
-    return _address;
-}
-
-void Cooperative::set_ref_cop(QString ref_coop)
-{
-    this->_ref_coop = ref_coop;
-}
-
-void Cooperative::set_address(QString address)
-{
-    this->_address = address;
+        QSqlQuery query;
+        if(query.exec("UPDATE COOPERATIVE SET nomCoop = '"+nom+"', adresseCoop = '"+contact+"', contactCoop = '"+address+"' WHERE refCoop = 1"))
+        {
+            qDebug() << "data added.";
+        }
+        else
+        {
+            qDebug() << "data not added: " << query.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
 }
 
 void Cooperative::reinitialiser()
 {
-    this->_nom = "";
-    this->_contact = "";
-    this->_ref_coop = "";
-    this->_address = "";
+    DbManager db(pathToDB);
+    if(db.isOpen())
+    {
+        qDebug() << "Database opened...";
+
+        QSqlQuery query;
+        if(query.exec("UPDATE COOPERATIVE SET nomCoop = '', adresseCoop = '', contactCoop = '' WHERE refCoop = 1"))
+        {
+            qDebug() << "Cooperative réinitialisée.";
+        }
+        else
+        {
+            qDebug() << "Can't reset Coopérative: " << query.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
 }

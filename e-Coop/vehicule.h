@@ -2,22 +2,17 @@
 #define VEHICULE_H
 
 #include "identificateur.h"
+#include "trajets.h"
 
-class Vehicule : public Identificateur
+class Vehicule : public Identificateur, Trajets
 {
     public:
         Vehicule();
-        Vehicule(QString nom, QString contact, QString num_Matriculation, int nb_Place);
+        Vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place);
 
-        QString get_num_Matriculation();
-        int get_nb_Place();
-
-        void set_num_Matriculation(QString num_Matriculation);
-        void set_nb_Place(int nb_Place);
-
-        void ajouter_vehicule(QString nom, QString contact, QString num_Matriculation, int nb_Place);
+        void ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place);
         void modifier_vehicule(QString nom, QString contact, QString num_Matriculation, int nb_Place);
-        void supprimer_vehicule();
+        void supprimer_vehicule(QString num_Matriculation);
 
     private:
         QString _num_Matriculation;

@@ -1,4 +1,10 @@
 #include "vehicule.h"
+#include "dbmanager.h"
+
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
 
 Vehicule::Vehicule()
 {
@@ -6,51 +12,88 @@ Vehicule::Vehicule()
     this->_nb_Place = 0;
 }
 
-Vehicule::Vehicule(QString nom, QString contact,
-                   QString num_Matriculation, int nb_Place):
+Vehicule::Vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place):
     Identificateur(nom, contact)
 {
     this->_num_Matriculation = num_Matriculation;
     this->_nb_Place = nb_Place;
 }
 
-QString Vehicule::get_num_Matriculation()
+void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place)
 {
-    return _num_Matriculation;
-}
+    DbManager db(pathToDB);
+    if(db.isOpen())
+    {
+        qDebug() << "Database opened...";
 
-int Vehicule::get_nb_Place()
-{
-    return _nb_Place;
-}
+        QSqlQuery query;
+        query.prepare("INSERT INTO VEHICULE (numMAT, chauffeur, contactChauffeur, nbPlace) "
+                      "VALUES (:numMAT, :chauffeur, :contactChauffeur, :nbPlace)");
+        query.bindValue(":numMAT", num_Matriculation);
+        query.bindValue(":chauffeur", nom);
+        query.bindValue(":contactChauffeur", contact);
+        query.bindValue(":nbPlace", nb_Place);
 
-void Vehicule::set_num_Matriculation(QString num_Matriculation)
-{
-    this->_num_Matriculation = num_Matriculation;
-}
-
-void Vehicule::set_nb_Place(int nb_Place)
-{
-    this->_nb_Place = nb_Place;
-}
-
-void Vehicule::ajouter_vehicule(QString nom, QString contact, QString num_Matriculation, int nb_Place)
-{
-    Vehicule::set_Nom(nom);
-    Vehicule::set_Contact(contact);
-    Vehicule::set_num_Matriculation(num_Matriculation);
-    Vehicule::set_nb_Place(nb_Place);
+        if(query.exec())
+        {
+            qDebug() << "data added.";
+        }
+        else
+        {
+            qDebug() << "data not added: " << query.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
 }
 
 void Vehicule::modifier_vehicule(QString nom, QString contact, QString num_Matriculation, int nb_Place)
 {
-    Vehicule::set_Nom(nom);
-    Vehicule::set_Contact(contact);
-    Vehicule::set_num_Matriculation(num_Matriculation);
-    Vehicule::set_nb_Place(nb_Place);
+    DbManager db(pathToDB);
+    if(db.isOpen())
+    {
+        qDebug() << "Database opened...";
+
+        QSqlQuery query;
+        if(query.exec("UPDATE VEHICULE SET chauffeur = '"+nom+"', contactChauffeur = '"+contact+"', nbPlace = '"+nb_Place+"' "
+                      "WHERE numMAT = '"+num_Matriculation+"'"))
+        {
+            qDebug() << "Véhicule à jour.";
+        }
+        else
+        {
+            qDebug() << "Can't update Véhicule: " << query.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
 }
 
-void Vehicule::supprimer_vehicule()
+void Vehicule::supprimer_vehicule(QString num_Matriculation)
 {
+    DbManager db(pathToDB);
+    if(db.isOpen())
+    {
+        qDebug() << "Database opened...";
 
+        QSqlQuery query;
+        if(query.exec("DELETE FROM VEHICULE WHERE numMAT = '"+num_Matriculation+"'"))
+        {
+            qDebug() << "Véhicule supprimé.";
+        }
+        else
+        {
+            qDebug() << "Can't delete Véhicule: " << query.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
 }
+
+
