@@ -1,27 +1,27 @@
 #ifndef RESERVATION_H
 #define RESERVATION_H
 
-#include "identificateur.h"
-#include "trajets.h"
+#include "vehicule.h"
 
-class Reservation : public Identificateur, Trajets
+class Reservation : public Vehicule
 {
     public:
         Reservation();
         Reservation(QString ref_place, QString nom, QString contact, QString cin,
-                    int nb_place_reserve, QString membre_famille, QString contact_famille,
-                    QString ref_trajet, QString lieu_depart, QString destination, QString heure_depart, bool isPaye);
+                    int nb_Place, QString membre_famille, QString contact_famille, QString num_Matriculation,
+                    QString ref_trajet, QString date_voyage, QString lieu_depart, QString destination,
+                    QString heure_depart, bool isPaye);
 
-        void reserver(QString ref_place, QString nom, QString contact, QString cin,
-                      int nb_place_reserve, QString membre_famille, QString contact_famille,
-                      QString ref_trajet, QString lieu_depart, QString destination, QString heure_depart, bool isPaye);
+        void reserver(QString ref_place, QString nom, QString contact, QString cin, int nb_place_reserve,
+                      QString membre_famille, QString contact_famille, QString num_Matriculation,
+                      QString ref_trajet, QString date_voyage, QString heure_depart, bool isPaye);
 
     private:
         QString _ref_place;
         QString _cin;
-        int _nb_place_reserve;
         QString _membre_famille;
         QString _contact_famille;
+        QString _date_voyage;
         bool _isPaye;
 };
 

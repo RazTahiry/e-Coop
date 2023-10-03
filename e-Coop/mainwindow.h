@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+#include <QStandardItemModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,7 +38,9 @@ class MainWindow : public QMainWindow
 
         void on_quitIcon_clicked();
 
-        void on_settingBtn_clicked();
+        void on_gestionBtn_clicked();
+
+        void on_gestionIcon_clicked();
 
         void on_ajoutVehiculeBtn_clicked();
 
@@ -61,7 +64,21 @@ class MainWindow : public QMainWindow
 
         void on_reserver_clicked();
 
+        void affichage_reservation();
+
+        void on_pushButton_clicked();
+
+        void on_annulerReserve_clicked();
+
+        void on_annulerVerifBtn_clicked();
+
+        void on_parDefaut_clicked();
+
+        void on_gerer_clicked();
+
 private:
         Ui::MainWindow *ui;
+
+        QStandardItemModel *model;
 };
 #endif // MAINWINDOW_H

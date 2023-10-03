@@ -28,7 +28,12 @@ void Cooperative::majCoop(QString nom, QString contact, QString address)
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        if(query.exec("UPDATE COOPERATIVE SET nomCoop = '"+nom+"', adresseCoop = '"+contact+"', contactCoop = '"+address+"' WHERE refCoop = 1"))
+        query.prepare("UPDATE COOPERATIVE SET nomCoop = :nom, adresseCoop = :adresse, contactCoop = :contact WHERE refCoop = 1");
+        query.bindValue(":nom", nom);
+        query.bindValue(":contact", contact);
+        query.bindValue(":adresse", address);
+
+        if(query.exec())
         {
             qDebug() << "data added.";
         }
@@ -51,7 +56,12 @@ void Cooperative::reinitialiser()
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        if(query.exec("UPDATE COOPERATIVE SET nomCoop = '', adresseCoop = '', contactCoop = '' WHERE refCoop = 1"))
+        query.exec("UPDATE COOPERATIVE SET nomCoop = '', adresseCoop = '', contactCoop = '' WHERE refCoop = 1");
+        query.exec("DELETE FROM VEHICULE");
+        query.exec("DELETE FROM TRAJET");
+        query.exec("DELETE FROM RESERVATION");
+
+        if(query.exec())
         {
             qDebug() << "Cooperative réinitialisée.";
         }

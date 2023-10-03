@@ -9,14 +9,14 @@ static const QString pathToDB = "E:\\e-Coop\\e-Coop\\database.db";
 
 class DbManager
 {
-public:
-    DbManager();
-    DbManager(const QString& path);
-    ~DbManager();
-    bool isOpen() const;
+    public:
+        DbManager();
+        DbManager(const QString& path);
+        ~DbManager();
+        bool isOpen() const;
 
-private:
-    QSqlDatabase db;
+    private:
+        QSqlDatabase db;
 };
 
 #endif // DBMANAGER_H

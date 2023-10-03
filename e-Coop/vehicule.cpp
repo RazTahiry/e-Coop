@@ -12,14 +12,16 @@ Vehicule::Vehicule()
     this->_nb_Place = 0;
 }
 
-Vehicule::Vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place):
-    Identificateur(nom, contact)
+Vehicule::Vehicule(QString num_Matriculation, QString nom, QString contact, QString ref_trajet,
+                   QString lieu_depart, QString destination, QString heure_depart, int nb_Place):
+    Identificateur(nom, contact),
+    Trajets(ref_trajet, lieu_depart, destination, heure_depart)
 {
     this->_num_Matriculation = num_Matriculation;
     this->_nb_Place = nb_Place;
 }
 
-void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place)
+void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place ,QString ref_trajet)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -27,12 +29,13 @@ void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString 
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        query.prepare("INSERT INTO VEHICULE (numMAT, chauffeur, contactChauffeur, nbPlace) "
-                      "VALUES (:numMAT, :chauffeur, :contactChauffeur, :nbPlace)");
+        query.prepare("INSERT INTO VEHICULE (numMAT, chauffeur, contactChauffeur, nbPlace, refTrajet) "
+                      "VALUES (:numMAT, :chauffeur, :contactChauffeur, :nbPlace, :ref_trajet)");
         query.bindValue(":numMAT", num_Matriculation);
         query.bindValue(":chauffeur", nom);
         query.bindValue(":contactChauffeur", contact);
         query.bindValue(":nbPlace", nb_Place);
+        query.bindValue(":ref_trajet", ref_trajet);
 
         if(query.exec())
         {
@@ -49,7 +52,7 @@ void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString 
     }
 }
 
-void Vehicule::modifier_vehicule(QString nom, QString contact, QString num_Matriculation, int nb_Place)
+void Vehicule::modifier_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -57,8 +60,14 @@ void Vehicule::modifier_vehicule(QString nom, QString contact, QString num_Matri
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        if(query.exec("UPDATE VEHICULE SET chauffeur = '"+nom+"', contactChauffeur = '"+contact+"', nbPlace = '"+nb_Place+"' "
-                      "WHERE numMAT = '"+num_Matriculation+"'"))
+        query.prepare("UPDATE VEHICULE SET chauffeur = :chauffeur, contactChauffeur = :contact, nbPlace = :nbPlace, refTrajet = :refTrajet WHERE numMAT = :numMAT");
+        query.bindValue(":chauffeur", nom);
+        query.bindValue(":contact", contact);
+        query.bindValue(":nbPlace", nb_Place);
+        query.bindValue(":refTrajet", ref_trajet);
+        query.bindValue(":numMAT", num_Matriculation);
+
+        if(query.exec())
         {
             qDebug() << "Véhicule à jour.";
         }
@@ -81,7 +90,10 @@ void Vehicule::supprimer_vehicule(QString num_Matriculation)
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        if(query.exec("DELETE FROM VEHICULE WHERE numMAT = '"+num_Matriculation+"'"))
+        query.prepare("DELETE FROM VEHICULE WHERE numMAT = :numMat");
+        query.bindValue(":numMat", num_Matriculation);
+
+        if(query.exec())
         {
             qDebug() << "Véhicule supprimé.";
         }
@@ -89,6 +101,24 @@ void Vehicule::supprimer_vehicule(QString num_Matriculation)
         {
             qDebug() << "Can't delete Véhicule: " << query.lastError();
         }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
+}
+
+void Vehicule::setHeure(QString num_Matriculation, QString heure_depart)
+{
+    DbManager db(pathToDB);
+    if(db.isOpen())
+    {
+        qDebug() << "Database opened...";
+
+        QSqlQuery query;
+        query.prepare("UPDATE VEHICULE SET heure = :heure WHERE numMAT = :numMAT");
+        query.bindValue(":heure", heure_depart);
+        query.bindValue(":numMAT", num_Matriculation);
     }
     else
     {
