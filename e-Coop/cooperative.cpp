@@ -12,15 +12,18 @@ Cooperative::Cooperative()
     this->_address = "";
 }
 
-Cooperative::Cooperative(QString ref_coop, QString nom,
-                         QString contact, QString address):
+Cooperative::Cooperative(QString ref_coop, QString nom, QString contact,
+                         QString contact1, QString contact2, QString address, QString datePremierVoyage):
     Identificateur(nom, contact)
 {
     this->_ref_coop = ref_coop;
     this->_address = address;
+    this->_contact1 = contact1;
+    this->_contact2 = contact2;
+    this->_datePremierVoyage = datePremierVoyage;
 }
 
-void Cooperative::majCoop(QString nom, QString contact, QString address)
+void Cooperative::majCoop(QString nom, QString contact, QString contact1, QString contact2, QString address, QString datePremierVoyage)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -28,10 +31,13 @@ void Cooperative::majCoop(QString nom, QString contact, QString address)
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        query.prepare("UPDATE COOPERATIVE SET nomCoop = :nom, adresseCoop = :adresse, contactCoop = :contact WHERE refCoop = 1");
+        query.prepare("UPDATE COOPERATIVE SET nomCoop = :nom, adresseCoop = :adresse, contactCoop = :contact, contact1Coop = :contact1, contact2Coop = :contact2, datePremierVoyage = :date WHERE refCoop = 1");
         query.bindValue(":nom", nom);
         query.bindValue(":contact", contact);
+        query.bindValue(":contact1", contact1);
+        query.bindValue(":contact2", contact2);
         query.bindValue(":adresse", address);
+        query.bindValue(":date", datePremierVoyage);
 
         if(query.exec())
         {

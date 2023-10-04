@@ -18,7 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cooperative.cpp \
     dbmanager.cpp \
-    gerer.cpp \
+    gestiontrajet.cpp \
     identificateur.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -29,7 +29,7 @@ SOURCES += \
 HEADERS += \
     cooperative.h \
     dbmanager.h \
-    gerer.h \
+    gestiontrajet.h \
     identificateur.h \
     mainwindow.h \
     reservation.h \

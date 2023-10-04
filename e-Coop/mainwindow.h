@@ -76,6 +76,7 @@ class MainWindow : public QMainWindow
 
         void on_gerer_clicked();
 
+
 private:
         Ui::MainWindow *ui;
 

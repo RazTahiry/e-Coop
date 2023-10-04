@@ -5,7 +5,7 @@
 #include "reservation.h"
 #include "vehicule.h"
 #include "trajets.h"
-#include "gerer.h"
+#include "gestiontrajet.h"
 
 #include <QMessageBox>
 #include <QPushButton>
@@ -57,6 +57,9 @@ MainWindow::MainWindow(QWidget *parent)
     {
         qDebug() << "Database not opened.";
     }
+
+    gestionTrajet g;
+    g.gerer();
 
     ui->membreFamille_2->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->refTrajetVehicule->setItemData(0, QVariant(0), Qt::UserRole - 1);
@@ -155,17 +158,23 @@ void MainWindow::on_validerCoop_clicked()
 {
     QString nomCoop = ui->coopNom->text();
     QString contactCoop = ui->contactCoop->text();
+    QString contact1 = ui->contact1->text();
+    QString contact2 = ui->contact2->text();
     QString adresseCoop = ui->adresseCoop->text();
+    QString datePremierVoyage = ui->datePremierVoyage->text();
 
     Cooperative C;
-    C.majCoop(nomCoop, contactCoop, adresseCoop);
+    C.majCoop(nomCoop, contactCoop, contact1, contact2, adresseCoop, datePremierVoyage);
 
     ui->nomCooperativeParam->setText(nomCoop);
     ui->nomCoop->setText(nomCoop);
 
     ui->coopNom->clear();
     ui->contactCoop->clear();
+    ui->contact1->clear();
+    ui->contact2->clear();
     ui->adresseCoop->clear();
+    ui->datePremierVoyage->setDate(QDate::currentDate());
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -173,8 +182,8 @@ void MainWindow::on_pushButton_clicked()
     ui->coopNom->clear();
     ui->adresseCoop->clear();
     ui->contactCoop->clear();
-    ui->lineEdit->clear();
-    ui->lineEdit_3->clear();
+    ui->contact1->clear();
+    ui->contact2->clear();
 }
 
 void MainWindow::on_resetCoop_clicked()
@@ -258,15 +267,17 @@ void MainWindow::on_majTrajetBtn_clicked()
     QString lieuDepart = ui->lieuDepart->text();
     QString lieuArrive = ui->lieuArrive->text();
     QString refTrajet = ui->referenceTrajet->text();
-    QString heureMatin = ui->heureMatin->text();
-    QString heureSoir = ui->heureSoir->text();
+    QString heureMatin = ui->heureMatin_2->text();
+    QString heureSoir = ui->heureSoir_2->text();
+    int decalage = ui->decalage->text().toInt();
 
     Trajets T;
-    T.maj_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir);
+    T.maj_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir,decalage);
 
     ui->lieuDepart->clear();
     ui->lieuArrive->clear();
-    ui->heureDepart->setTime(heureParDefaut);
+    ui->heureMatin_2->setTime(heureParDefaut);
+    ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
 }
 
@@ -277,11 +288,12 @@ void MainWindow::on_ajoutTrajetBtn_clicked()
     QString lieuDepart = ui->lieuDepart->text();
     QString lieuArrive = ui->lieuArrive->text();
     QString refTrajet = ui->referenceTrajet->text();
-    QString heureMatin = ui->heureMatin->text();
-    QString heureSoir = ui->heureSoir->text();
+    QString heureMatin = ui->heureMatin_2->text();
+    QString heureSoir = ui->heureSoir_2->text();
+    int decalage = ui->decalage->text().toInt();
 
     Trajets T;
-    T.ajout_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir);
+    T.ajout_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir,decalage);
 
     ui->refTrajetVehicule->addItem(refTrajet);
     ui->refTrajet->addItem(refTrajet);
@@ -291,7 +303,8 @@ void MainWindow::on_ajoutTrajetBtn_clicked()
 
     ui->lieuDepart->clear();
     ui->lieuArrive->clear();
-    ui->heureDepart->setTime(heureParDefaut);
+    ui->heureMatin_2->setTime(heureParDefaut);
+    ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
 }
 
@@ -305,7 +318,8 @@ void MainWindow::on_supprTrajetBtn_clicked()
 
     ui->lieuDepart->clear();
     ui->lieuArrive->clear();
-    ui->heureDepart->setTime(heureParDefaut);
+    ui->heureMatin_2->setTime(heureParDefaut);
+    ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
 }
 
@@ -314,7 +328,8 @@ void MainWindow::on_annulerTrajetBtn_clicked()
     QTime heureParDefaut(0, 0);
     ui->lieuDepart->clear();
     ui->lieuArrive->clear();
-    ui->heureDepart->setTime(heureParDefaut);
+    ui->heureMatin_2->setTime(heureParDefaut);
+    ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
 }
 
@@ -359,7 +374,6 @@ void MainWindow::on_reserver_clicked()
     ui->heureReserve->setCurrentIndex(0);
     ui->nombrePlace_2->setValue(0);
 }
-
 
 void MainWindow::on_annulerReserve_clicked()
 {
@@ -420,6 +434,5 @@ void MainWindow::on_parDefaut_clicked()
 
 void MainWindow::on_gerer_clicked()
 {
-    Gerer G;
-    G.gere();
 }
+

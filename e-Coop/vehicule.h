@@ -9,7 +9,7 @@ class Vehicule : public Identificateur, Trajets
     public:
         Vehicule();
         Vehicule(QString num_Matriculation, QString nom, QString contact, QString ref_trajet,
-                 QString lieu_depart, QString destination, QString heure_depart, int nb_Place);
+                 QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int nb_Place, int decalage);
 
         void ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet);
         void modifier_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet);

@@ -1498,8 +1498,8 @@ border: none;</string>
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>69</width>
-                             <height>198</height>
+                             <width>84</width>
+                             <height>68</height>
                             </rect>
                            </property>
                            <layout class="QGridLayout" name="gridLayout_14">
@@ -1861,8 +1861,8 @@ border: none;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>68</width>
-                                   <height>373</height>
+                                   <width>98</width>
+                                   <height>68</height>
                                   </rect>
                                  </property>
                                  <layout class="QGridLayout" name="gridLayout_9">
@@ -3746,7 +3746,7 @@ border-radius: 0;</string>
                             </widget>
                            </item>
                            <item row="2" column="3">
-                            <widget class="QLineEdit" name="lineEdit">
+                            <widget class="QLineEdit" name="contact1">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -3786,7 +3786,7 @@ border-radius: 0;</string>
                             </widget>
                            </item>
                            <item row="3" column="3">
-                            <widget class="QLineEdit" name="lineEdit_3">
+                            <widget class="QLineEdit" name="contact2">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -3877,6 +3877,40 @@ border-radius: 5px;</string>
                              </property>
                              <property name="text">
                               <string>Annuler</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_12">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(203, 228, 222);</string>
+                             </property>
+                             <property name="text">
+                              <string>Premiere voyage:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="0">
+                            <widget class="QDateEdit" name="datePremierVoyage">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>25</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 0;</string>
                              </property>
                             </widget>
                            </item>
@@ -4336,6 +4370,40 @@ border-radius: 5px;</string>
                              <property name="styleSheet">
                               <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 0;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="1">
+                            <widget class="QSpinBox" name="decalage">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>25</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 0;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="5" column="1">
+                            <widget class="QLabel" name="label_3">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(203, 228, 222);</string>
+                             </property>
+                             <property name="text">
+                              <string>Décalage:</string>
                              </property>
                             </widget>
                            </item>

@@ -14,8 +14,8 @@ Reservation::Reservation() : _ref_place(""), _cin(""), _membre_famille(""),
 Reservation::Reservation(QString ref_place, QString nom, QString contact, QString cin,
                          int nb_Place, QString membre_famille, QString contact_famille, QString num_Matriculation,
                          QString ref_trajet, QString date_voyage, QString lieu_depart, QString destination,
-                         QString heure_depart, bool isPaye) :
-    Vehicule(num_Matriculation, nom, contact, ref_trajet,lieu_depart, destination, heure_depart, nb_Place)
+                         QString heureMatin, QString heureSoir, bool isPaye, int decalage) :
+    Vehicule(num_Matriculation, nom, contact, ref_trajet,lieu_depart, destination, heureMatin, heureSoir, nb_Place, decalage)
 {
     this->_ref_place = ref_place;
     this->_cin = cin;

@@ -13,9 +13,9 @@ Vehicule::Vehicule()
 }
 
 Vehicule::Vehicule(QString num_Matriculation, QString nom, QString contact, QString ref_trajet,
-                   QString lieu_depart, QString destination, QString heure_depart, int nb_Place):
+                   QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int nb_Place, int decalage):
     Identificateur(nom, contact),
-    Trajets(ref_trajet, lieu_depart, destination, heure_depart)
+    Trajets(ref_trajet, lieu_depart, destination, heureMatin, heureSoir, decalage)
 {
     this->_num_Matriculation = num_Matriculation;
     this->_nb_Place = nb_Place;

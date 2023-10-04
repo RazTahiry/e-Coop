@@ -7,10 +7,10 @@ class Trajets
 {
     public:
         Trajets();
-        Trajets(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir);
+        Trajets(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
 
-        void ajout_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir);
-        void maj_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir);
+        void ajout_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
+        void maj_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
         void supprimer_trajet(QString ref_trajet);
 
      protected:
@@ -19,6 +19,7 @@ class Trajets
         QString _destination;
         QString _heureMatin;
         QString _heureSoir;
+        int _decalage;
 };
 
 #endif // TRAJETS_H
