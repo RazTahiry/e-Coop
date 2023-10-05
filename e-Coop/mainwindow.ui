@@ -1442,7 +1442,7 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>519</width>
+                      <width>774</width>
                       <height>679</height>
                      </rect>
                     </property>
@@ -1498,8 +1498,8 @@ border: none;</string>
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>84</width>
-                             <height>68</height>
+                             <width>324</width>
+                             <height>198</height>
                             </rect>
                            </property>
                            <layout class="QGridLayout" name="gridLayout_14">
@@ -1516,9 +1516,12 @@ border: none;</string>
                              <number>0</number>
                             </property>
                             <item row="0" column="0">
-                             <widget class="QTableView" name="tableView">
+                             <widget class="QTableWidget" name="trajetReservationTableView">
                               <property name="styleSheet">
                                <string notr="true">border: none;</string>
+                              </property>
+                              <property name="selectionBehavior">
+                               <enum>QAbstractItemView::SelectRows</enum>
                               </property>
                              </widget>
                             </item>
@@ -1861,8 +1864,8 @@ border: none;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>98</width>
-                                   <height>68</height>
+                                   <width>323</width>
+                                   <height>373</height>
                                   </rect>
                                  </property>
                                  <layout class="QGridLayout" name="gridLayout_9">
@@ -1879,9 +1882,12 @@ border: none;</string>
                                    <number>0</number>
                                   </property>
                                   <item row="0" column="0">
-                                   <widget class="QTableView" name="reservationTable">
+                                   <widget class="QTableWidget" name="reservationTableView">
                                     <property name="styleSheet">
                                      <string notr="true">border: none;</string>
+                                    </property>
+                                    <property name="selectionBehavior">
+                                     <enum>QAbstractItemView::SelectRows</enum>
                                     </property>
                                    </widget>
                                   </item>
@@ -3433,7 +3439,7 @@ padding: 5px;
 border-radius: 5px;</string>
           </property>
           <property name="text">
-           <string>Gérer</string>
+           <string>Gérer les Trajets</string>
           </property>
           <property name="icon">
            <iconset resource="Ressources.qrc">
@@ -3489,9 +3495,9 @@ border-radius: 5px;</string>
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
+                <y>-110</y>
                 <width>774</width>
-                <height>692</height>
+                <height>689</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_12">
@@ -3592,7 +3598,7 @@ border-radius: 10px;</string>
                         <property name="spacing">
                          <number>30</number>
                         </property>
-                        <item alignment="Qt::AlignHCenter">
+                        <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                          <widget class="QFrame" name="frame_10">
                           <property name="minimumSize">
                            <size>
@@ -3954,6 +3960,18 @@ border-radius: 10px;</string>
                            <enum>QFrame::Raised</enum>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_16">
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
                            <item>
                             <widget class="QLabel" name="label_18">
                              <property name="font">
@@ -4006,10 +4024,46 @@ border-radius: 10px;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>357</width>
-                                   <height>200</height>
+                                   <width>375</width>
+                                   <height>215</height>
                                   </rect>
                                  </property>
+                                 <layout class="QGridLayout" name="gridLayout_15">
+                                  <property name="leftMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="topMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="rightMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="bottomMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <item row="0" column="0">
+                                   <widget class="QTableWidget" name="trajetGestionTableView">
+                                    <property name="selectionBehavior">
+                                     <enum>QAbstractItemView::SelectRows</enum>
+                                    </property>
+                                    <property name="showGrid">
+                                     <bool>true</bool>
+                                    </property>
+                                    <property name="gridStyle">
+                                     <enum>Qt::DashDotDotLine</enum>
+                                    </property>
+                                    <property name="sortingEnabled">
+                                     <bool>true</bool>
+                                    </property>
+                                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                                     <bool>true</bool>
+                                    </attribute>
+                                    <attribute name="verticalHeaderVisible">
+                                     <bool>false</bool>
+                                    </attribute>
+                                   </widget>
+                                  </item>
+                                 </layout>
                                 </widget>
                                </widget>
                               </item>
@@ -4447,6 +4501,18 @@ border-radius: 10px;</string>
                            <enum>QFrame::Raised</enum>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_21">
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
                            <item>
                             <widget class="QLabel" name="label">
                              <property name="font">
@@ -4493,10 +4559,31 @@ border-radius: 10px;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>357</width>
-                                   <height>190</height>
+                                   <width>375</width>
+                                   <height>208</height>
                                   </rect>
                                  </property>
+                                 <layout class="QGridLayout" name="gridLayout_16">
+                                  <property name="leftMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="topMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="rightMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="bottomMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <item row="0" column="0">
+                                   <widget class="QTableWidget" name="vehiculeGestionTableView">
+                                    <property name="selectionBehavior">
+                                     <enum>QAbstractItemView::SelectRows</enum>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
                                 </widget>
                                </widget>
                               </item>

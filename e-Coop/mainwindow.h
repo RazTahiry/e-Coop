@@ -18,6 +18,9 @@ class MainWindow : public QMainWindow
         ~MainWindow();
 
     private slots:
+
+        void affichage_par_defaut_sur_MainWindow();
+
         void on_accueilBtn_clicked();
 
         void on_GestionTrajetBtn_clicked();
@@ -63,8 +66,6 @@ class MainWindow : public QMainWindow
         void on_annulerTrajetBtn_clicked();
 
         void on_reserver_clicked();
-
-        void affichage_reservation();
 
         void on_pushButton_clicked();
 

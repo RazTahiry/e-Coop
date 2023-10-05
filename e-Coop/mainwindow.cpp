@@ -1,15 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "dbmanager.h"
 #include "cooperative.h"
-#include "reservation.h"
-#include "vehicule.h"
-#include "trajets.h"
+#include "dbmanager.h"
 #include "gestiontrajet.h"
+#include "reservation.h"
+#include "trajets.h"
+#include "vehicule.h"
 
 #include <QMessageBox>
 #include <QPushButton>
 #include <QDebug>
+#include <QSqlTableModel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +18,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->iconMenubarContainer->hide();
-    //affichage_reservation();
+    affichage_par_defaut_sur_MainWindow();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::affichage_par_defaut_sur_MainWindow()
+{
     DbManager db(pathToDB);
     if(db.isOpen())
     {
@@ -31,17 +41,74 @@ MainWindow::MainWindow(QWidget *parent)
         }
 
         QSqlQuery query1;
-        query1.exec("SELECT refTrajet, heure FROM TRAJET");
+        query1.exec("SELECT refTrajet, heureMatin, heureSoir FROM TRAJET");
         while(query1.next())
         {
             QString refTrajet = query1.value(0).toString();
-            QString heure = query1.value(1).toString();
+            QString heureMatin = query1.value(1).toString();
+            QString heureSoir = query1.value(2).toString();
             ui->refTrajet_2->addItem(refTrajet);
             ui->refTrajet->addItem(refTrajet);
             ui->refTrajetVehicule->addItem(refTrajet);
-            ui->heureTrajet->addItem(heure);
-            ui->heureCombobox_2->addItem(heure);
-            ui->heureReserve->addItem(heure);
+            ui->heureTrajet->addItem(heureMatin);
+            ui->heureTrajet->addItem(heureSoir);
+            ui->heureCombobox_2->addItem(heureMatin);
+            ui->heureCombobox_2->addItem(heureSoir);
+            ui->heureReserve->addItem(heureMatin);
+            ui->heureReserve->addItem(heureSoir);
+
+            QString champ1 = query1.value(0).toString();
+            QString champ2 = query1.value(1).toString();
+            QString champ3 = query1.value(2).toString();
+
+            // Définir la politique de redimensionnement des colonnes pour qu'elles s'adaptent à la largeur du widget parent.
+            for (int column = 0; column < ui->trajetGestionTableView->columnCount(); ++column)
+            {
+                ui->trajetGestionTableView->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
+            }
+
+
+            QString styleSheet = "QTableWidget {"
+                                 "   background-color: transparent;" // Couleur de fond du tableau
+                                 "   border: 1px solid rgb(46, 79, 79);"
+                                 "   border-radius: 0;" // Bordure du tableau
+                                 "}"
+                                 "QTableWidget::item {"
+                                 "   padding: 5px;" // Espacement interne des cellules
+                                 "   font-size: 12px;" // Taille de la police du texte dans les cellules
+                                 "   color: rgb(203, 228, 222);"
+                                 "   border-color: rgb(203, 228, 222);" // Couleur du texte dans les cellules
+                                 "}"
+                                 "QTableWidget::item:selected {"
+                                 "   background-color: #3498db;" // Couleur de fond des cellules sélectionnées
+                                 "   color: white;" // Couleur du texte des cellules sélectionnées
+                                 "}";
+
+            ui->trajetGestionTableView->setStyleSheet(styleSheet);
+
+            QString styleSheet1 = "QHeaderView::section {"
+                                "   background-color: rgb(46, 79, 79);" // Couleur de fond de l'en-tête
+                                "   color: white;" // Couleur du texte de l'en-tête
+                                "   padding: 6px;" // Espacement interne de l'en-tête
+                                "}";
+
+            ui->trajetGestionTableView->horizontalHeader()->setStyleSheet(styleSheet1);
+
+
+            // Optionnel : si vous souhaitez que la dernière colonne remplisse l'espace restant, définissez-la en mode d'étirement.
+            ui->trajetGestionTableView->horizontalHeader()->setStretchLastSection(true);
+
+            ui->trajetGestionTableView->verticalHeader()->setVisible(false);
+            ui->trajetGestionTableView->setHorizontalHeaderLabels(QStringList() << "Réfernce trajet" << "Heure Matin" << "heure Soir");
+
+            // Créez une nouvelle ligne dans le QTableWidget et ajoutez les données récupérées.
+            ui->trajetGestionTableView->setColumnCount(3);
+            int row = ui->trajetGestionTableView->rowCount();
+            ui->trajetGestionTableView->insertRow(row);
+            ui->trajetGestionTableView->setItem(row, 0, new QTableWidgetItem(champ1));
+            ui->trajetGestionTableView->setItem(row, 1, new QTableWidgetItem(champ2));
+            ui->trajetGestionTableView->setItem(row, 2, new QTableWidgetItem(champ3));
+
         }
 
         QSqlQuery query2;
@@ -58,8 +125,8 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "Database not opened.";
     }
 
-    gestionTrajet g;
-    g.gerer();
+    //gestionTrajet g;
+    //g.gerer();
 
     ui->membreFamille_2->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->refTrajetVehicule->setItemData(0, QVariant(0), Qt::UserRole - 1);
@@ -72,20 +139,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->dateVerify->setDate(QDate::currentDate());
     ui->dateVoyage->setDate(QDate::currentDate());
     ui->dateFiltre->setDate(QDate::currentDate());
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
+    ui->datePremierVoyage->setDate(QDate::currentDate());
 }
 
 void MainWindow::on_accueilBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    /*QString bgColor = "background-color: rgb(44, 51, 51);";
-    QString currentStyle = ui->accueilBtn->styleSheet();
-    QString newStyle = currentStyle + bgColor;
-    ui->accueilBtn->setStyleSheet(newStyle);*/
 }
 void MainWindow::on_homeIcon_clicked()
 {
@@ -196,6 +255,8 @@ void MainWindow::on_resetCoop_clicked()
 
     ui->coopNom->clear();
     ui->contactCoop->clear();
+    ui->contact1->clear();
+    ui->contact2->clear();
     ui->adresseCoop->clear();
 }
 
@@ -360,7 +421,8 @@ void MainWindow::on_reserver_clicked()
     }
 
     Reservation R;
-    R.reserver(refPlace, nomPass, contactPass, cin, nbPlace, membreFamille, contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye);
+    R.reserver(refPlace, nomPass, contactPass, cin, nbPlace, membreFamille,
+               contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye);
 
     ui->nomInput_2->clear();
     ui->contactInput_2->clear();
@@ -390,34 +452,6 @@ void MainWindow::on_annulerReserve_clicked()
     ui->nombrePlace_2->setValue(0);
 }
 
-void MainWindow::affichage_reservation()
-{
-    QSqlQuery query;
-    int row;
-    row = 0;
-    query.exec("SELECT refPlace, nomPass FROM RESERVATION");
-    while (query.next()) {
-        row = query.value(0).toInt();
-    }
-
-    model = new QStandardItemModel(row, 2);
-    int ligne(0);
-    query.exec("SELECT refPlace, nomPass FROM RESERVATION");
-    while(query.next())
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            QStandardItem *item = new QStandardItem(query.value(i).toString());
-            model->setItem(ligne, i, item);
-        }
-        ligne++;
-    }
-    model->setHeaderData(0, Qt::Horizontal, "Place");
-    model->setHeaderData(1, Qt::Horizontal, "Nom");
-
-    ui->reservationTable->setModel(model);
-}
-
 void MainWindow::on_annulerVerifBtn_clicked()
 {
     ui->refTrajet_2->setCurrentIndex(0);
@@ -434,5 +468,7 @@ void MainWindow::on_parDefaut_clicked()
 
 void MainWindow::on_gerer_clicked()
 {
+    gestionTrajet g;
+    g.gerer();
 }
 
