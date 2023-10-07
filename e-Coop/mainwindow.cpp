@@ -41,12 +41,14 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
         }
 
         QSqlQuery query1;
-        query1.exec("SELECT refTrajet, heureMatin, heureSoir FROM TRAJET");
+        query1.exec("SELECT refTrajet, heureMatin, heureSoir, lieuDepart, destination, decalageVoyage FROM TRAJET");
         while(query1.next())
         {
             QString refTrajet = query1.value(0).toString();
             QString heureMatin = query1.value(1).toString();
             QString heureSoir = query1.value(2).toString();
+            QString lieuDepart = query1.value(3).toString();
+            QString Destination = query1.value(4).toString();
             ui->refTrajet_2->addItem(refTrajet);
             ui->refTrajet->addItem(refTrajet);
             ui->refTrajetVehicule->addItem(refTrajet);
@@ -57,67 +59,116 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             ui->heureReserve->addItem(heureMatin);
             ui->heureReserve->addItem(heureSoir);
 
-            QString champ1 = query1.value(0).toString();
-            QString champ2 = query1.value(1).toString();
-            QString champ3 = query1.value(2).toString();
 
-            // Définir la politique de redimensionnement des colonnes pour qu'elles s'adaptent à la largeur du widget parent.
             for (int column = 0; column < ui->trajetGestionTableView->columnCount(); ++column)
             {
                 ui->trajetGestionTableView->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
             }
 
-
-            QString styleSheet = "QTableWidget {"
-                                 "   background-color: transparent;" // Couleur de fond du tableau
-                                 "   border: 1px solid rgb(46, 79, 79);"
-                                 "   border-radius: 0;" // Bordure du tableau
-                                 "}"
-                                 "QTableWidget::item {"
-                                 "   padding: 5px;" // Espacement interne des cellules
-                                 "   font-size: 12px;" // Taille de la police du texte dans les cellules
-                                 "   color: rgb(203, 228, 222);"
-                                 "   border-color: rgb(203, 228, 222);" // Couleur du texte dans les cellules
-                                 "}"
-                                 "QTableWidget::item:selected {"
-                                 "   background-color: #3498db;" // Couleur de fond des cellules sélectionnées
-                                 "   color: white;" // Couleur du texte des cellules sélectionnées
-                                 "}";
-
-            ui->trajetGestionTableView->setStyleSheet(styleSheet);
-
-            QString styleSheet1 = "QHeaderView::section {"
-                                "   background-color: rgb(46, 79, 79);" // Couleur de fond de l'en-tête
-                                "   color: white;" // Couleur du texte de l'en-tête
-                                "   padding: 6px;" // Espacement interne de l'en-tête
+            QString styleSheet = "QHeaderView::section {"
+                                "   background-color: rgb(46, 79, 79);"
+                                "   color: rgb(203, 228, 222);"
+                                "   padding: 6px;"
+                                "   border-width: 1px;"
+                                "   font-size: 13px;"
                                 "}";
 
-            ui->trajetGestionTableView->horizontalHeader()->setStyleSheet(styleSheet1);
+            ui->trajetGestionTableView->horizontalHeader()->setStyleSheet(styleSheet);
 
-
-            // Optionnel : si vous souhaitez que la dernière colonne remplisse l'espace restant, définissez-la en mode d'étirement.
             ui->trajetGestionTableView->horizontalHeader()->setStretchLastSection(true);
 
             ui->trajetGestionTableView->verticalHeader()->setVisible(false);
-            ui->trajetGestionTableView->setHorizontalHeaderLabels(QStringList() << "Réfernce trajet" << "Heure Matin" << "heure Soir");
+            ui->trajetGestionTableView->setHorizontalHeaderLabels(QStringList() << "Réference trajet" << "Départ/Destination" << "Destination/Départ");
 
-            // Créez une nouvelle ligne dans le QTableWidget et ajoutez les données récupérées.
             ui->trajetGestionTableView->setColumnCount(3);
             int row = ui->trajetGestionTableView->rowCount();
             ui->trajetGestionTableView->insertRow(row);
-            ui->trajetGestionTableView->setItem(row, 0, new QTableWidgetItem(champ1));
-            ui->trajetGestionTableView->setItem(row, 1, new QTableWidgetItem(champ2));
-            ui->trajetGestionTableView->setItem(row, 2, new QTableWidgetItem(champ3));
+            ui->trajetGestionTableView->setItem(row, 0, new QTableWidgetItem(refTrajet));
+            ui->trajetGestionTableView->setItem(row, 1, new QTableWidgetItem(lieuDepart));
+            ui->trajetGestionTableView->setItem(row, 2, new QTableWidgetItem(Destination));
 
         }
 
         QSqlQuery query2;
-        query2.exec("SELECT numMAT FROM VEHICULE");
+        query2.exec("SELECT numMAT, chauffeur, nbPlace, refTrajet, contactChauffeur FROM VEHICULE");
         while(query2.next())
         {
             QString numMat = query2.value(0).toString();
+            QString chauffeur = query2.value(1).toString();
+            QString nbPlace = query2.value(2).toString();
+            QString refTrajet = query2.value(3).toString();
             ui->vehicule->addItem(numMat);
             ui->vehiculeCombobox_2->addItem(numMat);
+
+            for (int column = 0; column < ui->vehiculeGestionTableView->columnCount(); ++column)
+            {
+                ui->vehiculeGestionTableView->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
+            }
+
+            QString styleSheet = "QHeaderView::section {"
+                                "   background-color: rgb(46, 79, 79);"
+                                "   color: rgb(203, 228, 222);"
+                                "   padding: 6px;"
+                                "   border-width: 1px;"
+                                "   font-size: 13px;"
+                                "}";
+
+            ui->vehiculeGestionTableView->horizontalHeader()->setStyleSheet(styleSheet);
+            ui->vehiculeGestionTableView->horizontalHeader()->setStretchLastSection(true);
+
+            ui->vehiculeGestionTableView->verticalHeader()->setVisible(false);
+            ui->vehiculeGestionTableView->setHorizontalHeaderLabels(QStringList() << "N° Matriculation" << "Chauffeur" << "Place supportés" << "Réference trajet");
+
+            ui->vehiculeGestionTableView->setColumnCount(4);
+            int row = ui->vehiculeGestionTableView->rowCount();
+
+            ui->vehiculeGestionTableView->insertRow(row);
+            ui->vehiculeGestionTableView->setItem(row, 0, new QTableWidgetItem(numMat));
+            ui->vehiculeGestionTableView->setItem(row, 1, new QTableWidgetItem(chauffeur));
+            ui->vehiculeGestionTableView->setItem(row, 2, new QTableWidgetItem(nbPlace));
+            ui->vehiculeGestionTableView->setItem(row, 3, new QTableWidgetItem(refTrajet));
+        }
+
+        QSqlQuery query3;
+        query3.exec("SELECT numMAT, refTrajet, heure, lieuDepart, destination, dateVoyage FROM GESTION");
+        while(query3.next())
+        {
+            QString numMAT = query3.value(0).toString();
+            QString refTrajet = query3.value(1).toString();
+            QString heure = query3.value(2).toString();
+            QString lieuDepart = query3.value(3).toString();
+            QString destination = query3.value(4).toString();
+            QString dateVoyage = query3.value(5).toString();
+
+            for (int column = 0; column < ui->accueilTableWidget->columnCount(); ++column)
+            {
+                ui->accueilTableWidget->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
+            }
+
+            QString styleSheet = "QHeaderView::section {"
+                                "   background-color: rgb(46, 79, 79);"
+                                "   color: rgb(203, 228, 222);"
+                                "   padding: 6px;"
+                                "   border-width: 1px;"
+                                "   font-size: 13px;"
+                                "}";
+
+            ui->accueilTableWidget->horizontalHeader()->setStyleSheet(styleSheet);
+            ui->accueilTableWidget->horizontalHeader()->setStretchLastSection(true);
+
+            ui->accueilTableWidget->verticalHeader()->setVisible(false);
+            ui->accueilTableWidget->setHorizontalHeaderLabels(QStringList() << "N° Matriculation (Véhicule)" << "Réference trajet" << "Heure de départ" << "Lieu de départ" << "Lieu d'arrivé" << "Date");
+
+            ui->accueilTableWidget->setColumnCount(6);
+            int row = ui->accueilTableWidget->rowCount();
+
+            ui->accueilTableWidget->insertRow(row);
+            ui->accueilTableWidget->setItem(row, 0, new QTableWidgetItem(numMAT));
+            ui->accueilTableWidget->setItem(row, 1, new QTableWidgetItem(refTrajet));
+            ui->accueilTableWidget->setItem(row, 2, new QTableWidgetItem(heure));
+            ui->accueilTableWidget->setItem(row, 3, new QTableWidgetItem(lieuDepart));
+            ui->accueilTableWidget->setItem(row, 4, new QTableWidgetItem(destination));
+            ui->accueilTableWidget->setItem(row, 5, new QTableWidgetItem(dateVoyage));
         }
     }
     else
@@ -127,6 +178,30 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
 
     //gestionTrajet g;
     //g.gerer();
+
+    //----------------------
+    ui->trajetReservationTableView->setColumnCount(3);
+
+    for (int column = 0; column < ui->trajetReservationTableView->columnCount(); ++column)
+    {
+        ui->trajetReservationTableView->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
+    }
+
+    QString styleSheet = "QHeaderView::section {"
+                        "   background-color: rgb(46, 79, 79);"
+                        "   color: rgb(203, 228, 222);"
+                        "   padding: 6px;"
+                        "   border-width: 1px;"
+                        "   font-size: 13px;"
+                        "}";
+
+    ui->trajetReservationTableView->horizontalHeader()->setStyleSheet(styleSheet);
+    ui->trajetReservationTableView->horizontalHeader()->setStretchLastSection(true);
+
+    ui->trajetReservationTableView->verticalHeader()->setVisible(false);
+    ui->trajetReservationTableView->setHorizontalHeaderLabels(QStringList() << "Voiture" << "Lieu de départ" << "Lieu d'arrivé");
+
+    //------------------
 
     ui->membreFamille_2->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->refTrajetVehicule->setItemData(0, QVariant(0), Qt::UserRole - 1);
@@ -140,11 +215,153 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->dateVoyage->setDate(QDate::currentDate());
     ui->dateFiltre->setDate(QDate::currentDate());
     ui->datePremierVoyage->setDate(QDate::currentDate());
+
+    ui->majTrajetBtn->setDisabled(true);
+    ui->majVehiculeBtn->setDisabled(true);
+    ui->supprTrajetBtn->setDisabled(true);
+    ui->supprVehiculeBtn->setDisabled(true);
+
+    int index = ui->stackedWidget->currentIndex();
+    on_stackedWidget_currentChanged(index);
+}
+
+void MainWindow::on_refTrajet_2_currentTextChanged(const QString &arg1)
+{
+    DbManager db1(pathToDB);
+    if(db1.isOpen())
+    {
+        QSqlQuery queryHeure;
+        ui->heureTrajet->clear();
+        queryHeure.prepare("SELECT heureMatin, heureSoir FROM TRAJET WHERE refTrajet = :Reftrj");
+        queryHeure.bindValue(":Reftrj", arg1);
+        if(queryHeure.exec())
+        {
+            while(queryHeure.next())
+            {
+                QString heureMatin1 = queryHeure.value(0).toString();
+                QString heureSoir1 = queryHeure.value(1).toString();
+                ui->heureTrajet->addItem(heureMatin1);
+                ui->heureTrajet->addItem(heureSoir1);
+            }
+        }
+        else
+        {
+            qDebug() << "Query error:" << queryHeure.lastError().text();
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
+}
+
+void MainWindow::on_stackedWidget_currentChanged(int index)
+{
+    if(index == 0)
+    {
+        QString style = ui->accueilBtn->styleSheet();
+        QString stylesheet = ui->homeIcon->styleSheet();
+        style += "background-color:  rgb(44, 51, 51);";
+        stylesheet += "background-color:  rgb(44, 51, 51);";
+        ui->accueilBtn->setStyleSheet(style);
+        ui->homeIcon->setStyleSheet(stylesheet);
+    }
+    else
+    {
+        ui->accueilBtn->setStyleSheet("color: rgb(203, 228, 222);"
+                                      "border: none;"
+                                      "width: 410px;"
+                                      "text-align: left;"
+                                      "padding: 10px 0 10px 10px;"
+                                      );
+        ui->homeIcon->setStyleSheet("padding: 10px 0 10px 0;");
+    }
+
+    if(index == 4)
+    {
+        QString style1 = ui->gestionBtn->styleSheet();
+        QString stylesheet1 = ui->gestionIcon->styleSheet();
+        style1 += "background-color:  rgb(44, 51, 51);";
+        stylesheet1 += "background-color:  rgb(44, 51, 51);";
+        ui->gestionBtn->setStyleSheet(style1);
+        ui->gestionIcon->setStyleSheet(stylesheet1);
+    }
+    else
+    {
+        ui->gestionBtn->setStyleSheet("color: rgb(203, 228, 222);"
+                                      "border: none;"
+                                      "width: 410px;"
+                                      "text-align: left;"
+                                      "padding: 10px 0 10px 10px;"
+                                      );
+        ui->gestionIcon->setStyleSheet("padding: 10px 0 10px 0;");
+    }
+
+    if(index == 1)
+    {
+        QString style2 = ui->GestionTrajetBtn->styleSheet();
+        QString stylesheet2 = ui->mapIcon->styleSheet();
+        style2 += "background-color:  rgb(44, 51, 51);";
+        stylesheet2 += "background-color:  rgb(44, 51, 51);";
+        ui->GestionTrajetBtn->setStyleSheet(style2);
+        ui->mapIcon->setStyleSheet(stylesheet2);
+    }
+    else
+    {
+        ui->GestionTrajetBtn->setStyleSheet("color: rgb(203, 228, 222);"
+                                            "border: none;"
+                                            "width: 410px;"
+                                            "text-align: left;"
+                                            "padding: 10px 0 10px 10px;"
+                                            );
+        ui->mapIcon->setStyleSheet("padding: 10px 0 10px 0;");
+    }
+
+    if(index == 2)
+    {
+        QString style3 = ui->historiqueBtn->styleSheet();
+        QString stylesheet3 = ui->historiqueIcon->styleSheet();
+        style3 += "background-color:  rgb(44, 51, 51);";
+        stylesheet3 += "background-color:  rgb(44, 51, 51);";
+        ui->historiqueBtn->setStyleSheet(style3);
+        ui->historiqueIcon->setStyleSheet(stylesheet3);
+    }
+    else
+    {
+        ui->historiqueBtn->setStyleSheet("color: rgb(203, 228, 222);"
+                                         "border: none;"
+                                         "width: 410px;"
+                                         "text-align: left;"
+                                         "padding: 10px 0 10px 10px;"
+                                         );
+        ui->historiqueIcon->setStyleSheet("padding: 10px 0 10px 0;");
+    }
+
+    if(index == 3)
+    {
+        QString style4 = ui->aproposBtn->styleSheet();
+        QString stylesheet4 = ui->infoIcon->styleSheet();
+        style4 += "background-color:  rgb(44, 51, 51);";
+        stylesheet4 += "background-color:  rgb(44, 51, 51);";
+        ui->aproposBtn->setStyleSheet(style4);
+        ui->infoIcon->setStyleSheet(stylesheet4);
+    }
+    else
+    {
+        ui->aproposBtn->setStyleSheet("color: rgb(203, 228, 222);"
+                                      "border: none;"
+                                      "width: 410px;"
+                                      "text-align: left;"
+                                      "padding: 10px 0 10px 10px;"
+                                      );
+        ui->infoIcon->setStyleSheet("padding: 10px 0 10px 0;");
+    }
 }
 
 void MainWindow::on_accueilBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+
 }
 void MainWindow::on_homeIcon_clicked()
 {
@@ -182,7 +399,6 @@ void MainWindow::on_gestionBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
 }
-
 void MainWindow::on_gestionIcon_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
@@ -297,6 +513,19 @@ void MainWindow::on_ajoutVehiculeBtn_clicked()
     ui->chauffeur->clear();
     ui->contact_1->clear();
     ui->refTrajetVehicule->setCurrentIndex(0);
+
+    int rowCount = ui->vehiculeGestionTableView->rowCount();
+    ui->vehiculeGestionTableView->insertRow(rowCount);
+
+    QTableWidgetItem *itemMatriculation = new QTableWidgetItem(matriculation);
+    QTableWidgetItem *itemChauffeur = new QTableWidgetItem(chauffeur);
+    QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajetVehicule);
+    QTableWidgetItem *itemNbPlace = new QTableWidgetItem(QString::number(nbPlace));
+
+    ui->vehiculeGestionTableView->setItem(rowCount, 0, itemMatriculation);
+    ui->vehiculeGestionTableView->setItem(rowCount, 1, itemChauffeur);
+    ui->vehiculeGestionTableView->setItem(rowCount, 2, itemNbPlace);
+    ui->vehiculeGestionTableView->setItem(rowCount, 3, itemRefTrajet);
 }
 
 void MainWindow::on_supprVehiculeBtn_clicked()
@@ -311,6 +540,12 @@ void MainWindow::on_supprVehiculeBtn_clicked()
     ui->chauffeur->clear();
     ui->contact_1->clear();
     ui->refTrajetVehicule->setCurrentIndex(0);
+
+    int selectedRow = ui->vehiculeGestionTableView->currentRow();
+    if (selectedRow >= 0)
+    {
+        ui->vehiculeGestionTableView->removeRow(selectedRow);
+    }
 }
 
 void MainWindow::on_annulerVehiculeBtn_clicked()
@@ -320,6 +555,7 @@ void MainWindow::on_annulerVehiculeBtn_clicked()
     ui->chauffeur->clear();
     ui->contact_1->clear();
     ui->refTrajetVehicule->setCurrentIndex(0);
+    ui->vehiculeGestionTableView->clearSelection();
 }
 
 void MainWindow::on_majTrajetBtn_clicked()
@@ -367,6 +603,18 @@ void MainWindow::on_ajoutTrajetBtn_clicked()
     ui->heureMatin_2->setTime(heureParDefaut);
     ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
+    ui->decalage->setValue(0);
+
+    int rowCount = ui->trajetGestionTableView->rowCount();
+    ui->trajetGestionTableView->insertRow(rowCount);
+
+    QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajet);
+    QTableWidgetItem *itemLieuDepart = new QTableWidgetItem(lieuDepart);
+    QTableWidgetItem *itemLieuArrive = new QTableWidgetItem(lieuArrive);
+
+    ui->trajetGestionTableView->setItem(rowCount, 0, itemRefTrajet);
+    ui->trajetGestionTableView->setItem(rowCount, 1, itemLieuDepart);
+    ui->trajetGestionTableView->setItem(rowCount, 2, itemLieuArrive);
 }
 
 void MainWindow::on_supprTrajetBtn_clicked()
@@ -382,6 +630,12 @@ void MainWindow::on_supprTrajetBtn_clicked()
     ui->heureMatin_2->setTime(heureParDefaut);
     ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
+
+    int selectedRow = ui->trajetGestionTableView->currentRow();
+    if (selectedRow >= 0)
+    {
+        ui->trajetGestionTableView->removeRow(selectedRow);
+    }
 }
 
 void MainWindow::on_annulerTrajetBtn_clicked()
@@ -392,6 +646,8 @@ void MainWindow::on_annulerTrajetBtn_clicked()
     ui->heureMatin_2->setTime(heureParDefaut);
     ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
+    ui->decalage->setValue(0);
+    ui->trajetGestionTableView->clearSelection();
 }
 
 void MainWindow::on_reserver_clicked()
@@ -457,6 +713,12 @@ void MainWindow::on_annulerVerifBtn_clicked()
     ui->refTrajet_2->setCurrentIndex(0);
     ui->dateVerify->setDate(QDate::currentDate());
     ui->heureTrajet->setCurrentIndex(0);
+    ui->trajetReservationTableView->clearContents();
+    ui->trajetReservationTableView->setRowCount(0);
+    ui->vehicule->setCurrentIndex(0);
+    ui->refTrajet->setCurrentIndex(0);
+    ui->heureReserve->setCurrentIndex(0);
+    ui->dateVoyage->setDate(QDate::currentDate());
 }
 
 void MainWindow::on_parDefaut_clicked()
@@ -472,3 +734,240 @@ void MainWindow::on_gerer_clicked()
     g.gerer();
 }
 
+void MainWindow::on_verifierTrajet_clicked()
+{
+    DbManager db2(pathToDB);
+    if(db2.isOpen())
+    {
+        ui->trajetReservationTableView->clearContents();
+        ui->trajetReservationTableView->setRowCount(0);
+        QString refTrajet = ui->refTrajet_2->currentText();
+        QString heure = ui->heureTrajet->currentText();
+        QDate date = ui->dateVerify->date();
+
+        QSqlQuery queryVerify;
+        queryVerify.prepare("SELECT numMAT, lieuDepart, destination FROM GESTION WHERE refTrajet = :refTrajet AND dateVoyage = :date AND heure = :heure");
+        queryVerify.bindValue(":refTrajet", refTrajet);
+        queryVerify.bindValue(":heure", heure);
+        queryVerify.bindValue(":date", date);
+
+        if(queryVerify.exec())
+        {
+            while(queryVerify.next())
+            {
+                QString numMAT = queryVerify.value(0).toString();
+                QString lieuDepart = queryVerify.value(1).toString();
+                QString destination = queryVerify.value(2).toString();
+
+                int row = ui->trajetReservationTableView->rowCount();
+
+                ui->trajetReservationTableView->insertRow(row);
+                ui->trajetReservationTableView->setItem(row, 0, new QTableWidgetItem(numMAT));
+                ui->trajetReservationTableView->setItem(row, 1, new QTableWidgetItem(lieuDepart));
+                ui->trajetReservationTableView->setItem(row, 2, new QTableWidgetItem(destination));
+            }
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
+
+}
+
+void MainWindow::on_trajetGestionTableView_itemClicked(QTableWidgetItem *item)
+{
+    int row = item->row();
+    QTableWidgetItem* itemRefTrajet = ui->trajetGestionTableView->item(row, 0);
+    QTableWidgetItem* itemLieuDepart = ui->trajetGestionTableView->item(row, 1);
+    QTableWidgetItem* itemDestination = ui->trajetGestionTableView->item(row, 2);
+
+    if(itemRefTrajet && itemLieuDepart && itemDestination)
+    {
+        ui->majTrajetBtn->setDisabled(false);
+        ui->referenceTrajet->setDisabled(true);
+        ui->supprTrajetBtn->setDisabled(false);
+        ui->ajoutTrajetBtn->setDisabled(true);
+
+        DbManager db3(pathToDB);
+        if(db3.isOpen())
+        {
+            QString refTrajet = itemRefTrajet->text();
+            QString lieuDepart = itemLieuDepart->text();
+            QString destination = itemDestination->text();
+
+            QSqlQuery queryAfficheTrajet;
+
+            queryAfficheTrajet.prepare("SELECT heureMatin, heureSoir, decalageVoyage FROM TRAJET WHERE refTrajet = :Reftrj");
+            queryAfficheTrajet.bindValue(":Reftrj", refTrajet);
+            if(queryAfficheTrajet.exec())
+            {
+                while(queryAfficheTrajet.next())
+                {
+                    QTime heureMatin1 = queryAfficheTrajet.value(0).toTime();
+                    QTime heureSoir1 = queryAfficheTrajet.value(1).toTime();
+                    int decalage = queryAfficheTrajet.value(2).toInt();
+
+                    ui->referenceTrajet->setText(refTrajet);
+                    ui->lieuDepart->setText(lieuDepart);
+                    ui->lieuArrive->setText(destination);
+                    ui->heureMatin_2->setTime(heureMatin1);
+                    ui->heureSoir_2->setTime(heureSoir1);
+                    ui->decalage->setValue(decalage);
+                }
+            }
+            else
+            {
+                qDebug() << "Query error:" << queryAfficheTrajet.lastError().text();
+            }
+        }
+        else
+        {
+            qDebug() << "Database not opened.";
+        }
+
+    }
+}
+
+void MainWindow::on_trajetReservationTableView_itemClicked(QTableWidgetItem *item)
+{
+    int row = item->row();
+    QTableWidgetItem* itemNumMat = ui->trajetReservationTableView->item(row, 0);
+    QTableWidgetItem* itemLieuDepart = ui->trajetReservationTableView->item(row, 1);
+    QTableWidgetItem* itemDestination = ui->trajetReservationTableView->item(row, 2);
+
+    if(itemNumMat && itemLieuDepart && itemDestination)
+    {
+        DbManager db4(pathToDB);
+        if(db4.isOpen())
+        {
+            QString numMat = itemNumMat->text();
+            QString lieuDepart = itemLieuDepart->text();
+            QString destination = itemDestination->text();
+
+            QSqlQuery queryReserve;
+
+            queryReserve.prepare("SELECT refTrajet, heure, dateVoyage FROM GESTION WHERE numMAT = :numMat AND lieuDepart = :depart AND destination = :dest");
+            queryReserve.bindValue(":numMat", numMat);
+            queryReserve.bindValue(":depart", lieuDepart);
+            queryReserve.bindValue(":dest", destination);
+
+            if(queryReserve.exec())
+            {
+                while(queryReserve.next())
+                {
+                    QString refTrajet = queryReserve.value(0).toString();
+                    QString heure = queryReserve.value(1).toString();
+                    QDate date = queryReserve.value(2).toDate();
+
+                    ui->vehicule->setCurrentText(numMat);
+                    ui->refTrajet->setCurrentText(refTrajet);
+                    ui->heureReserve->setCurrentText(heure);
+                    ui->dateVoyage->setDate(date);
+                }
+            }
+            else
+            {
+                qDebug() << "Query error:" << queryReserve.lastError().text();
+            }
+        }
+        else
+        {
+            qDebug() << "Database not opened.";
+        }
+
+    }
+}
+
+void MainWindow::on_vehiculeGestionTableView_itemClicked(QTableWidgetItem *item)
+{
+
+    int row = item->row();
+    QTableWidgetItem* itemNumMat = ui->vehiculeGestionTableView->item(row, 0);
+    QTableWidgetItem* itemChauffeur = ui->vehiculeGestionTableView->item(row, 1);
+    QTableWidgetItem* itemNbPlace = ui->vehiculeGestionTableView->item(row, 2);
+    QTableWidgetItem* itemRefTrajet = ui->vehiculeGestionTableView->item(row, 3);
+
+    if(itemNumMat && itemChauffeur && itemNbPlace && itemRefTrajet)
+    {
+        ui->majVehiculeBtn->setDisabled(false);
+        ui->matriculation->setDisabled(true);
+        ui->supprVehiculeBtn->setDisabled(false);
+        ui->ajoutVehiculeBtn->setDisabled(true);
+
+        DbManager db5(pathToDB);
+        if(db5.isOpen())
+        {
+            QString numMat = itemNumMat->text();
+            QString chauffeur = itemChauffeur->text();
+            QString nbPlace = itemNbPlace->text();
+            QString refTrajet = itemRefTrajet->text();
+
+            QSqlQuery queryAfficheVehicule;
+
+            queryAfficheVehicule.prepare("SELECT contactChauffeur FROM VEHICULE WHERE numMAT = :numMat");
+            queryAfficheVehicule.bindValue(":numMat", numMat);
+            if(queryAfficheVehicule.exec())
+            {
+                while(queryAfficheVehicule.next())
+                {
+                    QString contact = queryAfficheVehicule.value(0).toString();
+
+                    ui->matriculation->setText(numMat);
+                    ui->placeSupportes->setValue(nbPlace.toInt());
+                    ui->chauffeur->setText(chauffeur);
+                    ui->contact_1->setText(contact);
+                    ui->refTrajetVehicule->setCurrentText(refTrajet);
+                }
+            }
+            else
+            {
+                qDebug() << "Query error:" << queryAfficheVehicule.lastError().text();
+            }
+        }
+        else
+        {
+            qDebug() << "Database not opened.";
+        }
+    }
+}
+
+void MainWindow::on_trajetGestionTableView_itemSelectionChanged()
+{
+    int selectedItemCount = ui->trajetGestionTableView->selectedItems().count();
+
+    if(selectedItemCount == 0)
+    {
+        QTime heureParDefaut(0, 0);
+        ui->referenceTrajet->clear();
+        ui->lieuDepart->clear();
+        ui->lieuArrive->clear();
+        ui->heureMatin_2->setTime(heureParDefaut);
+        ui->heureSoir_2->setTime(heureParDefaut);
+        ui->decalage->setValue(0);
+
+        ui->majTrajetBtn->setDisabled(true);
+        ui->referenceTrajet->setDisabled(false);
+        ui->supprTrajetBtn->setDisabled(true);
+        ui->ajoutTrajetBtn->setDisabled(false);
+    }
+}
+
+void MainWindow::on_vehiculeGestionTableView_itemSelectionChanged()
+{
+    int selectedItemCount = ui->trajetGestionTableView->selectedItems().count();
+
+    if(selectedItemCount == 0)
+    {
+        ui->matriculation->clear();
+        ui->placeSupportes->setValue(0);
+        ui->chauffeur->clear();
+        ui->contact_1->clear();
+        ui->refTrajetVehicule->setCurrentIndex(0);
+
+        ui->majVehiculeBtn->setDisabled(true);
+        ui->matriculation->setDisabled(false);
+        ui->supprVehiculeBtn->setDisabled(true);
+        ui->ajoutVehiculeBtn->setDisabled(false);
+    }
+}

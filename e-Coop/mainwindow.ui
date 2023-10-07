@@ -38,6 +38,21 @@
 	border-radius: 10px;
 	border: 2px solid #CBE4DE;
 }
+
+QTableWidget {
+	 background-color: transparent;
+	 border: 1px solid rgb(46, 79, 79);
+     border-radius: 0;
+}
+QTableWidget::item {
+    font-size: 12px;
+ 	color: rgb(203, 228, 222);
+    border-color: rgb(203, 228, 222);
+ }
+QTableWidget::item:selected {
+ 	background-color:  rgb(46, 79, 79);
+    color: rgb(203, 228, 222);
+}
 </string>
   </property>
   <widget class="QWidget" name="container">
@@ -75,7 +90,13 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(14, 131, 136);</string>
+       <string notr="true">QPushButton:Hover {
+	background-color:  rgb(46, 79, 79);
+}
+
+#iconMenubarContainer {
+	background-color: rgb(14, 131, 136);
+}</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <property name="leftMargin">
@@ -90,7 +111,7 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
         <widget class="QFrame" name="logoIcon">
          <property name="minimumSize">
           <size>
@@ -110,37 +131,51 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <widget class="QLabel" name="logo_2">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>60</width>
-            <height>60</height>
-           </rect>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <property name="leftMargin">
+           <number>0</number>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
+          <property name="topMargin">
+           <number>0</number>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
-          <property name="text">
-           <string/>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
-          <property name="pixmap">
-           <pixmap resource="Ressources.qrc">:/Icons/Bold Icons/hexagon.svg</pixmap>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
+          <item row="0" column="0">
+           <widget class="QLabel" name="logo_2">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="Ressources.qrc">:/Icons/Bold Icons/logoecoop.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="margin">
+             <number>9</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -158,7 +193,8 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border: none;</string>
+          <string notr="true">border: none;
+</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -188,14 +224,10 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#homeIcon { 
-	padding: 10px 0 10px 0;
-	/*background-color: rgb(44, 51, 51);*/
-}
+             <string notr="true">padding: 10px 0 10px 0;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}
+
+
 </string>
             </property>
             <property name="text">
@@ -219,13 +251,10 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#gestionIcon { 
-	padding: 10px 0 10px 0;
-}
+             <string notr="true">padding: 10px 0 10px 0;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
              <string/>
@@ -248,13 +277,10 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#mapIcon { 
-	padding: 10px 0 10px 0;
-}
+             <string notr="true">padding: 10px 0 10px 0;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
              <string/>
@@ -277,13 +303,10 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#historiqueIcon {
-	padding: 10px 0 10px 0;
-}
+             <string notr="true">padding: 10px 0 10px 0;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
              <string/>
@@ -306,13 +329,9 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#infoIcon {
-	padding: 10px 0 10px 0;
-}
+             <string notr="true">padding: 10px 0 10px 0;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+</string>
             </property>
             <property name="text">
              <string/>
@@ -385,7 +404,7 @@ QPushButton:pressed {
      <widget class="QWidget" name="leftMenubar" native="true">
       <property name="minimumSize">
        <size>
-        <width>150</width>
+        <width>162</width>
         <height>0</height>
        </size>
       </property>
@@ -396,7 +415,9 @@ QPushButton:pressed {
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(14, 131, 136);</string>
+       <string notr="true">#leftMenubar {
+	background-color: rgb(14, 131, 136);
+}</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="leftMargin">
@@ -464,7 +485,13 @@ QPushButton:pressed {
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">border: none;</string>
+          <string notr="true">#frameMenubar {
+	border: none;
+}
+
+QPushButton:Hover {
+	background-color:  rgb(46, 79, 79);
+}</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -514,20 +541,14 @@ QPushButton:pressed {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#accueilBtn { 
-	color: rgb(203, 228, 222);
-	border: none;
-	width: 410px;
-	text-align: left;
-	padding: 10px 0 10px 10px;
-	/*background-color: #2C3333;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;*/
-}
+             <string notr="true">color: rgb(203, 228, 222);
+border: none;
+width: 410px;
+text-align: left;
+padding: 10px 0 10px 10px;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
              <string>Accueil</string>
@@ -558,20 +579,17 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#gestionBtn {
-	color: rgb(203, 228, 222);
-	border: none;
-	width: 410px;
-	text-align: left;
-	padding: 10px 0 10px 10px;
-}
+             <string notr="true">color: rgb(203, 228, 222);
+border: none;
+width: 410px;
+text-align: left;
+padding: 10px 0 10px 10px;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
-             <string>Gestion</string>
+             <string>Coté Coopérative</string>
             </property>
             <property name="icon">
              <iconset resource="Ressources.qrc">
@@ -599,20 +617,17 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#GestionTrajetBtn {
-	color: rgb(203, 228, 222);
-	border: none;
-	width: 410px;
-	text-align: left;
-	padding: 10px 0 10px 10px;
-}
+             <string notr="true">color: rgb(203, 228, 222);
+border: none;
+width: 410px;
+text-align: left;
+padding: 10px 0 10px 10px;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
-             <string>Coté passager</string>
+             <string>Coté Passager</string>
             </property>
             <property name="icon">
              <iconset resource="Ressources.qrc">
@@ -640,17 +655,13 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#historiqueBtn {
-	color: rgb(203, 228, 222);
-	border: none;
-	width: 410px;
-	text-align: left;
-	padding: 10px 0 10px 10px;
-}
+             <string notr="true">color: rgb(203, 228, 222);
+border: none;
+width: 410px;
+text-align: left;
+padding: 10px 0 10px 10px;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+</string>
             </property>
             <property name="text">
              <string>Historique</string>
@@ -681,17 +692,14 @@ QPushButton:Hover {
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">#aproposBtn {
-	color: rgb(203, 228, 222);
-	border: none;
-	width: 410px;
-	text-align: left;
-	padding: 10px 0 10px 10px;
-}
+             <string notr="true">color: rgb(203, 228, 222);
+border: none;
+width: 410px;
+text-align: left;
+padding: 10px 0 10px 10px;
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}</string>
+
+</string>
             </property>
             <property name="text">
              <string>A propos</string>
@@ -743,10 +751,6 @@ QPushButton:Hover {
 	padding: 10px 0 10px 0;
 }
 
-QPushButton:Hover {
-	background-color:  rgb(46, 79, 79);
-}
-
 QPushButton:pressed {
 	background-color: rgb(214, 71, 0);
 }</string>
@@ -768,6 +772,9 @@ QPushButton:pressed {
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="currentIndex">
        <number>4</number>
       </property>
@@ -941,6 +948,9 @@ border: none;</string>
               <property name="leftMargin">
                <number>0</number>
               </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QWidget" name="cooperative" native="true">
                 <property name="minimumSize">
@@ -994,209 +1004,54 @@ border: none;</string>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_6">
-                 <item>
-                  <widget class="QWidget" name="vehiculeList" native="true">
-                   <layout class="QVBoxLayout" name="verticalLayout_5">
-                    <item alignment="Qt::AlignTop">
-                     <widget class="QFrame" name="titleListeFrame_1">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_7">
-                       <item>
-                        <widget class="QLabel" name="titreListeVehicule">
-                         <property name="font">
-                          <font>
-                           <family>Comic Sans MS</family>
-                           <pointsize>11</pointsize>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color:rgb(255, 255, 255)</string>
-                         </property>
-                         <property name="text">
-                          <string>Liste des Véhicules</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="voirPlus_1">
-                         <property name="minimumSize">
-                          <size>
-                           <width>85</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>85</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>9</pointsize>
-                           <weight>50</weight>
-                           <bold>false</bold>
-                          </font>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">#voirPlus_1 {
-	border-radius: 10px;
-	border: none;
-	color: rgb(255, 255, 255);
-	background-color: rgb(14, 131, 136);
-}
-
-#voirPlus_1:Hover {
-	background-color:  rgb(86, 119, 119);
-}</string>
-                         </property>
-                         <property name="text">
-                          <string>Voir Plus</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="Ressources.qrc">
-                           <normaloff>:/Icons/Bold Icons/arrow-right.svg</normaloff>:/Icons/Bold Icons/arrow-right.svg</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>20</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="trajetList" native="true">
-                   <layout class="QVBoxLayout" name="verticalLayout_6">
-                    <item alignment="Qt::AlignTop">
-                     <widget class="QFrame" name="titleListeFrame_2">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_8">
-                       <item>
-                        <widget class="QLabel" name="titleListtrajet">
-                         <property name="font">
-                          <font>
-                           <family>Comic Sans MS</family>
-                           <pointsize>11</pointsize>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color: rgb(255, 255, 255);</string>
-                         </property>
-                         <property name="text">
-                          <string>Liste des Trajets</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="voirPlus_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>85</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>85</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>9</pointsize>
-                          </font>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">#voirPlus_2 {
-	border-radius: 10px;
-	border: none;
-	color: rgb(255, 255, 255);
-	background-color: rgb(14, 131, 136);
-}
-
-#voirPlus_2:Hover {
-	background-color:  rgb(86, 119, 119);
-}</string>
-                         </property>
-                         <property name="text">
-                          <string>Voir Plus</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="Ressources.qrc">
-                           <normaloff>:/Icons/Bold Icons/arrow-right.svg</normaloff>:/Icons/Bold Icons/arrow-right.svg</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>20</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_3">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
+                <layout class="QGridLayout" name="gridLayout_17">
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QScrollArea" name="scrollArea_6">
+                   <property name="widgetResizable">
+                    <bool>true</bool>
+                   </property>
+                   <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>68</width>
+                      <height>68</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border: none;</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_18">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QTableWidget" name="accueilTableWidget">
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                        </font>
+                       </property>
+                       <property name="selectionBehavior">
+                        <enum>QAbstractItemView::SelectRows</enum>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
                   </widget>
                  </item>
                 </layout>
@@ -1211,6 +1066,9 @@ border: none;</string>
        </layout>
       </widget>
       <widget class="QWidget" name="page_2">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <property name="leftMargin">
          <number>0</number>
@@ -1442,7 +1300,7 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>774</width>
+                      <width>519</width>
                       <height>679</height>
                      </rect>
                     </property>
@@ -1498,7 +1356,7 @@ border: none;</string>
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>324</width>
+                             <width>69</width>
                              <height>198</height>
                             </rect>
                            </property>
@@ -1517,6 +1375,11 @@ border: none;</string>
                             </property>
                             <item row="0" column="0">
                              <widget class="QTableWidget" name="trajetReservationTableView">
+                              <property name="font">
+                               <font>
+                                <pointsize>10</pointsize>
+                               </font>
+                              </property>
                               <property name="styleSheet">
                                <string notr="true">border: none;</string>
                               </property>
@@ -1542,6 +1405,9 @@ border: none;</string>
                             <width>400</width>
                             <height>16777215</height>
                            </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
                           </property>
                           <property name="frameShape">
                            <enum>QFrame::StyledPanel</enum>
@@ -1619,17 +1485,23 @@ border: none;</string>
                              </property>
                              <property name="font">
                               <font>
-                               <pointsize>11</pointsize>
+                               <pointsize>10</pointsize>
                               </font>
                              </property>
                              <property name="cursor">
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(203, 228, 222);
-background-color: rgb(46, 79, 79);
-border: none;
-border-radius: 5px;</string>
+                              <string notr="true">#annulerVerifBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerVerifBtn:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
                              </property>
                              <property name="text">
                               <string>Annuler</string>
@@ -1678,7 +1550,7 @@ border: none;</string>
                             </widget>
                            </item>
                            <item row="6" column="1">
-                            <widget class="QPushButton" name="pushButton_5">
+                            <widget class="QPushButton" name="verifierTrajet">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -1687,17 +1559,23 @@ border: none;</string>
                              </property>
                              <property name="font">
                               <font>
-                               <pointsize>11</pointsize>
+                               <pointsize>10</pointsize>
                               </font>
                              </property>
                              <property name="cursor">
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(203, 228, 222);
-background-color: rgb(46, 79, 79);
-border: none;
-border-radius: 5px;</string>
+                              <string notr="true">#verifierTrajet {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#verifierTrajet:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
                              </property>
                              <property name="text">
                               <string>Vérifier Trajet</string>
@@ -1864,7 +1742,7 @@ border: none;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>323</width>
+                                   <width>68</width>
                                    <height>373</height>
                                   </rect>
                                  </property>
@@ -1883,6 +1761,11 @@ border: none;</string>
                                   </property>
                                   <item row="0" column="0">
                                    <widget class="QTableWidget" name="reservationTableView">
+                                    <property name="font">
+                                     <font>
+                                      <pointsize>10</pointsize>
+                                     </font>
+                                    </property>
                                     <property name="styleSheet">
                                      <string notr="true">border: none;</string>
                                     </property>
@@ -1984,17 +1867,23 @@ border: none;</string>
                                    </property>
                                    <property name="font">
                                     <font>
-                                     <pointsize>11</pointsize>
+                                     <pointsize>10</pointsize>
                                     </font>
                                    </property>
                                    <property name="cursor">
                                     <cursorShape>PointingHandCursor</cursorShape>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);
-background-color: rgb(46, 79, 79);
-border: none;
-border-radius: 5px;</string>
+                                    <string notr="true">#annulerReserve {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerReserve:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
                                    </property>
                                    <property name="text">
                                     <string>Annuler</string>
@@ -2266,17 +2155,23 @@ border: none;</string>
                                    </property>
                                    <property name="font">
                                     <font>
-                                     <pointsize>11</pointsize>
+                                     <pointsize>10</pointsize>
                                     </font>
                                    </property>
                                    <property name="cursor">
                                     <cursorShape>PointingHandCursor</cursorShape>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);
-background-color: rgb(46, 79, 79);
-border: none;
-border-radius: 5px;</string>
+                                    <string notr="true">#reserver {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#reserver:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
                                    </property>
                                    <property name="text">
                                     <string>Réserver</string>
@@ -3033,10 +2928,16 @@ border: none;</string>
                           <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                          <string notr="true">#parDefaut {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#parDefaut:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
                          </property>
                          <property name="text">
                           <string>Par défaut</string>
@@ -3495,8 +3396,8 @@ border-radius: 5px;</string>
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-110</y>
-                <width>774</width>
+                <y>-114</y>
+                <width>771</width>
                 <height>689</height>
                </rect>
               </property>
@@ -3682,10 +3583,16 @@ border-radius: 0;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(202, 0, 0);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#resetCoop {
+	background-color: rgb(150, 0, 0);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#resetCoop:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Réinitialiser</string>
@@ -3855,10 +3762,16 @@ border-radius: 0;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#validerCoop {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#validerCoop:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Valider</string>
@@ -3876,10 +3789,16 @@ border-radius: 5px;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#pushButton {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#pushButton:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Annuler</string>
@@ -4024,7 +3943,7 @@ border-radius: 10px;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>375</width>
+                                   <width>374</width>
                                    <height>215</height>
                                   </rect>
                                  </property>
@@ -4043,6 +3962,14 @@ border-radius: 10px;</string>
                                   </property>
                                   <item row="0" column="0">
                                    <widget class="QTableWidget" name="trajetGestionTableView">
+                                    <property name="font">
+                                     <font>
+                                      <pointsize>10</pointsize>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true"/>
+                                    </property>
                                     <property name="selectionBehavior">
                                      <enum>QAbstractItemView::SelectRows</enum>
                                     </property>
@@ -4050,7 +3977,7 @@ border-radius: 10px;</string>
                                      <bool>true</bool>
                                     </property>
                                     <property name="gridStyle">
-                                     <enum>Qt::DashDotDotLine</enum>
+                                     <enum>Qt::SolidLine</enum>
                                     </property>
                                     <property name="sortingEnabled">
                                      <bool>true</bool>
@@ -4108,7 +4035,7 @@ border-radius: 10px;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Lieu d'arrivé:</string>
+                              <string>Destination/Départ</string>
                              </property>
                             </widget>
                            </item>
@@ -4161,10 +4088,16 @@ border-radius: 0;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#annulerTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerTrajetBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Annuler</string>
@@ -4189,7 +4122,7 @@ border-radius: 5px;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Lieu de départ:</string>
+                              <string>Départ/Destination</string>
                              </property>
                             </widget>
                            </item>
@@ -4324,10 +4257,16 @@ border-radius: 0;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#ajoutTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#ajoutTrajetBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Ajouter</string>
@@ -4336,6 +4275,9 @@ border-radius: 5px;</string>
                            </item>
                            <item row="10" column="0">
                             <widget class="QPushButton" name="majTrajetBtn">
+                             <property name="enabled">
+                              <bool>true</bool>
+                             </property>
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -4351,10 +4293,16 @@ border-radius: 5px;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#majTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#majTrajetBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Mettre à jour</string>
@@ -4378,10 +4326,16 @@ border-radius: 5px;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#supprTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#supprTrajetBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Supprimer</string>
@@ -4433,6 +4387,12 @@ border-radius: 0;</string>
                               <size>
                                <width>0</width>
                                <height>25</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>100</width>
+                               <height>16777215</height>
                               </size>
                              </property>
                              <property name="font">
@@ -4500,7 +4460,7 @@ border-radius: 10px;</string>
                           <property name="frameShadow">
                            <enum>QFrame::Raised</enum>
                           </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_21">
+                          <layout class="QVBoxLayout" name="verticalLayout_5">
                            <property name="leftMargin">
                             <number>0</number>
                            </property>
@@ -4529,65 +4489,49 @@ border-radius: 10px;</string>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QFrame" name="frame_5">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
+                            <widget class="QScrollArea" name="scrollArea_3">
+                             <property name="widgetResizable">
+                              <bool>true</bool>
                              </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                             <layout class="QGridLayout" name="gridLayout_10">
-                              <property name="leftMargin">
-                               <number>0</number>
+                             <widget class="QWidget" name="scrollAreaWidgetContents_3">
+                              <property name="geometry">
+                               <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>374</width>
+                                <height>208</height>
+                               </rect>
                               </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
-                              <item row="0" column="0">
-                               <widget class="QScrollArea" name="scrollArea_3">
-                                <property name="widgetResizable">
-                                 <bool>true</bool>
-                                </property>
-                                <widget class="QWidget" name="scrollAreaWidgetContents_3">
-                                 <property name="geometry">
-                                  <rect>
-                                   <x>0</x>
-                                   <y>0</y>
-                                   <width>375</width>
-                                   <height>208</height>
-                                  </rect>
+                              <layout class="QGridLayout" name="gridLayout_16">
+                               <property name="leftMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="topMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="rightMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item row="0" column="0">
+                                <widget class="QTableWidget" name="vehiculeGestionTableView">
+                                 <property name="font">
+                                  <font>
+                                   <pointsize>10</pointsize>
+                                  </font>
                                  </property>
-                                 <layout class="QGridLayout" name="gridLayout_16">
-                                  <property name="leftMargin">
-                                   <number>0</number>
-                                  </property>
-                                  <property name="topMargin">
-                                   <number>0</number>
-                                  </property>
-                                  <property name="rightMargin">
-                                   <number>0</number>
-                                  </property>
-                                  <property name="bottomMargin">
-                                   <number>0</number>
-                                  </property>
-                                  <item row="0" column="0">
-                                   <widget class="QTableWidget" name="vehiculeGestionTableView">
-                                    <property name="selectionBehavior">
-                                     <enum>QAbstractItemView::SelectRows</enum>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
+                                 <property name="selectionBehavior">
+                                  <enum>QAbstractItemView::SelectRows</enum>
+                                 </property>
+                                 <property name="sortingEnabled">
+                                  <bool>true</bool>
+                                 </property>
                                 </widget>
-                               </widget>
-                              </item>
-                             </layout>
+                               </item>
+                              </layout>
+                             </widget>
                             </widget>
                            </item>
                           </layout>
@@ -4668,10 +4612,16 @@ border-radius: 10px;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#ajoutVehiculeBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#ajoutVehiculeBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Ajouter</string>
@@ -4695,10 +4645,16 @@ border-radius: 5px;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#supprVehiculeBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#supprVehiculeBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Supprimer</string>
@@ -4760,6 +4716,9 @@ border-radius: 0;</string>
                            </item>
                            <item row="8" column="0">
                             <widget class="QPushButton" name="majVehiculeBtn">
+                             <property name="enabled">
+                              <bool>true</bool>
+                             </property>
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -4775,10 +4734,16 @@ border-radius: 0;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#majVehiculeBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#majVehiculeBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Mettre à jour</string>
@@ -4810,7 +4775,7 @@ border-radius: 5px;</string>
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>50</width>
+                               <width>100</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -4843,10 +4808,16 @@ border: none;</string>
                               <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+                              <string notr="true">#annulerVehiculeBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerVehiculeBtn:Hover {
+	background-color: rgb(44, 51, 51);
+}</string>
                              </property>
                              <property name="text">
                               <string>Annuler</string>

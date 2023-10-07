@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QStandardItemModel>
+#include <QTableWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -77,9 +78,26 @@ class MainWindow : public QMainWindow
 
         void on_gerer_clicked();
 
+        void on_stackedWidget_currentChanged(int index);
+
+        void on_refTrajet_2_currentTextChanged(const QString &arg1);
+
+        void on_verifierTrajet_clicked();
+
+        void on_trajetGestionTableView_itemClicked(QTableWidgetItem *item);
+
+        void on_trajetReservationTableView_itemClicked(QTableWidgetItem *item);
+
+        void on_vehiculeGestionTableView_itemClicked(QTableWidgetItem *item);
+
+        void on_trajetGestionTableView_itemSelectionChanged();
+
+        void on_vehiculeGestionTableView_itemSelectionChanged();
 
 private:
         Ui::MainWindow *ui;
+
+        bool isMouseDown = false;
 
         QStandardItemModel *model;
 };
