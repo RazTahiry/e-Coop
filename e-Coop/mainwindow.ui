@@ -404,20 +404,23 @@ QPushButton:pressed {
      <widget class="QWidget" name="leftMenubar" native="true">
       <property name="minimumSize">
        <size>
-        <width>162</width>
+        <width>159</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>150</width>
+        <width>159</width>
         <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
        <string notr="true">#leftMenubar {
 	background-color: rgb(14, 131, 136);
-}</string>
+}
+
+
+</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="leftMargin">
@@ -531,7 +534,7 @@ QPushButton:Hover {
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Segoe UI Variable Text Semibold</family>
               <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -559,8 +562,8 @@ padding: 10px 0 10px 10px;
             </property>
             <property name="iconSize">
              <size>
-              <width>18</width>
-              <height>18</height>
+              <width>17</width>
+              <height>17</height>
              </size>
             </property>
            </widget>
@@ -569,7 +572,7 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="gestionBtn">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Segoe UI Variable Text Semibold</family>
               <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -597,8 +600,8 @@ padding: 10px 0 10px 10px;
             </property>
             <property name="iconSize">
              <size>
-              <width>18</width>
-              <height>18</height>
+              <width>17</width>
+              <height>17</height>
              </size>
             </property>
            </widget>
@@ -607,7 +610,7 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="GestionTrajetBtn">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Segoe UI Variable Text Semibold</family>
               <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -635,8 +638,8 @@ padding: 10px 0 10px 10px;
             </property>
             <property name="iconSize">
              <size>
-              <width>18</width>
-              <height>18</height>
+              <width>17</width>
+              <height>17</height>
              </size>
             </property>
            </widget>
@@ -645,7 +648,7 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="historiqueBtn">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Segoe UI Variable Text Semibold</family>
               <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -672,8 +675,8 @@ padding: 10px 0 10px 10px;
             </property>
             <property name="iconSize">
              <size>
-              <width>18</width>
-              <height>18</height>
+              <width>17</width>
+              <height>17</height>
              </size>
             </property>
            </widget>
@@ -682,7 +685,7 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="aproposBtn">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Segoe UI Variable Text Semibold</family>
               <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -710,8 +713,8 @@ padding: 10px 0 10px 10px;
             </property>
             <property name="iconSize">
              <size>
-              <width>18</width>
-              <height>18</height>
+              <width>17</width>
+              <height>17</height>
              </size>
             </property>
            </widget>
@@ -733,7 +736,7 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="quitterBtn">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Segoe UI Variable Text Semibold</family>
               <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -761,6 +764,12 @@ QPushButton:pressed {
             <property name="icon">
              <iconset resource="Ressources.qrc">
               <normaloff>:/Icons/Bold Icons/power.svg</normaloff>:/Icons/Bold Icons/power.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>17</width>
+              <height>17</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -1018,8 +1027,8 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>68</width>
-                      <height>68</height>
+                      <width>761</width>
+                      <height>422</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -1300,8 +1309,8 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>519</width>
-                      <height>679</height>
+                      <width>765</width>
+                      <height>677</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1333,7 +1342,7 @@ border: none;</string>
                        </property>
                        <property name="font">
                         <font>
-                         <family>Comic Sans MS</family>
+                         <family>Segoe UI Variable Text Semibold</family>
                          <pointsize>11</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
@@ -1356,7 +1365,7 @@ border: none;</string>
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>69</width>
+                             <width>315</width>
                              <height>198</height>
                             </rect>
                            </property>
@@ -1671,7 +1680,7 @@ border: none;</string>
                       <widget class="QGroupBox" name="groupBox_4">
                        <property name="font">
                         <font>
-                         <family>Comic Sans MS</family>
+                         <family>Segoe UI Variable Text Semibold</family>
                          <pointsize>11</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
@@ -1742,7 +1751,7 @@ border: none;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>68</width>
+                                   <width>314</width>
                                    <height>373</height>
                                   </rect>
                                  </property>
@@ -2186,7 +2195,7 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string>Date de voyage:</string>
+                                    <string>Date du voyage:</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2850,7 +2859,7 @@ border: none;</string>
                           </font>
                          </property>
                          <property name="text">
-                          <string>Date du Voyage:</string>
+                          <string>Date de Voyage:</string>
                          </property>
                         </widget>
                        </item>
@@ -3325,6 +3334,7 @@ border: none;</string>
           </property>
           <property name="font">
            <font>
+            <family>Segoe UI Variable Text Semibold</family>
             <pointsize>12</pointsize>
             <weight>75</weight>
             <bold>true</bold>
@@ -3334,10 +3344,16 @@ border: none;</string>
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(46, 79, 79);
-color: rgb(203, 228, 222);
-padding: 5px;
-border-radius: 5px;</string>
+           <string notr="true">#gerer {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#gerer:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
           </property>
           <property name="text">
            <string>Gérer les Trajets</string>
@@ -3395,8 +3411,8 @@ border-radius: 5px;</string>
              <widget class="QWidget" name="scrollAreaWidgetContents">
               <property name="geometry">
                <rect>
-                <x>0</x>
-                <y>-114</y>
+                <x>-6</x>
+                <y>0</y>
                 <width>771</width>
                 <height>689</height>
                </rect>
@@ -3526,6 +3542,9 @@ border-radius: 10px;</string>
                              </property>
                              <property name="text">
                               <string>Nom Coopérative</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
                              </property>
                             </widget>
                            </item>
@@ -3774,7 +3793,7 @@ border-radius: 0;</string>
 }</string>
                              </property>
                              <property name="text">
-                              <string>Valider</string>
+                              <string>Mettre à jour</string>
                              </property>
                             </widget>
                            </item>
@@ -3816,7 +3835,7 @@ border-radius: 0;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Premiere voyage:</string>
+                              <string>Première voyage:</string>
                              </property>
                             </widget>
                            </item>
@@ -3895,7 +3914,10 @@ border-radius: 10px;</string>
                             <widget class="QLabel" name="label_18">
                              <property name="font">
                               <font>
+                               <family>Segoe UI Variable Text Semibold</family>
                                <pointsize>11</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
                               </font>
                              </property>
                              <property name="styleSheet">
@@ -3944,7 +3966,7 @@ border-radius: 10px;</string>
                                    <x>0</x>
                                    <y>0</y>
                                    <width>374</width>
-                                   <height>215</height>
+                                   <height>213</height>
                                   </rect>
                                  </property>
                                  <layout class="QGridLayout" name="gridLayout_15">
@@ -4035,7 +4057,7 @@ border-radius: 10px;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Destination/Départ</string>
+                              <string>Destination/Départ:</string>
                              </property>
                             </widget>
                            </item>
@@ -4122,7 +4144,7 @@ border-radius: 0;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Départ/Destination</string>
+                              <string>Départ/Destination:</string>
                              </property>
                             </widget>
                            </item>
@@ -4302,7 +4324,9 @@ border-radius: 0;</string>
 
 #majTrajetBtn:Hover {
 	background-color: rgb(44, 51, 51);
-}</string>
+}
+
+</string>
                              </property>
                              <property name="text">
                               <string>Mettre à jour</string>
@@ -4417,7 +4441,7 @@ border-radius: 0;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Décalage:</string>
+                              <string>Décalage des voyages (jours):</string>
                              </property>
                             </widget>
                            </item>
@@ -4477,7 +4501,10 @@ border-radius: 10px;</string>
                             <widget class="QLabel" name="label">
                              <property name="font">
                               <font>
+                               <family>Segoe UI Variable Text Semibold</family>
                                <pointsize>11</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
                               </font>
                              </property>
                              <property name="styleSheet">
@@ -4499,7 +4526,7 @@ border-radius: 10px;</string>
                                 <x>0</x>
                                 <y>0</y>
                                 <width>374</width>
-                                <height>208</height>
+                                <height>206</height>
                                </rect>
                               </property>
                               <layout class="QGridLayout" name="gridLayout_16">

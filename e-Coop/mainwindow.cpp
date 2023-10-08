@@ -32,10 +32,23 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     if(db.isOpen())
     {
         QSqlQuery query0;
-        query0.exec("SELECT nomCoop FROM COOPERATIVE WHERE refCoop = 1");
+        query0.exec("SELECT nomCoop, adresseCoop, contactCoop, contact1Coop, contact2Coop, datePremierVoyage FROM COOPERATIVE WHERE refCoop = 1");
         if(query0.next())
         {
-            QString nomCoop = query0.value(0).toString() ;
+            QString nomCoop = query0.value(0).toString();
+            QString adresse = query0.value(1).toString();
+            QString contact = query0.value(2).toString();
+            QString contact1 = query0.value(3).toString();
+            QString contact2 = query0.value(4).toString();
+            QDate datePremierVoyage = query0.value(5).toDate();
+
+            ui->coopNom->setText(nomCoop);
+            ui->adresseCoop->setText(adresse);
+            ui->contactCoop->setText(contact);
+            ui->contact1->setText(contact1);
+            ui->contact2->setText(contact2);
+            ui->datePremierVoyage->setDate(datePremierVoyage);
+
             ui->nomCooperativeParam->setText(nomCoop);
             ui->nomCoop->setText(nomCoop);
         }
@@ -59,13 +72,14 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             ui->heureReserve->addItem(heureMatin);
             ui->heureReserve->addItem(heureSoir);
 
+            ui->trajetGestionTableView->setColumnCount(3);
 
             for (int column = 0; column < ui->trajetGestionTableView->columnCount(); ++column)
             {
                 ui->trajetGestionTableView->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
             }
 
-            QString styleSheet = "QHeaderView::section {"
+            QString stylesheet = "QHeaderView::section {"
                                 "   background-color: rgb(46, 79, 79);"
                                 "   color: rgb(203, 228, 222);"
                                 "   padding: 6px;"
@@ -73,14 +87,13 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                                 "   font-size: 13px;"
                                 "}";
 
-            ui->trajetGestionTableView->horizontalHeader()->setStyleSheet(styleSheet);
+            ui->trajetGestionTableView->horizontalHeader()->setStyleSheet(stylesheet);
 
             ui->trajetGestionTableView->horizontalHeader()->setStretchLastSection(true);
 
             ui->trajetGestionTableView->verticalHeader()->setVisible(false);
             ui->trajetGestionTableView->setHorizontalHeaderLabels(QStringList() << "Réference trajet" << "Départ/Destination" << "Destination/Départ");
 
-            ui->trajetGestionTableView->setColumnCount(3);
             int row = ui->trajetGestionTableView->rowCount();
             ui->trajetGestionTableView->insertRow(row);
             ui->trajetGestionTableView->setItem(row, 0, new QTableWidgetItem(refTrajet));
@@ -99,6 +112,8 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             QString refTrajet = query2.value(3).toString();
             ui->vehicule->addItem(numMat);
             ui->vehiculeCombobox_2->addItem(numMat);
+
+            ui->vehiculeGestionTableView->setColumnCount(4);
 
             for (int column = 0; column < ui->vehiculeGestionTableView->columnCount(); ++column)
             {
@@ -119,7 +134,6 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             ui->vehiculeGestionTableView->verticalHeader()->setVisible(false);
             ui->vehiculeGestionTableView->setHorizontalHeaderLabels(QStringList() << "N° Matriculation" << "Chauffeur" << "Place supportés" << "Réference trajet");
 
-            ui->vehiculeGestionTableView->setColumnCount(4);
             int row = ui->vehiculeGestionTableView->rowCount();
 
             ui->vehiculeGestionTableView->insertRow(row);
@@ -140,6 +154,8 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             QString destination = query3.value(4).toString();
             QString dateVoyage = query3.value(5).toString();
 
+            ui->accueilTableWidget->setColumnCount(6);
+
             for (int column = 0; column < ui->accueilTableWidget->columnCount(); ++column)
             {
                 ui->accueilTableWidget->horizontalHeader()->setSectionResizeMode(column, QHeaderView::Stretch);
@@ -159,7 +175,6 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             ui->accueilTableWidget->verticalHeader()->setVisible(false);
             ui->accueilTableWidget->setHorizontalHeaderLabels(QStringList() << "N° Matriculation (Véhicule)" << "Réference trajet" << "Heure de départ" << "Lieu de départ" << "Lieu d'arrivé" << "Date");
 
-            ui->accueilTableWidget->setColumnCount(6);
             int row = ui->accueilTableWidget->rowCount();
 
             ui->accueilTableWidget->insertRow(row);
@@ -179,7 +194,6 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     //gestionTrajet g;
     //g.gerer();
 
-    //----------------------
     ui->trajetReservationTableView->setColumnCount(3);
 
     for (int column = 0; column < ui->trajetReservationTableView->columnCount(); ++column)
@@ -201,8 +215,6 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->trajetReservationTableView->verticalHeader()->setVisible(false);
     ui->trajetReservationTableView->setHorizontalHeaderLabels(QStringList() << "Voiture" << "Lieu de départ" << "Lieu d'arrivé");
 
-    //------------------
-
     ui->membreFamille_2->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->refTrajetVehicule->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->refTrajet_2->setItemData(0, QVariant(0), Qt::UserRole - 1);
@@ -220,6 +232,8 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->majVehiculeBtn->setDisabled(true);
     ui->supprTrajetBtn->setDisabled(true);
     ui->supprVehiculeBtn->setDisabled(true);
+
+    ui->stackedWidget->setCurrentIndex(0);
 
     int index = ui->stackedWidget->currentIndex();
     on_stackedWidget_currentChanged(index);
@@ -411,6 +425,12 @@ void MainWindow::on_quitterBtn_clicked()
     msgBox.setText("Êtes-vous sûr de vouloir quitter l'application?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                         "color: rgb(203, 228, 222);"
+                         "font-size: 13px;");
+
+    msgBox.setButtonText(QMessageBox::Yes, "Oui");
+    msgBox.setButtonText(QMessageBox::No, "Non");
 
     if (msgBox.exec() == QMessageBox::Yes) {
         QApplication::quit();
@@ -423,6 +443,12 @@ void MainWindow::on_quitIcon_clicked()
     msgBox.setText("Êtes-vous sûr de vouloir quitter l'application?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                         "color: rgb(203, 228, 222);"
+                         "font-size: 13px;");
+
+    msgBox.setButtonText(QMessageBox::Yes, "Oui");
+    msgBox.setButtonText(QMessageBox::No, "Non");
 
     if (msgBox.exec() == QMessageBox::Yes) {
         QApplication::quit();
@@ -431,6 +457,16 @@ void MainWindow::on_quitIcon_clicked()
 
 void MainWindow::on_validerCoop_clicked()
 {
+
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("");
+    msgBox.setText("La coopérative a été mise à jour.");
+
+    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                         "color: rgb(203, 228, 222);"
+                         "font-size: 13px;");
+    msgBox.exec();
+
     QString nomCoop = ui->coopNom->text();
     QString contactCoop = ui->contactCoop->text();
     QString contact1 = ui->contact1->text();
@@ -443,13 +479,6 @@ void MainWindow::on_validerCoop_clicked()
 
     ui->nomCooperativeParam->setText(nomCoop);
     ui->nomCoop->setText(nomCoop);
-
-    ui->coopNom->clear();
-    ui->contactCoop->clear();
-    ui->contact1->clear();
-    ui->contact2->clear();
-    ui->adresseCoop->clear();
-    ui->datePremierVoyage->setDate(QDate::currentDate());
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -463,17 +492,50 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_resetCoop_clicked()
 {
-    Cooperative C;
-    C.reinitialiser();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Confirmation de réinitialisation");
+    msgBox.setText("Cliquez sur 'Annuler' si vous n'êtes pas sûr de vouloir réinitialiser la coopérative."
+                   " Si vous choisissez de continuer en cliquant sur 'Réinitialiser', notez que toutes les données de cette coopérative seront réinitialisées, y compris les trajets, les véhicules, les données des passagers, les historiques, etc.");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                         "color: rgb(203, 228, 222);"
+                         "font-size: 13px;");
 
-    ui->nomCooperativeParam->setText("");
-    ui->nomCoop->setText("");
+    msgBox.setButtonText(QMessageBox::Yes, "Réinitialiser");
+    msgBox.setButtonText(QMessageBox::No, "Annuler");
 
-    ui->coopNom->clear();
-    ui->contactCoop->clear();
-    ui->contact1->clear();
-    ui->contact2->clear();
-    ui->adresseCoop->clear();
+    if (msgBox.exec() == QMessageBox::Yes)
+    {
+
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("");
+        msgBox.setText("Coopérative réinitialisée.");
+
+        msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                             "color: rgb(203, 228, 222);"
+                             "font-size: 13px;");
+        msgBox.exec();
+
+        Cooperative C;
+        C.reinitialiser();
+
+        ui->nomCooperativeParam->setText("");
+        ui->nomCoop->setText("");
+
+        ui->coopNom->clear();
+        ui->contactCoop->clear();
+        ui->contact1->clear();
+        ui->contact2->clear();
+        ui->adresseCoop->clear();
+
+        ui->trajetGestionTableView->clearContents();
+        ui->trajetGestionTableView->setRowCount(0);
+        ui->vehiculeGestionTableView->clearContents();
+        ui->vehiculeGestionTableView->setRowCount(0);
+        ui->accueilTableWidget->clearContents();
+        ui->accueilTableWidget->setRowCount(0);
+    }
 }
 
 void MainWindow::on_majVehiculeBtn_clicked()
@@ -492,6 +554,22 @@ void MainWindow::on_majVehiculeBtn_clicked()
     ui->chauffeur->clear();
     ui->contact_1->clear();
     ui->refTrajetVehicule->setCurrentIndex(0);
+
+    int selectedRow = ui->vehiculeGestionTableView->currentRow();
+
+    QTableWidgetItem *itemMatriculation = new QTableWidgetItem(matriculation);
+    QTableWidgetItem *itemchauffeur = new QTableWidgetItem(chauffeur);
+    QTableWidgetItem *itemNbPlace = new QTableWidgetItem(QString::number(nbPlace));
+    QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajetVehicule);
+
+    ui->vehiculeGestionTableView->setItem(selectedRow, 0, itemMatriculation);
+    ui->vehiculeGestionTableView->setItem(selectedRow, 1, itemchauffeur);
+    ui->vehiculeGestionTableView->setItem(selectedRow, 2, itemNbPlace);
+    ui->vehiculeGestionTableView->setItem(selectedRow, 3, itemRefTrajet);
+
+    ui->vehiculeGestionTableView->clearSelection();
+
+    ui->vehiculeGestionTableView->update();
 }
 
 void MainWindow::on_ajoutVehiculeBtn_clicked()
@@ -530,21 +608,53 @@ void MainWindow::on_ajoutVehiculeBtn_clicked()
 
 void MainWindow::on_supprVehiculeBtn_clicked()
 {
-    QString matriculation = ui->matriculation->text();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Confirmation de suppression");
+    msgBox.setText("Cliquez sur 'Annuler' si vous n'êtes pas sûr de vouloir supprimer ce véhicule."
+                   " Si vous choisissez de continuer en cliquant sur 'Supprimer'.");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                         "color: rgb(203, 228, 222);"
+                         "font-size: 13px;");
 
-    Vehicule V;
-    V.supprimer_vehicule(matriculation);
+    msgBox.setButtonText(QMessageBox::Yes, "Supprimer");
+    msgBox.setButtonText(QMessageBox::No, "Annuler");
 
-    ui->matriculation->clear();
-    ui->placeSupportes->setValue(0);
-    ui->chauffeur->clear();
-    ui->contact_1->clear();
-    ui->refTrajetVehicule->setCurrentIndex(0);
-
-    int selectedRow = ui->vehiculeGestionTableView->currentRow();
-    if (selectedRow >= 0)
+    if (msgBox.exec() == QMessageBox::Yes)
     {
-        ui->vehiculeGestionTableView->removeRow(selectedRow);
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("");
+        msgBox.setText("Véhicule supprimé.");
+
+        msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                             "color: rgb(203, 228, 222);"
+                             "font-size: 13px;");
+        msgBox.exec();
+
+        QString matriculation = ui->matriculation->text();
+
+        Vehicule V;
+        V.supprimer_vehicule(matriculation);
+
+        ui->matriculation->clear();
+        ui->placeSupportes->setValue(0);
+        ui->chauffeur->clear();
+        ui->contact_1->clear();
+        ui->refTrajetVehicule->setCurrentIndex(0);
+
+        int selectedRow = ui->vehiculeGestionTableView->currentRow();
+        if (selectedRow >= 0)
+        {
+            ui->vehiculeGestionTableView->removeRow(selectedRow);
+        }
+
+        int index1 = ui->vehiculeCombobox_2->findText(matriculation);
+
+        if(index1 != -1)
+        {
+            ui->vehiculeCombobox_2->removeItem(index1);
+        }
     }
 }
 
@@ -576,6 +686,20 @@ void MainWindow::on_majTrajetBtn_clicked()
     ui->heureMatin_2->setTime(heureParDefaut);
     ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
+
+    int selectedRow = ui->trajetGestionTableView->currentRow();
+
+    QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajet);
+    QTableWidgetItem *itemLieuDepart = new QTableWidgetItem(lieuDepart);
+    QTableWidgetItem *itemLieuArrive = new QTableWidgetItem(lieuArrive);
+
+    ui->trajetGestionTableView->setItem(selectedRow, 0, itemRefTrajet);
+    ui->trajetGestionTableView->setItem(selectedRow, 1, itemLieuDepart);
+    ui->trajetGestionTableView->setItem(selectedRow, 2, itemLieuArrive);
+
+    ui->trajetGestionTableView->clearSelection();
+
+    ui->trajetGestionTableView->update();
 }
 
 void MainWindow::on_ajoutTrajetBtn_clicked()
@@ -619,22 +743,70 @@ void MainWindow::on_ajoutTrajetBtn_clicked()
 
 void MainWindow::on_supprTrajetBtn_clicked()
 {
-    QTime heureParDefaut(0, 0);
-    QString refTrajet = ui->referenceTrajet->text();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Confirmation de suppression");
+    msgBox.setText("Cliquez sur 'Annuler' si vous n'êtes pas sûr de vouloir supprimer ce trajet."
+                   " Si vous choisissez de continuer en cliquant sur 'Supprimer', notez que toutes les véhicules dans ce trajet seront aussi supprimés.");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                         "color: rgb(203, 228, 222);"
+                         "font-size: 13px;");
 
-    Trajets T;
-    T.supprimer_trajet(refTrajet);
+    msgBox.setButtonText(QMessageBox::Yes, "Supprimer");
+    msgBox.setButtonText(QMessageBox::No, "Annuler");
 
-    ui->lieuDepart->clear();
-    ui->lieuArrive->clear();
-    ui->heureMatin_2->setTime(heureParDefaut);
-    ui->heureSoir_2->setTime(heureParDefaut);
-    ui->referenceTrajet->clear();
-
-    int selectedRow = ui->trajetGestionTableView->currentRow();
-    if (selectedRow >= 0)
+    if (msgBox.exec() == QMessageBox::Yes)
     {
-        ui->trajetGestionTableView->removeRow(selectedRow);
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("");
+        msgBox.setText("Trajet supprimé.");
+
+        msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                             "color: rgb(203, 228, 222);"
+                             "font-size: 13px;");
+        msgBox.exec();
+
+        QTime heureParDefaut(0, 0);
+        QString refTrajet = ui->referenceTrajet->text();
+
+        Trajets T;
+        T.supprimer_trajet(refTrajet);
+
+        ui->lieuDepart->clear();
+        ui->lieuArrive->clear();
+        ui->heureMatin_2->setTime(heureParDefaut);
+        ui->heureSoir_2->setTime(heureParDefaut);
+        ui->referenceTrajet->clear();
+
+        int index1 = ui->refTrajetVehicule->findText(refTrajet);
+        int index2 = ui->refTrajet_2->findText(refTrajet);
+
+        if(index1 != -1 || index2 != -1)
+        {
+            ui->refTrajetVehicule->removeItem(index1);
+            ui->refTrajet_2->removeItem(index2);
+        }
+
+        int selectedRow = ui->trajetGestionTableView->currentRow();
+        if (selectedRow >= 0)
+        {
+            ui->trajetGestionTableView->removeRow(selectedRow);
+        }
+
+        int columnIndex = 3;
+        int rowCount = ui->vehiculeGestionTableView->rowCount();
+
+        for(int i = 0; i < rowCount; i++)
+        {
+            QTableWidgetItem *item = ui->vehiculeGestionTableView->item(i, columnIndex);
+            if(item && item->text() == refTrajet)
+            {
+                QTableWidgetItem *refTrajetVide = new QTableWidgetItem("");
+                ui->vehiculeGestionTableView->setItem(i, columnIndex, refTrajetVide);
+            }
+        }
+        ui->vehiculeGestionTableView->update();
     }
 }
 
@@ -772,7 +944,6 @@ void MainWindow::on_verifierTrajet_clicked()
     {
         qDebug() << "Database not opened.";
     }
-
 }
 
 void MainWindow::on_trajetGestionTableView_itemClicked(QTableWidgetItem *item)

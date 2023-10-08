@@ -66,6 +66,7 @@ void Cooperative::reinitialiser()
         query.exec("DELETE FROM VEHICULE");
         query.exec("DELETE FROM TRAJET");
         query.exec("DELETE FROM RESERVATION");
+        query.exec("DELETE FROM GESTION");
 
         if(query.exec())
         {
