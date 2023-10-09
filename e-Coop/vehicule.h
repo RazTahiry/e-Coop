@@ -11,11 +11,9 @@ class Vehicule : public Identificateur, Trajets
         Vehicule(QString num_Matriculation, QString nom, QString contact, QString ref_trajet,
                  QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int nb_Place, int decalage);
 
-        void ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet);
-        void modifier_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet);
-        void supprimer_vehicule(QString num_Matriculation);
-
-        void setHeure(QString num_Matriculation, QString heure_depart);
+        bool ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet);
+        bool modifier_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet);
+        bool supprimer_vehicule(QString num_Matriculation);
 
     private:
         QString _num_Matriculation;

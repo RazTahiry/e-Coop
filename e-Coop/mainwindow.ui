@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>700</height>
+    <height>701</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -550,7 +550,6 @@ width: 410px;
 text-align: left;
 padding: 10px 0 10px 10px;
 
-
 </string>
             </property>
             <property name="text">
@@ -785,7 +784,7 @@ QPushButton:pressed {
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -901,8 +900,8 @@ border: none;</string>
                   <widget class="QLabel" name="title">
                    <property name="font">
                     <font>
-                     <family>Comic Sans MS</family>
-                     <pointsize>16</pointsize>
+                     <family>Bahnschrift SemiBold SemiConden</family>
+                     <pointsize>19</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -985,7 +984,7 @@ border: none;</string>
                      <widget class="QLabel" name="nomCoop">
                       <property name="font">
                        <font>
-                        <family>Lucida Sans Unicode</family>
+                        <family>Bahnschrift SemiBold SemiConden</family>
                         <pointsize>35</pointsize>
                         <weight>75</weight>
                         <bold>true</bold>
@@ -1028,7 +1027,7 @@ border: none;</string>
                       <x>0</x>
                       <y>0</y>
                       <width>761</width>
-                      <height>422</height>
+                      <height>423</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -1227,17 +1226,24 @@ border: none;</string>
                         <widget class="QLabel" name="title_9">
                          <property name="font">
                           <font>
-                           <family>Comic Sans MS</family>
-                           <pointsize>16</pointsize>
+                           <family>Bahnschrift SemiBold SemiConden</family>
+                           <pointsize>19</pointsize>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: rgb(203, 228, 222);</string>
+                          <string notr="true">color: rgb(203, 228, 222);
+margin-top: -10px;</string>
                          </property>
                          <property name="text">
                           <string>Trajets et Réservation</string>
+                         </property>
+                         <property name="margin">
+                          <number>0</number>
+                         </property>
+                         <property name="indent">
+                          <number>-1</number>
                          </property>
                         </widget>
                        </item>
@@ -1308,7 +1314,7 @@ border: none;</string>
                     <property name="geometry">
                      <rect>
                       <x>0</x>
-                      <y>0</y>
+                      <y>-53</y>
                       <width>765</width>
                       <height>677</height>
                      </rect>
@@ -1352,7 +1358,7 @@ border: none;</string>
                         <string notr="true">color: rgb(203, 228, 222);</string>
                        </property>
                        <property name="title">
-                        <string>Trajets</string>
+                        <string>Vérification véhicules et trajets</string>
                        </property>
                        <layout class="QHBoxLayout" name="horizontalLayout_4">
                         <item>
@@ -1454,9 +1460,10 @@ border: none;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                              </property>
                             </widget>
                            </item>
@@ -1530,10 +1537,14 @@ border: none;</string>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                              </property>
                              <item>
                               <property name="text">
@@ -1568,7 +1579,10 @@ border: none;</string>
                              </property>
                              <property name="font">
                               <font>
+                               <family>Bahnschrift SemiBold</family>
                                <pointsize>10</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
                               </font>
                              </property>
                              <property name="cursor">
@@ -1587,7 +1601,7 @@ border: none;</string>
 }</string>
                              </property>
                              <property name="text">
-                              <string>Vérifier Trajet</string>
+                              <string>Vérifier</string>
                              </property>
                             </widget>
                            </item>
@@ -1632,10 +1646,14 @@ border: none;</string>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                              </property>
                              <item>
                               <property name="text">
@@ -1680,14 +1698,15 @@ border: none;</string>
                       <widget class="QGroupBox" name="groupBox_4">
                        <property name="font">
                         <font>
-                         <family>Segoe UI Variable Text Semibold</family>
+                         <family>Segoe UI Semibold</family>
                          <pointsize>11</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: rgb(203, 228, 222);</string>
+                        <string notr="true">color: rgb(203, 228, 222);
+border-color:  rgb(46, 79, 79);</string>
                        </property>
                        <property name="title">
                         <string>Réservation</string>
@@ -1944,9 +1963,10 @@ border: none;</string>
                                     </size>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2006,9 +2026,10 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2026,9 +2047,10 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2061,9 +2083,10 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2080,10 +2103,14 @@ border: none;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2126,9 +2153,10 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2219,9 +2247,10 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2244,10 +2273,14 @@ border: none;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2311,9 +2344,10 @@ border: none;</string>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2330,10 +2364,14 @@ border: none;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2382,10 +2420,14 @@ border: none;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2407,10 +2449,14 @@ border: none;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border: none;</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2572,8 +2618,8 @@ border: none;</string>
                      <widget class="QLabel" name="title_4">
                       <property name="font">
                        <font>
-                        <family>Comic Sans MS</family>
-                        <pointsize>16</pointsize>
+                        <family>Bahnschrift SemiBold SemiConden</family>
+                        <pointsize>19</pointsize>
                         <weight>75</weight>
                         <bold>true</bold>
                        </font>
@@ -2839,10 +2885,14 @@ border: none;</string>
                            <pointsize>10</pointsize>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">color: black;
-background-color: rgb(255, 255, 255);
-border: none;</string>
+                          <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -2877,9 +2927,10 @@ border: none;</string>
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: black;
-background-color: rgb(255, 255, 255);
-border: none;</string>
+                          <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                          </property>
                         </widget>
                        </item>
@@ -2908,10 +2959,14 @@ border: none;</string>
                            <pointsize>10</pointsize>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
-                          <string notr="true">color: black;
-background-color: rgb(255, 255, 255);
-border: none;</string>
+                          <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -3106,8 +3161,8 @@ border: none;</string>
                      <widget class="QLabel" name="title_6">
                       <property name="font">
                        <font>
-                        <family>Comic Sans MS</family>
-                        <pointsize>16</pointsize>
+                        <family>Bahnschrift SemiBold SemiConden</family>
+                        <pointsize>19</pointsize>
                         <weight>75</weight>
                         <bold>true</bold>
                        </font>
@@ -3278,8 +3333,8 @@ border: none;</string>
                   <widget class="QLabel" name="title_8">
                    <property name="font">
                     <font>
-                     <family>Comic Sans MS</family>
-                     <pointsize>16</pointsize>
+                     <family>Bahnschrift SemiBold SemiConden</family>
+                     <pointsize>19</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -3411,10 +3466,10 @@ border: none;</string>
              <widget class="QWidget" name="scrollAreaWidgetContents">
               <property name="geometry">
                <rect>
-                <x>-6</x>
-                <y>0</y>
-                <width>771</width>
-                <height>689</height>
+                <x>-24</x>
+                <y>-134</y>
+                <width>789</width>
+                <height>698</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_12">
@@ -3482,13 +3537,13 @@ border: none;</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_23">
                      <property name="leftMargin">
-                      <number>0</number>
+                      <number>9</number>
                      </property>
                      <property name="topMargin">
                       <number>0</number>
                      </property>
                      <property name="rightMargin">
-                      <number>0</number>
+                      <number>9</number>
                      </property>
                      <property name="bottomMargin">
                       <number>0</number>
@@ -3537,7 +3592,10 @@ border-radius: 10px;</string>
                             <widget class="QLabel" name="nomCooperativeParam">
                              <property name="font">
                               <font>
+                               <family>Bahnschrift SemiBold SemiConden</family>
                                <pointsize>30</pointsize>
+                               <weight>75</weight>
+                               <bold>true</bold>
                               </font>
                              </property>
                              <property name="text">
@@ -3572,8 +3630,8 @@ border-radius: 10px;</string>
                            <property name="bottomMargin">
                             <number>0</number>
                            </property>
-                           <item row="1" column="3">
-                            <widget class="QLineEdit" name="contactCoop">
+                           <item row="3" column="3">
+                            <widget class="QLineEdit" name="contact2">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -3586,35 +3644,23 @@ border-radius: 10px;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="5" column="3">
-                            <widget class="QPushButton" name="resetCoop">
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
+                           <item row="4" column="3">
+                            <widget class="QLineEdit" name="lineEdit_5">
+                             <property name="enabled">
+                              <bool>false</bool>
                              </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">#resetCoop {
-	background-color: rgb(150, 0, 0);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#resetCoop:Hover {
-	background-color: rgb(44, 51, 51);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Réinitialiser</string>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>0</height>
+                              </size>
                              </property>
                             </widget>
                            </item>
@@ -3653,13 +3699,42 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="1" column="0">
-                            <widget class="QLineEdit" name="coopNom">
+                           <item row="5" column="1">
+                            <widget class="QPushButton" name="pushButton">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#pushButton {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#pushButton:Hover {
+	background-color: rgb(66, 99, 99);
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Annuler</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="3">
+                            <widget class="QLineEdit" name="contactCoop">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
@@ -3672,8 +3747,10 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -3691,61 +3768,37 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="0" column="1">
-                            <widget class="QLabel" name="label_7">
-                             <property name="maximumSize">
-                              <size>
-                               <width>16777215</width>
-                               <height>15</height>
-                              </size>
-                             </property>
+                           <item row="5" column="3">
+                            <widget class="QPushButton" name="resetCoop">
                              <property name="font">
                               <font>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(203, 228, 222);</string>
+                              <string notr="true">#resetCoop {
+	background-color: rgb(150, 0, 0);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#resetCoop:Hover {
+	background-color: rgb(120, 0, 0);
+}</string>
                              </property>
                              <property name="text">
-                              <string>Adresse Coopératve:</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="3" column="3">
-                            <widget class="QLineEdit" name="contact2">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="4" column="3">
-                            <widget class="QLineEdit" name="lineEdit_5">
-                             <property name="enabled">
-                              <bool>false</bool>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>16777215</width>
-                               <height>0</height>
-                              </size>
+                              <string>Réinitialiser</string>
                              </property>
                             </widget>
                            </item>
@@ -3770,57 +3823,45 @@ border-radius: 0;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="5" column="0">
-                            <widget class="QPushButton" name="validerCoop">
+                           <item row="0" column="1">
+                            <widget class="QLabel" name="label_7">
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>15</height>
+                              </size>
+                             </property>
                              <property name="font">
                               <font>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
                              <property name="styleSheet">
-                              <string notr="true">#validerCoop {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#validerCoop:Hover {
-	background-color: rgb(44, 51, 51);
-}</string>
+                              <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Mettre à jour</string>
+                              <string>Adresse Coopératve:</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="5" column="1">
-                            <widget class="QPushButton" name="pushButton">
+                           <item row="1" column="0">
+                            <widget class="QLineEdit" name="coopNom">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>25</height>
+                              </size>
+                             </property>
                              <property name="font">
                               <font>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
                              <property name="styleSheet">
-                              <string notr="true">#pushButton {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#pushButton:Hover {
-	background-color: rgb(44, 51, 51);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Annuler</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -3853,8 +3894,37 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
 border-radius: 0;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="5" column="0">
+                            <widget class="QPushButton" name="validerCoop">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#validerCoop {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#validerCoop:Hover {
+	background-color: rgb(66, 99, 99);
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Mettre à jour</string>
                              </property>
                             </widget>
                            </item>
@@ -3966,7 +4036,7 @@ border-radius: 10px;</string>
                                    <x>0</x>
                                    <y>0</y>
                                    <width>374</width>
-                                   <height>213</height>
+                                   <height>212</height>
                                   </rect>
                                  </property>
                                  <layout class="QGridLayout" name="gridLayout_15">
@@ -4061,8 +4131,8 @@ border-radius: 10px;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="12" column="1">
-                            <spacer name="verticalSpacer_7">
+                           <item row="11" column="0">
+                            <spacer name="verticalSpacer_8">
                              <property name="orientation">
                               <enum>Qt::Vertical</enum>
                              </property>
@@ -4073,80 +4143,6 @@ border-radius: 10px;</string>
                               </size>
                              </property>
                             </spacer>
-                           </item>
-                           <item row="1" column="1">
-                            <widget class="QLineEdit" name="lieuArrive">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>9</pointsize>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="11" column="1">
-                            <widget class="QPushButton" name="annulerTrajetBtn">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">#annulerTrajetBtn {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#annulerTrajetBtn:Hover {
-	background-color: rgb(44, 51, 51);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Annuler</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="8" column="0">
-                            <widget class="Line" name="line_5">
-                             <property name="orientation">
-                              <enum>Qt::Horizontal</enum>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="0">
-                            <widget class="QLabel" name="label_19">
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">color: rgb(203, 228, 222);</string>
-                             </property>
-                             <property name="text">
-                              <string>Départ/Destination:</string>
-                             </property>
-                            </widget>
                            </item>
                            <item row="3" column="1">
                             <widget class="QTimeEdit" name="heureSoir_2">
@@ -4168,7 +4164,211 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="0">
+                            <widget class="QComboBox" name="lieuDepart">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>25</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>Sélectionner</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Antsiranana</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Mahajanga</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Toamasina</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Antananarivo</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Fianarantsoa</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Toliara</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item row="9" column="0">
+                            <widget class="QPushButton" name="majTrajetBtn">
+                             <property name="enabled">
+                              <bool>true</bool>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#majTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#majTrajetBtn:Hover {
+	background-color: rgb(66, 99, 99);
+}
+
+</string>
+                             </property>
+                             <property name="text">
+                              <string>Mettre à jour</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="5" column="1">
+                            <widget class="QLabel" name="label_3">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(203, 228, 222);</string>
+                             </property>
+                             <property name="text">
+                              <string>Décalage des voyages (jours):</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_21">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(203, 228, 222);</string>
+                             </property>
+                             <property name="text">
+                              <string>Heure de départ matin:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="9" column="1">
+                            <widget class="QPushButton" name="ajoutTrajetBtn">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#ajoutTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#ajoutTrajetBtn:Hover {
+	background-color: rgb(66, 99, 99);
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Ajouter</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="label_19">
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(203, 228, 222);</string>
+                             </property>
+                             <property name="text">
+                              <string>Départ/Destination:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="1">
+                            <widget class="QSpinBox" name="decalage">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>25</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>100</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
 border-radius: 0;</string>
                              </property>
                             </widget>
@@ -4188,33 +4388,36 @@ border-radius: 0;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="2" column="1">
-                            <widget class="QLabel" name="label_23">
+                           <item row="10" column="1">
+                            <widget class="QPushButton" name="annulerTrajetBtn">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>0</height>
+                              </size>
+                             </property>
                              <property name="font">
                               <font>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
-                             <property name="styleSheet">
-                              <string notr="true">color: rgb(203, 228, 222);</string>
-                             </property>
-                             <property name="text">
-                              <string>Heure de départ soir:</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="2" column="0">
-                            <widget class="QLabel" name="label_21">
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">color: rgb(203, 228, 222);</string>
+                              <string notr="true">#annulerTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerTrajetBtn:Hover {
+	background-color: rgb(66, 99, 99);
+}</string>
                              </property>
                              <property name="text">
-                              <string>Heure de départ matin:</string>
+                              <string>Annuler</string>
                              </property>
                             </widget>
                            </item>
@@ -4238,143 +4441,15 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
 border-radius: 0;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="1" column="0">
-                            <widget class="QLineEdit" name="lieuDepart">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>9</pointsize>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="10" column="1">
-                            <widget class="QPushButton" name="ajoutTrajetBtn">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">#ajoutTrajetBtn {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#ajoutTrajetBtn:Hover {
-	background-color: rgb(44, 51, 51);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Ajouter</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="10" column="0">
-                            <widget class="QPushButton" name="majTrajetBtn">
-                             <property name="enabled">
-                              <bool>true</bool>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">#majTrajetBtn {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#majTrajetBtn:Hover {
-	background-color: rgb(44, 51, 51);
-}
-
-</string>
-                             </property>
-                             <property name="text">
-                              <string>Mettre à jour</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="11" column="0">
-                            <widget class="QPushButton" name="supprTrajetBtn">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">#supprTrajetBtn {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#supprTrajetBtn:Hover {
-	background-color: rgb(44, 51, 51);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Supprimer</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="8" column="1">
-                            <widget class="Line" name="line_6">
-                             <property name="orientation">
-                              <enum>Qt::Horizontal</enum>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="12" column="0">
-                            <spacer name="verticalSpacer_8">
+                           <item row="11" column="1">
+                            <spacer name="verticalSpacer_7">
                              <property name="orientation">
                               <enum>Qt::Vertical</enum>
                              </property>
@@ -4400,23 +4475,19 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="6" column="1">
-                            <widget class="QSpinBox" name="decalage">
+                           <item row="1" column="1">
+                            <widget class="QComboBox" name="lieuArrive">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
                                <height>25</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>100</width>
-                               <height>16777215</height>
                               </size>
                              </property>
                              <property name="font">
@@ -4424,14 +4495,87 @@ border-radius: 0;</string>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
 border-radius: 0;</string>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>Sélectionner</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Antsiranana</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Mahajanga</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Toamasina</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Antananarivo</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Fianarantsoa</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Toliara</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item row="10" column="0">
+                            <widget class="QPushButton" name="supprTrajetBtn">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#supprTrajetBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#supprTrajetBtn:Hover {
+	background-color: rgb(66, 99, 99);
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Supprimer</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="5" column="1">
-                            <widget class="QLabel" name="label_3">
+                           <item row="2" column="1">
+                            <widget class="QLabel" name="label_23">
                              <property name="font">
                               <font>
                                <pointsize>10</pointsize>
@@ -4441,7 +4585,33 @@ border-radius: 0;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Décalage des voyages (jours):</string>
+                              <string>Heure de départ soir:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="7" column="0">
+                            <widget class="QLineEdit" name="lineEdit_3">
+                             <property name="enabled">
+                              <bool>false</bool>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="7" column="1">
+                            <widget class="QLineEdit" name="lineEdit">
+                             <property name="enabled">
+                              <bool>false</bool>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>0</height>
+                              </size>
                              </property>
                             </widget>
                            </item>
@@ -4456,13 +4626,13 @@ border-radius: 0;</string>
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
-                         <height>250</height>
+                         <height>260</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
-                         <height>250</height>
+                         <height>260</height>
                         </size>
                        </property>
                        <property name="styleSheet">
@@ -4526,7 +4696,7 @@ border-radius: 10px;</string>
                                 <x>0</x>
                                 <y>0</y>
                                 <width>374</width>
-                                <height>206</height>
+                                <height>216</height>
                                </rect>
                               </property>
                               <layout class="QGridLayout" name="gridLayout_16">
@@ -4582,6 +4752,9 @@ border-radius: 10px;</string>
                            <property name="topMargin">
                             <number>9</number>
                            </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
                            <property name="horizontalSpacing">
                             <number>10</number>
                            </property>
@@ -4627,7 +4800,7 @@ border-radius: 10px;</string>
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
-                               <height>25</height>
+                               <height>0</height>
                               </size>
                              </property>
                              <property name="font">
@@ -4647,7 +4820,7 @@ border-radius: 10px;</string>
 }
 
 #ajoutVehiculeBtn:Hover {
-	background-color: rgb(44, 51, 51);
+	background-color: rgb(66, 99, 99);
 }</string>
                              </property>
                              <property name="text">
@@ -4660,7 +4833,7 @@ border-radius: 10px;</string>
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
-                               <height>25</height>
+                               <height>0</height>
                               </size>
                              </property>
                              <property name="font">
@@ -4680,7 +4853,7 @@ border-radius: 10px;</string>
 }
 
 #supprVehiculeBtn:Hover {
-	background-color: rgb(44, 51, 51);
+	background-color: rgb(66, 99, 99);
 }</string>
                              </property>
                              <property name="text">
@@ -4717,8 +4890,10 @@ border-radius: 10px;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4736,8 +4911,10 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4749,7 +4926,7 @@ border-radius: 0;</string>
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
-                               <height>25</height>
+                               <height>0</height>
                               </size>
                              </property>
                              <property name="font">
@@ -4769,7 +4946,7 @@ border-radius: 0;</string>
 }
 
 #majVehiculeBtn:Hover {
-	background-color: rgb(44, 51, 51);
+	background-color: rgb(66, 99, 99);
 }</string>
                              </property>
                              <property name="text">
@@ -4812,9 +4989,10 @@ border-radius: 0;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;
-border: none;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;</string>
                              </property>
                             </widget>
                            </item>
@@ -4823,7 +5001,7 @@ border: none;</string>
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
-                               <height>25</height>
+                               <height>0</height>
                               </size>
                              </property>
                              <property name="font">
@@ -4843,7 +5021,7 @@ border: none;</string>
 }
 
 #annulerVehiculeBtn:Hover {
-	background-color: rgb(44, 51, 51);
+	background-color: rgb(66, 99, 99);
 }</string>
                              </property>
                              <property name="text">
@@ -4865,8 +5043,10 @@ border: none;</string>
                               </font>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 0;</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4898,8 +5078,13 @@ border-radius: 0;</string>
                                <pointsize>10</pointsize>
                               </font>
                              </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(255, 255, 255);
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
 border-radius: 0;</string>
                              </property>
                              <item>

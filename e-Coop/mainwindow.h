@@ -94,6 +94,10 @@ class MainWindow : public QMainWindow
 
         void on_vehiculeGestionTableView_itemSelectionChanged();
 
+        void on_lieuDepart_currentTextChanged(const QString &arg1);
+
+        void on_lieuArrive_currentTextChanged(const QString &arg1);
+
 private:
         Ui::MainWindow *ui;
 

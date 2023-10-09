@@ -21,7 +21,7 @@ Vehicule::Vehicule(QString num_Matriculation, QString nom, QString contact, QStr
     this->_nb_Place = nb_Place;
 }
 
-void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place ,QString ref_trajet)
+bool Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place ,QString ref_trajet)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -39,20 +39,20 @@ void Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString 
 
         if(query.exec())
         {
-            qDebug() << "data added.";
+            return true;
         }
         else
         {
-            qDebug() << "data not added: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 
-void Vehicule::modifier_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet)
+bool Vehicule::modifier_vehicule(QString num_Matriculation, QString nom, QString contact, int nb_Place, QString ref_trajet)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -69,20 +69,20 @@ void Vehicule::modifier_vehicule(QString num_Matriculation, QString nom, QString
 
         if(query.exec())
         {
-            qDebug() << "Véhicule à jour.";
+            return true;
         }
         else
         {
-            qDebug() << "Can't update Véhicule: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 
-void Vehicule::supprimer_vehicule(QString num_Matriculation)
+bool Vehicule::supprimer_vehicule(QString num_Matriculation)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -95,34 +95,16 @@ void Vehicule::supprimer_vehicule(QString num_Matriculation)
 
         if(query.exec())
         {
-            qDebug() << "Véhicule supprimé.";
+            return true;
         }
         else
         {
-            qDebug() << "Can't delete Véhicule: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
-    }
-}
-
-void Vehicule::setHeure(QString num_Matriculation, QString heure_depart)
-{
-    DbManager db(pathToDB);
-    if(db.isOpen())
-    {
-        qDebug() << "Database opened...";
-
-        QSqlQuery query;
-        query.prepare("UPDATE VEHICULE SET heure = :heure WHERE numMAT = :numMAT");
-        query.bindValue(":heure", heure_depart);
-        query.bindValue(":numMAT", num_Matriculation);
-    }
-    else
-    {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 

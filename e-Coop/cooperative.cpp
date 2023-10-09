@@ -23,7 +23,7 @@ Cooperative::Cooperative(QString ref_coop, QString nom, QString contact,
     this->_datePremierVoyage = datePremierVoyage;
 }
 
-void Cooperative::majCoop(QString nom, QString contact, QString contact1, QString contact2, QString address, QString datePremierVoyage)
+bool Cooperative::majCoop(QString nom, QString contact, QString contact1, QString contact2, QString address, QString datePremierVoyage)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -32,7 +32,7 @@ void Cooperative::majCoop(QString nom, QString contact, QString contact1, QStrin
 
         QSqlQuery query;
         query.prepare("UPDATE COOPERATIVE SET nomCoop = :nom, adresseCoop = :adresse, contactCoop = :contact, contact1Coop = :contact1, contact2Coop = :contact2, datePremierVoyage = :date WHERE refCoop = 1");
-        query.bindValue(":nom", nom);
+        query.bindValue(":nom", nom.toUpper());
         query.bindValue(":contact", contact);
         query.bindValue(":contact1", contact1);
         query.bindValue(":contact2", contact2);
@@ -41,20 +41,20 @@ void Cooperative::majCoop(QString nom, QString contact, QString contact1, QStrin
 
         if(query.exec())
         {
-            qDebug() << "data added.";
+            return true;
         }
         else
         {
-            qDebug() << "data not added: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 
-void Cooperative::reinitialiser()
+bool Cooperative::reinitialiser()
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -62,7 +62,8 @@ void Cooperative::reinitialiser()
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        query.exec("UPDATE COOPERATIVE SET nomCoop = '', adresseCoop = '', contactCoop = '' WHERE refCoop = 1");
+        query.exec("UPDATE COOPERATIVE SET nomCoop = '', adresseCoop = '', contactCoop = '', contact1Coop = '', contact2Coop = '', datePremierVoyage = ''"
+                   " WHERE refCoop = 1");
         query.exec("DELETE FROM VEHICULE");
         query.exec("DELETE FROM TRAJET");
         query.exec("DELETE FROM RESERVATION");
@@ -70,15 +71,15 @@ void Cooperative::reinitialiser()
 
         if(query.exec())
         {
-            qDebug() << "Cooperative réinitialisée.";
+            return true;
         }
         else
         {
-            qDebug() << "Can't reset Coopérative: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }

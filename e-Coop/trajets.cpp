@@ -15,7 +15,7 @@ Trajets::Trajets(QString ref_trajet, QString lieu_depart, QString destination, Q
 {
 }
 
-void Trajets::ajout_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage)
+bool Trajets::ajout_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -34,20 +34,20 @@ void Trajets::ajout_trajet(QString ref_trajet, QString lieu_depart, QString dest
 
         if(query.exec())
         {
-            qDebug() << "data added.";
+            return true;
         }
         else
         {
-            qDebug() << "data not added: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 
-void Trajets::maj_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage)
+bool Trajets::maj_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -65,20 +65,20 @@ void Trajets::maj_trajet(QString ref_trajet, QString lieu_depart, QString destin
 
         if(query.exec())
         {
-            qDebug() << "Trajet à jour.";
+            return true;
         }
         else
         {
-            qDebug() << "Can't update Trajet: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 
-void Trajets::supprimer_trajet(QString ref_trajet)
+bool Trajets::supprimer_trajet(QString ref_trajet)
 {
     DbManager db(pathToDB);
     if(db.isOpen())
@@ -91,15 +91,15 @@ void Trajets::supprimer_trajet(QString ref_trajet)
 
         if(query.exec())
         {
-            qDebug() << "Trajet supprimé.";
+            return true;
         }
         else
         {
-            qDebug() << "Can't delete Trajet: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }

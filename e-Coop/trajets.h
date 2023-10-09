@@ -9,9 +9,9 @@ class Trajets
         Trajets();
         Trajets(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
 
-        void ajout_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
-        void maj_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
-        void supprimer_trajet(QString ref_trajet);
+        bool ajout_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
+        bool maj_trajet(QString ref_trajet, QString lieu_depart, QString destination, QString heureMatin, QString heureSoir, int decalage);
+        bool supprimer_trajet(QString ref_trajet);
 
      protected:
         QString _ref_trajet;
