@@ -6,7 +6,7 @@ class gestionTrajet
 {
     public:
         gestionTrajet();
-        void gerer();
+        bool gerer();
 };
 
 #endif // GESTIONTRAJET_H

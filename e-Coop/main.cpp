@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.setWindowTitle("e-Coop (Beta - version)");
-    QIcon appIcon(":/Icons/Bold Icons/logoecoop.png");
+    QIcon appIcon(":/Icons/Bold Icons/logoecoop.svg");
     w.setWindowIcon(appIcon);
     w.show();
     return a.exec();

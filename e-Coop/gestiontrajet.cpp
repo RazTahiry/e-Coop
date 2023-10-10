@@ -14,7 +14,7 @@ gestionTrajet::gestionTrajet()
 {
 }
 
-void gestionTrajet::gerer()
+bool gestionTrajet::gerer()
 {
     DbManager db(pathToDB);
 
@@ -65,7 +65,7 @@ void gestionTrajet::gerer()
         decalage[refTrajet] = decalageVoyage;
     }
 
-    //---- Affichage décalage des voyages ---------------------------------------------
+    //---- Affichage décalage des voyages -------------------------
     QHash<QString, int>::const_iterator j = decalage.constBegin();
     while (j != decalage.constEnd())
     {
@@ -77,7 +77,36 @@ void gestionTrajet::gerer()
         qDebug() << "  Décalage:" << decal;
         ++j;
     }
-    //---------------------------------------------------------------------------------
+    //--------------------------------------------------------------
+
+    //---- Récuperation nombre des places des véhicules
+    QHash<QString, int> nbPlace;
+    QSqlQuery selectNbPlace("SELECT numMAT, nbPlace FROM VEHICULE");
+    while (selectNbPlace.next())
+    {
+        QString numMat = selectNbPlace.value(0).toString();
+        int nbPlaceVehicule = selectNbPlace.value(1).toInt();
+
+        if(!nbPlace.contains(numMat))
+        {
+            nbPlace.insert(numMat, nbPlaceVehicule);
+        }
+        nbPlace[numMat] = nbPlaceVehicule;
+    }
+
+    //---- Affichage nombre des places véhicule ----------------------
+    QHash<QString, int>::const_iterator p = nbPlace.constBegin();
+    while (p != nbPlace.constEnd())
+    {
+        QString numMat = p.key();
+        int place = p.value();
+
+        qDebug() << "N° Mat:" << numMat;
+
+        qDebug() << "  Places supportés:" << place;
+        ++p;
+    }
+    //----------------------------------------------------------------
 
     //---- Récuperation heure par chaque trajet
     QMap<QString, QSqlRecord> heureMap;
@@ -179,34 +208,40 @@ void gestionTrajet::gerer()
 
                         foreach(QString voiture, values)
                         {
-                            //---- Ajout numMat, refTrajet et date dans la Table GESTION
-                            QSqlQuery addToGetsion;
-                            addToGetsion.prepare("INSERT INTO GESTION (numMAT, refTrajet, dateVoyage) VALUES (:numMAT, :refTrajet, :dateVoyage)");
-                            addToGetsion.bindValue(":numMAT", voiture);
-                            addToGetsion.bindValue(":refTrajet", refTrajet);
-                            addToGetsion.bindValue(":dateVoyage", premierVoyage);
-                            addToGetsion.exec();
-
-                            //---- Ajout heure pour chaque vehicule dans la Table GESTION
-                            QString heure_matin = heureValue.value("heureMatin").toString();
-                            QString heure_soir = heureValue.value("heureSoir").toString();
-
-                            //---- Les vehicules avec l'indice paire prennent l'heure matin et celles sont impaire prennent l'heure soir
-                            if ((values.indexOf(voiture) + 1) % 2 == 0)
+                            if(nbPlace.contains(voiture))
                             {
-                                QSqlQuery addHour1;
-                                addHour1.prepare("UPDATE GESTION SET heure = :heureMatin WHERE numMAT = :numMAT");
-                                addHour1.bindValue(":heureMatin", heure_matin);
-                                addHour1.bindValue(":numMAT", voiture);
-                                addHour1.exec();
-                            }
-                            else
-                            {
-                                QSqlQuery addHour2;
-                                addHour2.prepare("UPDATE GESTION SET heure = :heureSoir WHERE numMAT = :numMAT");
-                                addHour2.bindValue(":heureSoir", heure_soir);
-                                addHour2.bindValue(":numMAT", voiture);
-                                addHour2.exec();
+                                int placeDispo = nbPlace.value(voiture, -1);
+
+                                //---- Ajout numMat, refTrajet et date dans la Table GESTION
+                                QSqlQuery addToGetsion;
+                                addToGetsion.prepare("INSERT INTO GESTION (numMAT, refTrajet, dateVoyage, placeDispo) VALUES (:numMAT, :refTrajet, :dateVoyage, :placeDispo)");
+                                addToGetsion.bindValue(":numMAT", voiture);
+                                addToGetsion.bindValue(":refTrajet", refTrajet);
+                                addToGetsion.bindValue(":dateVoyage", premierVoyage);
+                                addToGetsion.bindValue(":placeDispo", placeDispo);
+                                addToGetsion.exec();
+
+                                //---- Ajout heure pour chaque vehicule dans la Table GESTION
+                                QString heure_matin = heureValue.value("heureMatin").toString();
+                                QString heure_soir = heureValue.value("heureSoir").toString();
+
+                                //---- Les vehicules avec l'indice paire prennent l'heure matin et celles sont impaire prennent l'heure soir
+                                if ((values.indexOf(voiture) + 1) % 2 == 0)
+                                {
+                                    QSqlQuery addHour1;
+                                    addHour1.prepare("UPDATE GESTION SET heure = :heureMatin WHERE numMAT = :numMAT");
+                                    addHour1.bindValue(":heureMatin", heure_matin);
+                                    addHour1.bindValue(":numMAT", voiture);
+                                    addHour1.exec();
+                                }
+                                else
+                                {
+                                    QSqlQuery addHour2;
+                                    addHour2.prepare("UPDATE GESTION SET heure = :heureSoir WHERE numMAT = :numMAT");
+                                    addHour2.bindValue(":heureSoir", heure_soir);
+                                    addHour2.bindValue(":numMAT", voiture);
+                                    addHour2.exec();
+                                }
                             }
                         }
 
@@ -267,34 +302,40 @@ void gestionTrajet::gerer()
 
                         foreach(QString voiture, values)
                         {
-                            //---- Ajout numMat, refTrajet et date dans la Table GESTION
-                            QSqlQuery addToGetsion;
-                            addToGetsion.prepare("INSERT INTO GESTION (numMAT, refTrajet, dateVoyage) VALUES (:numMAT, :refTrajet, :dateVoyage)");
-                            addToGetsion.bindValue(":numMAT", voiture);
-                            addToGetsion.bindValue(":refTrajet", refTrajet);
-                            addToGetsion.bindValue(":dateVoyage", premierVoyage);
-                            addToGetsion.exec();
-
-                            //---- Ajout heure pour chaque vehicule dans la Table GESTION
-                            QString heure_matin = heureValue.value("heureMatin").toString();
-                            QString heure_soir = heureValue.value("heureSoir").toString();
-
-                            //---- Les vehicules avec l'indice paire prennent l'heure matin et celles sont impaire prennent l'heure soir
-                            if((values.indexOf(voiture) + 1) % 2 == 0)
+                            if(nbPlace.contains(voiture))
                             {
-                                QSqlQuery addHour1;
-                                addHour1.prepare("UPDATE GESTION SET heure = :heureMatin WHERE numMAT = :numMAT");
-                                addHour1.bindValue(":heureMatin", heure_matin);
-                                addHour1.bindValue(":numMAT", voiture);
-                                addHour1.exec();
-                            }
-                            else
-                            {
-                                QSqlQuery addHour2;
-                                addHour2.prepare("UPDATE GESTION SET heure = :heureSoir WHERE numMAT = :numMAT");
-                                addHour2.bindValue(":heureSoir", heure_soir);
-                                addHour2.bindValue(":numMAT", voiture);
-                                addHour2.exec();
+                                int placeDispo = nbPlace.value(voiture, -1);
+
+                                //---- Ajout numMat, refTrajet et date dans la Table GESTION
+                                QSqlQuery addToGetsion;
+                                addToGetsion.prepare("INSERT INTO GESTION (numMAT, refTrajet, dateVoyage, placeDispo) VALUES (:numMAT, :refTrajet, :dateVoyage, :placeDispo)");
+                                addToGetsion.bindValue(":numMAT", voiture);
+                                addToGetsion.bindValue(":refTrajet", refTrajet);
+                                addToGetsion.bindValue(":dateVoyage", premierVoyage);
+                                addToGetsion.bindValue(":placeDispo", placeDispo);
+                                addToGetsion.exec();
+
+                                //---- Ajout heure pour chaque vehicule dans la Table GESTION
+                                QString heure_matin = heureValue.value("heureMatin").toString();
+                                QString heure_soir = heureValue.value("heureSoir").toString();
+
+                                //---- Les vehicules avec l'indice paire prennent l'heure matin et celles sont impaire prennent l'heure soir
+                                if((values.indexOf(voiture) + 1) % 2 == 0)
+                                {
+                                    QSqlQuery addHour1;
+                                    addHour1.prepare("UPDATE GESTION SET heure = :heureMatin WHERE numMAT = :numMAT");
+                                    addHour1.bindValue(":heureMatin", heure_matin);
+                                    addHour1.bindValue(":numMAT", voiture);
+                                    addHour1.exec();
+                                }
+                                else
+                                {
+                                    QSqlQuery addHour2;
+                                    addHour2.prepare("UPDATE GESTION SET heure = :heureSoir WHERE numMAT = :numMAT");
+                                    addHour2.bindValue(":heureSoir", heure_soir);
+                                    addHour2.bindValue(":numMAT", voiture);
+                                    addHour2.exec();
+                                }
                             }
                        }
 
@@ -350,4 +391,5 @@ void gestionTrajet::gerer()
             ++m;
         }
     }
+    return true;
 }

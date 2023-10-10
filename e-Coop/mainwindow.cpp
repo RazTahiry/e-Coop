@@ -29,7 +29,7 @@ MainWindow::~MainWindow()
 void MainWindow::affichage_par_defaut_sur_MainWindow()
 {
     //---- Tableau de verification de trajet
-    ui->trajetReservationTableView->setColumnCount(3);
+    ui->trajetReservationTableView->setColumnCount(4);
 
     for (int column = 0; column < ui->trajetReservationTableView->columnCount(); ++column)
     {
@@ -48,7 +48,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->trajetReservationTableView->horizontalHeader()->setStretchLastSection(true);
 
     ui->trajetReservationTableView->verticalHeader()->setVisible(false);
-    ui->trajetReservationTableView->setHorizontalHeaderLabels(QStringList() << "Voiture" << "Lieu de départ" << "Lieu d'arrivé");
+    ui->trajetReservationTableView->setHorizontalHeaderLabels(QStringList() << "Voiture" << "Lieu de départ" << "Lieu d'arrivé" << "Place disponible");
     //--------------------------------------
 
     //---- Liste des Trajets
@@ -167,14 +167,11 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             QString lieuDepart = query1.value(3).toString();
             QString Destination = query1.value(4).toString();
             ui->refTrajet_2->addItem(refTrajet);
-            ui->refTrajet->addItem(refTrajet);
             ui->refTrajetVehicule->addItem(refTrajet);
             ui->heureTrajet->addItem(heureMatin);
             ui->heureTrajet->addItem(heureSoir);
             ui->heureCombobox_2->addItem(heureMatin);
             ui->heureCombobox_2->addItem(heureSoir);
-            ui->heureReserve->addItem(heureMatin);
-            ui->heureReserve->addItem(heureSoir);
 
             int row = ui->trajetGestionTableView->rowCount();
             ui->trajetGestionTableView->insertRow(row);
@@ -191,7 +188,6 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             QString chauffeur = query2.value(1).toString();
             QString nbPlace = query2.value(2).toString();
             QString refTrajet = query2.value(3).toString();
-            ui->vehicule->addItem(numMat);
             ui->vehiculeCombobox_2->addItem(numMat);
 
             int row = ui->vehiculeGestionTableView->rowCount();
@@ -235,21 +231,21 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->refTrajetVehicule->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->refTrajet_2->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->heureTrajet->setItemData(0, QVariant(0), Qt::UserRole - 1);
-    ui->vehicule->setItemData(0, QVariant(0), Qt::UserRole - 1);
-    ui->refTrajet->setItemData(0, QVariant(0), Qt::UserRole - 1);
-    ui->heureReserve->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->lieuDepart->setItemData(0, QVariant(0), Qt::UserRole - 1);
     ui->lieuArrive->setItemData(0, QVariant(0), Qt::UserRole - 1);
 
     ui->dateVerify->setDate(QDate::currentDate());
     ui->dateVoyage->setDate(QDate::currentDate());
     ui->dateFiltre->setDate(QDate::currentDate());
-    //ui->datePremierVoyage->setDate(QDate::currentDate());
 
     ui->majTrajetBtn->setDisabled(true);
     ui->majVehiculeBtn->setDisabled(true);
     ui->supprTrajetBtn->setDisabled(true);
     ui->supprVehiculeBtn->setDisabled(true);
+    ui->refTrajet->setDisabled(true);
+    ui->vehicule->setDisabled(true);
+    ui->heureReserve->setDisabled(true);
+    ui->dateVoyage->setDisabled(true);
 
     ui->stackedWidget->setCurrentIndex(0);
 }
@@ -498,7 +494,7 @@ void MainWindow::on_gestionIcon_clicked()
 void MainWindow::on_quitterBtn_clicked()
 {
     QMessageBox msgBox;
-    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.svg"));
     msgBox.setWindowTitle("Confirmation de sortie");
     msgBox.setText("Êtes-vous sûr de vouloir quitter l'application?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
@@ -517,7 +513,7 @@ void MainWindow::on_quitterBtn_clicked()
 void MainWindow::on_quitIcon_clicked()
 {
     QMessageBox msgBox;
-    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.svg"));
     msgBox.setWindowTitle("Confirmation de sortie");
     msgBox.setText("Êtes-vous sûr de vouloir quitter l'application?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
@@ -762,7 +758,6 @@ void MainWindow::on_ajoutVehiculeBtn_clicked()
         Vehicule V;
         if(V.ajouter_vehicule(matriculation,chauffeur,contact1,nbPlace,refTrajetVehicule))
         {
-            ui->vehicule->addItem(matriculation);
             ui->vehiculeCombobox_2->addItem(matriculation);
 
             ui->matriculation->clear();
@@ -970,7 +965,6 @@ void MainWindow::on_ajoutTrajetBtn_clicked()
         if(T.ajout_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir,decalage))
         {
             ui->refTrajetVehicule->addItem(refTrajet);
-            ui->refTrajet->addItem(refTrajet);
             ui->refTrajet_2->addItem(refTrajet);
             ui->heureCombobox_2->addItem(heureSoir);
             ui->heureCombobox_2->addItem(heureMatin);
@@ -1126,6 +1120,7 @@ void MainWindow::on_annulerTrajetBtn_clicked()
     ui->heureSoir_2->setTime(heureParDefaut);
     ui->referenceTrajet->clear();
     ui->decalage->setValue(0);
+    ui->refTrajetVehicule->setCurrentIndex(0);
 }
 
 void MainWindow::on_reserver_clicked()
@@ -1136,11 +1131,11 @@ void MainWindow::on_reserver_clicked()
     QString refPlace = ui->referencePlace->text();
     QString membreFamille = ui->membreFamille_2->currentText();
     QString contactFamille = ui->contactFamille_2->text();
-    QString voiture = ui->vehicule->currentText();
-    QString refTrajet = ui->refTrajet->currentText();
+    QString voiture = ui->vehicule->text();
+    QString refTrajet = ui->refTrajet->text();
     QString dateVoyage = ui->dateVoyage->text();
-    QString heureDepart = ui->heureReserve->currentText();
-    int nbPlace = ui->nombrePlace_2->text().toInt();
+    QString heureDepart = ui->heureReserve->text();
+    int nbPlace = ui->nombrePlace_2->value();
 
     int indexPaye = ui->frais_2->currentIndex();
     bool isPaye;
@@ -1154,21 +1149,82 @@ void MainWindow::on_reserver_clicked()
         isPaye = true;
     }
 
-    Reservation R;
-    R.reserver(refPlace, nomPass, contactPass, cin, nbPlace, membreFamille,
-               contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye);
+    DbManager dbReserver(pathToDB);
+    if(dbReserver.isOpen())
+    {
+        QSqlQuery queryReserver;
+        queryReserver.prepare("SELECT placeDispo FROM GESTION WHERE numMAT = :numMat AND refTrajet = :refTrajet AND dateVoyage = :date");
+        queryReserver.bindValue(":numMat", voiture);
+        queryReserver.bindValue(":refTrajet", refTrajet);
+        queryReserver.bindValue(":date", dateVoyage);
 
-    ui->nomInput_2->clear();
-    ui->contactInput_2->clear();
-    ui->cin_2->clear();
-    ui->referencePlace->clear();
-    ui->membreFamille_2->setCurrentIndex(0);
-    ui->contactFamille_2->clear();
-    ui->vehicule->setCurrentIndex(0);
-    ui->refTrajet->setCurrentIndex(0);
-    ui->dateVoyage->setDate(QDate::currentDate());
-    ui->heureReserve->setCurrentIndex(0);
-    ui->nombrePlace_2->setValue(0);
+        if(queryReserver.exec())
+        {
+            if(queryReserver.next())
+            {
+                int placeDispo = queryReserver.value(0).toInt();
+                Reservation R;
+                if(R.reserver(refPlace, nomPass, contactPass, cin, nbPlace, membreFamille,contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye))
+                {
+
+                    qDebug() << "-------------- Avant:" << placeDispo;
+
+                    placeDispo = placeDispo - nbPlace;
+
+                    qDebug() << "-------------- Après:" << placeDispo;
+
+                    QSqlQuery place;
+                    place.prepare("UPDATE GESTION SET placeDispo = :place WHERE numMAT = :numMat AND reftrajet = :refTrajet AND heure = :heure AND dateVoyage = :date");
+                    place.bindValue(":place", placeDispo);
+                    place.bindValue(":numMat", voiture);
+                    place.bindValue(":refTrajet", refTrajet);
+                    place.bindValue(":heure", heureDepart);
+                    place.bindValue(":date", dateVoyage);
+
+                    if(place.exec())
+                    {
+                        QMessageBox msgBox;
+                        msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+                        msgBox.setWindowTitle("");
+                        msgBox.setText("Passager réservé avec succès.");
+
+                        msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                             "color: rgb(203, 228, 222);"
+                                             "font-size: 13px;");
+                        msgBox.exec();
+
+                        ui->nomInput_2->clear();
+                        ui->contactInput_2->clear();
+                        ui->cin_2->clear();
+                        ui->referencePlace->clear();
+                        ui->membreFamille_2->setCurrentIndex(0);
+                        ui->contactFamille_2->clear();
+                        ui->vehicule->clear();
+                        ui->refTrajet->clear();
+                        ui->dateVoyage->setDate(QDate::currentDate());
+                        ui->heureReserve->clear();
+                        ui->nombrePlace_2->setValue(0);
+                    }
+                    else
+                    {
+                        QMessageBox msgBox;
+                        msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+                        msgBox.setWindowTitle("");
+                        msgBox.setText("Réservation échoué!");
+
+                        msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                             "color: rgb(203, 228, 222);"
+                                             "font-size: 13px;");
+                        msgBox.exec();
+                    }
+                }
+            }
+        }
+        else
+        {
+            qDebug() << "Requete n'a pas été exécuté.";
+        }
+    }
 }
 
 void MainWindow::on_annulerReserve_clicked()
@@ -1179,10 +1235,10 @@ void MainWindow::on_annulerReserve_clicked()
     ui->referencePlace->clear();
     ui->membreFamille_2->setCurrentIndex(0);
     ui->contactFamille_2->clear();
-    ui->vehicule->setCurrentIndex(0);
-    ui->refTrajet->setCurrentIndex(0);
+    ui->vehicule->clear();
+    ui->refTrajet->clear();
     ui->dateVoyage->setDate(QDate::currentDate());
-    ui->heureReserve->setCurrentIndex(0);
+    ui->heureReserve->clear();
     ui->nombrePlace_2->setValue(0);
 }
 
@@ -1193,9 +1249,9 @@ void MainWindow::on_annulerVerifBtn_clicked()
     ui->heureTrajet->setCurrentIndex(0);
     ui->trajetReservationTableView->clearContents();
     ui->trajetReservationTableView->setRowCount(0);
-    ui->vehicule->setCurrentIndex(0);
-    ui->refTrajet->setCurrentIndex(0);
-    ui->heureReserve->setCurrentIndex(0);
+    ui->vehicule->clear();
+    ui->refTrajet->clear();
+    ui->heureReserve->clear();
     ui->dateVoyage->setDate(QDate::currentDate());
 }
 
@@ -1208,8 +1264,32 @@ void MainWindow::on_parDefaut_clicked()
 
 void MainWindow::on_gerer_clicked()
 {
-    gestionTrajet g;
-    g.gerer();
+    DbManager dbGerer(pathToDB);
+    if(dbGerer.isOpen())
+    {
+        QSqlQuery query;
+        query.prepare("DELETE FROM GESTION");
+        if(query.exec())
+        {
+            gestionTrajet g;
+            if(g.gerer())
+            {
+                QMessageBox msgBox;
+                msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+                msgBox.setWindowTitle("");
+                msgBox.setText("Les trajets sont gerés avec succès!");
+
+                msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                     "color: rgb(203, 228, 222);"
+                                     "font-size: 13px;");
+                msgBox.exec();
+            }
+        }
+    }
+    else
+    {
+        qDebug() << "Database not opened.";
+    }
 }
 
 void MainWindow::on_verifierTrajet_clicked()
@@ -1224,7 +1304,7 @@ void MainWindow::on_verifierTrajet_clicked()
         QDate date = ui->dateVerify->date();
 
         QSqlQuery queryVerify;
-        queryVerify.prepare("SELECT numMAT, lieuDepart, destination FROM GESTION WHERE refTrajet = :refTrajet AND dateVoyage = :date AND heure = :heure");
+        queryVerify.prepare("SELECT numMAT, lieuDepart, destination, placeDispo FROM GESTION WHERE refTrajet = :refTrajet AND dateVoyage = :date AND heure = :heure");
         queryVerify.bindValue(":refTrajet", refTrajet);
         queryVerify.bindValue(":heure", heure);
         queryVerify.bindValue(":date", date);
@@ -1236,29 +1316,28 @@ void MainWindow::on_verifierTrajet_clicked()
                 QString numMAT = queryVerify.value(0).toString();
                 QString lieuDepart = queryVerify.value(1).toString();
                 QString destination = queryVerify.value(2).toString();
+                int placeDispo = queryVerify.value(3).toInt();
 
-                if(numMAT.isNull())
-                {
-                    QMessageBox msgBox;
-                    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
-                    msgBox.setWindowTitle("");
-                    msgBox.setText("Aucun voyage trouvé pour cette date et cette heure dans ce trajet.");
+                int row = ui->trajetReservationTableView->rowCount();
 
-                    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
-                                         "color: rgb(203, 228, 222);"
-                                         "font-size: 13px;");
-                    msgBox.exec();
-                }
-                else
-                {
-                    int row = ui->trajetReservationTableView->rowCount();
+                ui->trajetReservationTableView->insertRow(row);
+                ui->trajetReservationTableView->setItem(row, 0, new QTableWidgetItem(numMAT));
+                ui->trajetReservationTableView->setItem(row, 1, new QTableWidgetItem(lieuDepart));
+                ui->trajetReservationTableView->setItem(row, 2, new QTableWidgetItem(destination));
+                ui->trajetReservationTableView->setItem(row, 3, new QTableWidgetItem(QString::number(placeDispo)));
+            }
 
-                    ui->trajetReservationTableView->insertRow(row);
-                    ui->trajetReservationTableView->setItem(row, 0, new QTableWidgetItem(numMAT));
-                    ui->trajetReservationTableView->setItem(row, 1, new QTableWidgetItem(lieuDepart));
-                    ui->trajetReservationTableView->setItem(row, 2, new QTableWidgetItem(destination));
-                }
+            if(ui->trajetReservationTableView->rowCount() == 0)
+            {
+                QMessageBox msgBox;
+                msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+                msgBox.setWindowTitle("");
+                msgBox.setText("Aucun voyage recommandé.");
 
+                msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                     "color: rgb(203, 228, 222);"
+                                     "font-size: 13px;");
+                msgBox.exec();
             }
         }
     }
@@ -1307,6 +1386,7 @@ void MainWindow::on_trajetGestionTableView_itemClicked(QTableWidgetItem *item)
                     ui->heureMatin_2->setTime(heureMatin1);
                     ui->heureSoir_2->setTime(heureSoir1);
                     ui->decalage->setValue(decalage);
+                    ui->refTrajetVehicule->setCurrentText(refTrajet);
                 }
             }
             else
@@ -1326,37 +1406,33 @@ void MainWindow::on_trajetReservationTableView_itemClicked(QTableWidgetItem *ite
 {
     int row = item->row();
     QTableWidgetItem* itemNumMat = ui->trajetReservationTableView->item(row, 0);
-    QTableWidgetItem* itemLieuDepart = ui->trajetReservationTableView->item(row, 1);
-    QTableWidgetItem* itemDestination = ui->trajetReservationTableView->item(row, 2);
 
-    if(itemNumMat && itemLieuDepart && itemDestination)
+    if(itemNumMat)
     {
         DbManager db4(pathToDB);
         if(db4.isOpen())
         {
             QString numMat = itemNumMat->text();
-            QString lieuDepart = itemLieuDepart->text();
-            QString destination = itemDestination->text();
+            QString heure_depart = ui->heureTrajet->currentText();
+            QDate dateVoyage = ui->dateVerify->date();
 
             QSqlQuery queryReserve;
 
-            queryReserve.prepare("SELECT refTrajet, heure, dateVoyage FROM GESTION WHERE numMAT = :numMat AND lieuDepart = :depart AND destination = :dest");
+            queryReserve.prepare("SELECT refTrajet FROM GESTION WHERE numMAT = :numMat AND heure = :heure AND dateVoyage = :date");
             queryReserve.bindValue(":numMat", numMat);
-            queryReserve.bindValue(":depart", lieuDepart);
-            queryReserve.bindValue(":dest", destination);
+            queryReserve.bindValue(":heure", heure_depart);
+            queryReserve.bindValue(":date", dateVoyage);
 
             if(queryReserve.exec())
             {
                 while(queryReserve.next())
                 {
                     QString refTrajet = queryReserve.value(0).toString();
-                    QString heure = queryReserve.value(1).toString();
-                    QDate date = queryReserve.value(2).toDate();
 
-                    ui->vehicule->setCurrentText(numMat);
-                    ui->refTrajet->setCurrentText(refTrajet);
-                    ui->heureReserve->setCurrentText(heure);
-                    ui->dateVoyage->setDate(date);
+                    ui->vehicule->setText(numMat);
+                    ui->refTrajet->setText(refTrajet);
+                    ui->heureReserve->setText(heure_depart);
+                    ui->dateVoyage->setDate(dateVoyage);
                 }
             }
             else
@@ -1464,3 +1540,5 @@ void MainWindow::on_vehiculeGestionTableView_itemSelectionChanged()
         ui->ajoutVehiculeBtn->setDisabled(false);
     }
 }
+
+

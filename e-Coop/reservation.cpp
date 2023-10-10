@@ -25,7 +25,7 @@ Reservation::Reservation(QString ref_place, QString nom, QString contact, QStrin
     this->_isPaye = isPaye;
 }
 
-void Reservation::reserver(QString ref_place, QString nom, QString contact, QString cin,
+bool Reservation::reserver(QString ref_place, QString nom, QString contact, QString cin,
                            int nb_place_reserve, QString membre_famille, QString contact_famille, QString num_Matriculation,
                            QString ref_trajet, QString date_voyage, QString heure_depart, bool isPaye)
 {
@@ -35,7 +35,7 @@ void Reservation::reserver(QString ref_place, QString nom, QString contact, QStr
         qDebug() << "Database opened...";
 
         QSqlQuery query;
-        query.prepare("INSERT INTO RESERVATION (refPlace, nomPass, contactPass, cin, nbPlaceReserve, membreFamille, contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye) "
+        query.prepare("INSERT INTO PASSAGER (refPlace, nomPass, contactPass, cin, nbPlaceReserve, membreFamille, contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye) "
                       "VALUES (:refPlace, :nomPass, :contactPass, :cin, :nbPlaceReserve, :membreFamille, :contactFamille, :voiture, :refTrajet, :dateVoyage, :heureDepart, :isPaye)");
         query.bindValue(":refPlace", ref_place);
         query.bindValue(":nomPass", nom);
@@ -52,16 +52,16 @@ void Reservation::reserver(QString ref_place, QString nom, QString contact, QStr
 
         if(query.exec())
         {
-            qDebug() << "Reservation added.";
+            return true;
         }
         else
         {
-            qDebug() << "Reservation not added: " << query.lastError();
+            return false;
         }
     }
     else
     {
-        qDebug() << "Database not opened.";
+        return false;
     }
 }
 

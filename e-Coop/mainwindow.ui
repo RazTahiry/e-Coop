@@ -162,7 +162,7 @@ QTableWidget::item:selected {
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="Ressources.qrc">:/Icons/Bold Icons/logoecoop.png</pixmap>
+             <pixmap resource="Ressources.qrc">:/Icons/Bold Icons/logoecoop.svg</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -1026,8 +1026,8 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>761</width>
-                      <height>423</height>
+                      <width>68</width>
+                      <height>68</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -1314,7 +1314,7 @@ margin-top: -10px;</string>
                     <property name="geometry">
                      <rect>
                       <x>0</x>
-                      <y>-53</y>
+                      <y>0</y>
                       <width>765</width>
                       <height>677</height>
                      </rect>
@@ -1463,7 +1463,9 @@ margin-top: -10px;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -1544,7 +1546,9 @@ border-radius: 0;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                              <item>
                               <property name="text">
@@ -1653,7 +1657,9 @@ border-radius: 0;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                              <item>
                               <property name="text">
@@ -1712,6 +1718,12 @@ border-color:  rgb(46, 79, 79);</string>
                         <string>Réservation</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_27">
+                        <property name="rightMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="horizontalSpacing">
+                         <number>6</number>
+                        </property>
                         <item row="0" column="0">
                          <widget class="QFrame" name="bodyFrame_7">
                           <property name="sizePolicy">
@@ -1740,7 +1752,7 @@ border-color:  rgb(46, 79, 79);</string>
                             <number>0</number>
                            </property>
                            <property name="rightMargin">
-                            <number>5</number>
+                            <number>0</number>
                            </property>
                            <property name="bottomMargin">
                             <number>0</number>
@@ -1770,7 +1782,7 @@ border-color:  rgb(46, 79, 79);</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>314</width>
+                                   <width>319</width>
                                    <height>373</height>
                                   </rect>
                                  </property>
@@ -2110,7 +2122,9 @@ border-radius: 3px;</string>
                                     <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2237,7 +2251,7 @@ border-radius: 3px;</string>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>100</width>
+                                     <width>16777215</width>
                                      <height>16777215</height>
                                     </size>
                                    </property>
@@ -2249,8 +2263,9 @@ border-radius: 3px;</string>
                                    <property name="styleSheet">
                                     <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2264,7 +2279,7 @@ border-radius: 0;</string>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>100</width>
+                                     <width>16777215</width>
                                      <height>16777215</height>
                                     </size>
                                    </property>
@@ -2280,7 +2295,9 @@ border-radius: 0;</string>
                                     <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -2334,7 +2351,7 @@ border-radius: 0;</string>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>100</width>
+                                     <width>16777215</width>
                                      <height>16777215</height>
                                     </size>
                                    </property>
@@ -2347,37 +2364,10 @@ border-radius: 0;</string>
                                     <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                                    </property>
-                                  </widget>
-                                 </item>
-                                 <item row="8" column="1">
-                                  <widget class="QComboBox" name="refTrajet">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="cursor">
-                                    <cursorShape>PointingHandCursor</cursorShape>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
-                                   </property>
-                                   <item>
-                                    <property name="text">
-                                     <string>Sélectionner</string>
-                                    </property>
-                                   </item>
                                   </widget>
                                  </item>
                                  <item row="6" column="1">
@@ -2391,7 +2381,7 @@ border-radius: 0;</string>
                                     <string notr="true">color: rgb(203, 228, 222);</string>
                                    </property>
                                    <property name="text">
-                                    <string>Réference Trajet:</string>
+                                    <string>Véhicule:</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2403,12 +2393,12 @@ border-radius: 0;</string>
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string>Véhicule:</string>
+                                    <string>Réference Trajet:</string>
                                    </property>
                                   </widget>
                                  </item>
-                                 <item row="8" column="0">
-                                  <widget class="QComboBox" name="vehicule">
+                                 <item row="7" column="0">
+                                  <widget class="QLineEdit" name="refTrajet">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
@@ -2420,24 +2410,35 @@ border-radius: 0;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
-                                   <property name="cursor">
-                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="7" column="1">
+                                  <widget class="QLineEdit" name="vehicule">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
                                    </property>
                                    <property name="styleSheet">
                                     <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 3px;</string>
                                    </property>
-                                   <item>
-                                    <property name="text">
-                                     <string>Sélectionner</string>
-                                    </property>
-                                   </item>
                                   </widget>
                                  </item>
                                  <item row="12" column="1">
-                                  <widget class="QComboBox" name="heureReserve">
+                                  <widget class="QLineEdit" name="heureReserve">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
@@ -2449,20 +2450,11 @@ border-radius: 0;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
-                                   <property name="cursor">
-                                    <cursorShape>PointingHandCursor</cursorShape>
-                                   </property>
                                    <property name="styleSheet">
                                     <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 3px;</string>
                                    </property>
-                                   <item>
-                                    <property name="text">
-                                     <string>Sélectionner</string>
-                                    </property>
-                                   </item>
                                   </widget>
                                  </item>
                                 </layout>
@@ -2892,7 +2884,9 @@ border: none;</string>
                           <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -2930,7 +2924,9 @@ border-radius: 0;</string>
                           <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                          </property>
                         </widget>
                        </item>
@@ -2966,7 +2962,9 @@ border-radius: 0;</string>
                           <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -3466,8 +3464,8 @@ border: none;</string>
              <widget class="QWidget" name="scrollAreaWidgetContents">
               <property name="geometry">
                <rect>
-                <x>-24</x>
-                <y>-134</y>
+                <x>0</x>
+                <y>0</y>
                 <width>789</width>
                 <height>698</height>
                </rect>
@@ -3897,7 +3895,9 @@ border-radius: 3px;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4154,7 +4154,7 @@ border-radius: 10px;</string>
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>100</width>
+                               <width>16777215</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -4167,7 +4167,9 @@ border-radius: 10px;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4191,7 +4193,9 @@ border-radius: 0;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                              <item>
                               <property name="text">
@@ -4356,7 +4360,7 @@ border-radius: 0;</string>
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>100</width>
+                               <width>16777215</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -4369,7 +4373,9 @@ border-radius: 0;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4431,7 +4437,7 @@ border-radius: 0;</string>
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>100</width>
+                               <width>16777215</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -4444,7 +4450,9 @@ border-radius: 0;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -4502,7 +4510,9 @@ border-radius: 3px;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                              <item>
                               <property name="text">
@@ -4979,7 +4989,7 @@ border-radius: 3px;</string>
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>100</width>
+                               <width>16777215</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -4992,7 +5002,9 @@ border-radius: 3px;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -5085,7 +5097,9 @@ border-radius: 3px;</string>
                               <string notr="true">background-color: rgb(54, 61, 61);
 color:  rgb(215, 215, 215);
 border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;</string>
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                              <item>
                               <property name="text">
