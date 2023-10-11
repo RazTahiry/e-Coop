@@ -174,7 +174,7 @@ bool gestionTrajet::gerer()
     if (selectDate.next())
     {
         QString datePremierVoyage = selectDate.value(0).toString();
-        QDate dateFinal(2023, 10, 10);
+        QDate dateFinal(2024, 12, 12);
         bool echangeTrajet;
         echangeTrajet = true;
 
@@ -263,27 +263,42 @@ bool gestionTrajet::gerer()
                         {
                             for (int i = 0; i < values.size(); i += 2)
                             {
-                                if ((i + 1) < values.size())
+                                if ((i + 1) <= values.size())
                                 {
-                                    QSqlQuery addDestiny1;
-                                    addDestiny1.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
-                                    addDestiny1.bindValue(":dep", depart);
-                                    addDestiny1.bindValue(":dest", dest);
-                                    addDestiny1.bindValue(":reference", refTrajet);
-                                    addDestiny1.bindValue(":numMAT", values[i]);
-                                    addDestiny1.bindValue(":date", premierVoyage);
-                                    addDestiny1.exec();
+                                    if((i + 1) == values.size())
+                                    {
 
-                                    qSwap(depart, dest); // Lieu de départ et destination swappés
+                                        QSqlQuery addDestiny1;
+                                        addDestiny1.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
+                                        addDestiny1.bindValue(":dep", depart);
+                                        addDestiny1.bindValue(":dest", dest);
+                                        addDestiny1.bindValue(":reference", refTrajet);
+                                        addDestiny1.bindValue(":numMAT", values[i]);
+                                        addDestiny1.bindValue(":date", premierVoyage);
+                                        addDestiny1.exec();
+                                    }
+                                    else
+                                    {
+                                        QSqlQuery addDestiny1;
+                                        addDestiny1.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
+                                        addDestiny1.bindValue(":dep", depart);
+                                        addDestiny1.bindValue(":dest", dest);
+                                        addDestiny1.bindValue(":reference", refTrajet);
+                                        addDestiny1.bindValue(":numMAT", values[i]);
+                                        addDestiny1.bindValue(":date", premierVoyage);
+                                        addDestiny1.exec();
 
-                                    QSqlQuery addDestiny2;
-                                    addDestiny2.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
-                                    addDestiny2.bindValue(":dep", depart);
-                                    addDestiny2.bindValue(":dest", dest);
-                                    addDestiny2.bindValue(":reference", refTrajet);
-                                    addDestiny2.bindValue(":numMAT", values[i + 1]);
-                                    addDestiny2.bindValue(":date", premierVoyage);
-                                    addDestiny2.exec();
+                                        qSwap(depart, dest); // Lieu de départ et destination swappés
+
+                                        QSqlQuery addDestiny2;
+                                        addDestiny2.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
+                                        addDestiny2.bindValue(":dep", depart);
+                                        addDestiny2.bindValue(":dest", dest);
+                                        addDestiny2.bindValue(":reference", refTrajet);
+                                        addDestiny2.bindValue(":numMAT", values[i + 1]);
+                                        addDestiny2.bindValue(":date", premierVoyage);
+                                        addDestiny2.exec();
+                                    }
                                 }
                             }
                         }
@@ -357,27 +372,41 @@ bool gestionTrajet::gerer()
                         {
                            for (int i = 0; i < values.size(); i += 2)
                            {
-                                if ((i + 1) < values.size())
+                                if ((i + 1) <= values.size())
                                 {
-                                   QSqlQuery addDestiny1;
-                                   addDestiny1.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
-                                   addDestiny1.bindValue(":dep", depart1);
-                                   addDestiny1.bindValue(":dest", dest1);
-                                   addDestiny1.bindValue(":reference", refTrajet);
-                                   addDestiny1.bindValue(":numMAT", values[i]);
-                                   addDestiny1.bindValue(":date", premierVoyage);
-                                   addDestiny1.exec();
+                                    if((i + 1) == values.size())
+                                    {
+                                        QSqlQuery addDestiny1;
+                                        addDestiny1.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
+                                        addDestiny1.bindValue(":dep", depart1);
+                                        addDestiny1.bindValue(":dest", dest1);
+                                        addDestiny1.bindValue(":reference", refTrajet);
+                                        addDestiny1.bindValue(":numMAT", values[i]);
+                                        addDestiny1.bindValue(":date", premierVoyage);
+                                        addDestiny1.exec();
+                                    }
+                                    else
+                                    {
+                                        QSqlQuery addDestiny1;
+                                        addDestiny1.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
+                                        addDestiny1.bindValue(":dep", depart1);
+                                        addDestiny1.bindValue(":dest", dest1);
+                                        addDestiny1.bindValue(":reference", refTrajet);
+                                        addDestiny1.bindValue(":numMAT", values[i]);
+                                        addDestiny1.bindValue(":date", premierVoyage);
+                                        addDestiny1.exec();
 
-                                   qSwap(depart1, dest1); // Lieu de départ et destination swappés
+                                        qSwap(depart1, dest1); // Lieu de départ et destination swappés
 
-                                   QSqlQuery addDestiny2;
-                                   addDestiny2.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
-                                   addDestiny2.bindValue(":dep", depart1);
-                                   addDestiny2.bindValue(":dest", dest1);
-                                   addDestiny2.bindValue(":reference", refTrajet);
-                                   addDestiny2.bindValue(":numMAT", values[i + 1]);
-                                   addDestiny2.bindValue(":date", premierVoyage);
-                                   addDestiny2.exec();
+                                        QSqlQuery addDestiny2;
+                                        addDestiny2.prepare("UPDATE GESTION SET lieuDepart = :dep, destination = :dest WHERE refTrajet = :reference AND numMAT = :numMAT AND dateVoyage = :date");
+                                        addDestiny2.bindValue(":dep", depart1);
+                                        addDestiny2.bindValue(":dest", dest1);
+                                        addDestiny2.bindValue(":reference", refTrajet);
+                                        addDestiny2.bindValue(":numMAT", values[i + 1]);
+                                        addDestiny2.bindValue(":date", premierVoyage);
+                                        addDestiny2.exec();
+                                    }
                                 }
                             }
                         }

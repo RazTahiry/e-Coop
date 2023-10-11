@@ -98,6 +98,12 @@ class MainWindow : public QMainWindow
 
         void on_lieuArrive_currentTextChanged(const QString &arg1);
 
+        void on_majReservationBtn_clicked();
+
+        void on_reservationTableView_itemClicked(QTableWidgetItem *item);
+
+        void on_supprReservationBtn_clicked();
+
 private:
         Ui::MainWindow *ui;
 

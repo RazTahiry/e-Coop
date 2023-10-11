@@ -14,7 +14,12 @@ class Reservation : public Vehicule
 
         bool reserver(QString ref_place, QString nom, QString contact, QString cin, int nb_place_reserve,
                       QString membre_famille, QString contact_famille, QString num_Matriculation,
-                      QString ref_trajet, QString date_voyage, QString heure_depart, bool isPaye);
+                      QString ref_trajet, QString date_voyage, QString heure_depart, bool isPaye, QString lieu_depart, QString destination);
+
+        bool majReservation(int id, QString ref_place, QString nom, QString contact, QString cin, int nb_place_reserve,
+                            QString membre_famille, QString contact_famille, bool isPaye);
+
+        bool supprReservation(int id);
 
     private:
         QString _ref_place;

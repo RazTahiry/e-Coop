@@ -1026,7 +1026,7 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>68</width>
+                      <width>98</width>
                       <height>68</height>
                      </rect>
                     </property>
@@ -1316,7 +1316,7 @@ margin-top: -10px;</string>
                       <x>0</x>
                       <y>0</y>
                       <width>765</width>
-                      <height>677</height>
+                      <height>639</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1343,7 +1343,7 @@ margin-top: -10px;</string>
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
-                         <height>250</height>
+                         <height>200</height>
                         </size>
                        </property>
                        <property name="font">
@@ -1372,7 +1372,7 @@ margin-top: -10px;</string>
                              <x>0</x>
                              <y>0</y>
                              <width>315</width>
-                             <height>198</height>
+                             <height>144</height>
                             </rect>
                            </property>
                            <layout class="QGridLayout" name="gridLayout_14">
@@ -1398,6 +1398,9 @@ margin-top: -10px;</string>
                               <property name="styleSheet">
                                <string notr="true">border: none;</string>
                               </property>
+                              <property name="editTriggers">
+                               <set>QAbstractItemView::NoEditTriggers</set>
+                              </property>
                               <property name="selectionBehavior">
                                <enum>QAbstractItemView::SelectRows</enum>
                               </property>
@@ -1412,7 +1415,7 @@ margin-top: -10px;</string>
                           <property name="minimumSize">
                            <size>
                             <width>400</width>
-                            <height>200</height>
+                            <height>0</height>
                            </size>
                           </property>
                           <property name="maximumSize">
@@ -1446,29 +1449,6 @@ margin-top: -10px;</string>
                            <property name="horizontalSpacing">
                             <number>10</number>
                            </property>
-                           <item row="3" column="1">
-                            <widget class="QDateEdit" name="dateVerify">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;
-border-top-left-radius: 3px;
-border-bottom-left-radius: 3px;</string>
-                             </property>
-                            </widget>
-                           </item>
                            <item row="0" column="1">
                             <widget class="QLabel" name="label_9">
                              <property name="font">
@@ -1481,6 +1461,22 @@ border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
+                           <item row="5" column="1">
+                            <widget class="QLineEdit" name="lineEdit_2">
+                             <property name="enabled">
+                              <bool>false</bool>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border: none;</string>
+                             </property>
+                            </widget>
+                           </item>
                            <item row="2" column="1">
                             <widget class="QLabel" name="label_29">
                              <property name="font">
@@ -1490,39 +1486,6 @@ border-bottom-left-radius: 3px;</string>
                              </property>
                              <property name="text">
                               <string>Date:</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="6" column="2">
-                            <widget class="QPushButton" name="annulerVerifBtn">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>30</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <pointsize>10</pointsize>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">#annulerVerifBtn {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#annulerVerifBtn:Hover {
-	background-color: rgb(26, 59, 59);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Annuler</string>
                              </property>
                             </widget>
                            </item>
@@ -1557,55 +1520,26 @@ border-bottom-left-radius: 3px;</string>
                              </item>
                             </widget>
                            </item>
-                           <item row="5" column="1">
-                            <widget class="QLineEdit" name="lineEdit_2">
-                             <property name="enabled">
-                              <bool>false</bool>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>16777215</width>
-                               <height>0</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">border: none;</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="6" column="1">
-                            <widget class="QPushButton" name="verifierTrajet">
+                           <item row="3" column="1">
+                            <widget class="QDateEdit" name="dateVerify">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
-                               <height>30</height>
+                               <height>25</height>
                               </size>
                              </property>
                              <property name="font">
                               <font>
-                               <family>Bahnschrift SemiBold</family>
                                <pointsize>10</pointsize>
-                               <weight>75</weight>
-                               <bold>true</bold>
                               </font>
                              </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
                              <property name="styleSheet">
-                              <string notr="true">#verifierTrajet {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#verifierTrajet:Hover {
-	background-color: rgb(26, 59, 59);
-}</string>
-                             </property>
-                             <property name="text">
-                              <string>Vérifier</string>
+                              <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
                              </property>
                             </widget>
                            </item>
@@ -1618,22 +1552,6 @@ border-bottom-left-radius: 3px;</string>
                              </property>
                              <property name="text">
                               <string>Heure:</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="5" column="2">
-                            <widget class="QLineEdit" name="lineEdit_4">
-                             <property name="enabled">
-                              <bool>false</bool>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>16777215</width>
-                               <height>0</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">border: none;</string>
                              </property>
                             </widget>
                            </item>
@@ -1668,8 +1586,90 @@ border-bottom-left-radius: 3px;</string>
                              </item>
                             </widget>
                            </item>
+                           <item row="5" column="2">
+                            <widget class="QLineEdit" name="lineEdit_4">
+                             <property name="enabled">
+                              <bool>false</bool>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border: none;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="2">
+                            <widget class="QPushButton" name="annulerVerifBtn">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>26</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#annulerVerifBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerVerifBtn:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Annuler</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="1">
+                            <widget class="QPushButton" name="verifierTrajet">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>26</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <pointsize>10</pointsize>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">#verifierTrajet {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#verifierTrajet:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Vérifier</string>
+                             </property>
+                            </widget>
+                           </item>
                            <item row="7" column="1">
-                            <spacer name="verticalSpacer_5">
+                            <spacer name="verticalSpacer_3">
                              <property name="orientation">
                               <enum>Qt::Vertical</enum>
                              </property>
@@ -1682,7 +1682,7 @@ border-bottom-left-radius: 3px;</string>
                             </spacer>
                            </item>
                            <item row="7" column="2">
-                            <spacer name="verticalSpacer_3">
+                            <spacer name="verticalSpacer_4">
                              <property name="orientation">
                               <enum>Qt::Vertical</enum>
                              </property>
@@ -1743,7 +1743,7 @@ border-color:  rgb(46, 79, 79);</string>
                           </property>
                           <layout class="QHBoxLayout" name="horizontalLayout_16">
                            <property name="spacing">
-                            <number>0</number>
+                            <number>6</number>
                            </property>
                            <property name="leftMargin">
                             <number>0</number>
@@ -1782,8 +1782,8 @@ border-color:  rgb(46, 79, 79);</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>319</width>
-                                   <height>373</height>
+                                   <width>313</width>
+                                   <height>389</height>
                                   </rect>
                                  </property>
                                  <layout class="QGridLayout" name="gridLayout_9">
@@ -1808,6 +1808,9 @@ border-color:  rgb(46, 79, 79);</string>
                                     </property>
                                     <property name="styleSheet">
                                      <string notr="true">border: none;</string>
+                                    </property>
+                                    <property name="editTriggers">
+                                     <set>QAbstractItemView::NoEditTriggers</set>
                                     </property>
                                     <property name="selectionBehavior">
                                      <enum>QAbstractItemView::SelectRows</enum>
@@ -1865,6 +1868,12 @@ border-color:  rgb(46, 79, 79);</string>
                                   <verstretch>0</verstretch>
                                  </sizepolicy>
                                 </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>400</width>
+                                  <height>0</height>
+                                 </size>
+                                </property>
                                 <property name="maximumSize">
                                  <size>
                                   <width>16777215</width>
@@ -1876,33 +1885,39 @@ border-color:  rgb(46, 79, 79);</string>
                                 </property>
                                 <layout class="QGridLayout" name="gridLayout_26">
                                  <property name="leftMargin">
-                                  <number>9</number>
+                                  <number>2</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>9</number>
+                                  <number>0</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
                                  </property>
                                  <property name="bottomMargin">
-                                  <number>9</number>
+                                  <number>0</number>
                                  </property>
                                  <property name="horizontalSpacing">
                                   <number>10</number>
                                  </property>
-                                 <item row="18" column="1">
-                                  <widget class="Line" name="line_9">
+                                 <item row="23" column="1">
+                                  <spacer name="verticalSpacer_9">
                                    <property name="orientation">
-                                    <enum>Qt::Horizontal</enum>
+                                    <enum>Qt::Vertical</enum>
                                    </property>
-                                  </widget>
+                                   <property name="sizeHint" stdset="0">
+                                    <size>
+                                     <width>20</width>
+                                     <height>40</height>
+                                    </size>
+                                   </property>
+                                  </spacer>
                                  </item>
-                                 <item row="19" column="1">
-                                  <widget class="QPushButton" name="annulerReserve">
+                                 <item row="7" column="1">
+                                  <widget class="QLineEdit" name="vehicule">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
-                                     <height>30</height>
+                                     <height>25</height>
                                     </size>
                                    </property>
                                    <property name="font">
@@ -1910,28 +1925,15 @@ border-color:  rgb(46, 79, 79);</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
-                                   <property name="cursor">
-                                    <cursorShape>PointingHandCursor</cursorShape>
-                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true">#annulerReserve {
-	background-color: rgb(46, 79, 79);
-	color: rgb(203, 228, 222);
-	padding: 5px;
-	border-radius: 5px;
-}
-
-#annulerReserve:Hover {
-	background-color: rgb(26, 59, 59);
-}</string>
-                                   </property>
-                                   <property name="text">
-                                    <string>Annuler</string>
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
-                                 <item row="2" column="0">
-                                  <widget class="QLabel" name="label_35">
+                                 <item row="15" column="0">
+                                  <widget class="QLabel" name="label_37">
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
@@ -1941,7 +1943,7 @@ border-color:  rgb(46, 79, 79);</string>
                                     <string notr="true">color: rgb(203, 228, 222);</string>
                                    </property>
                                    <property name="text">
-                                    <string>CIN:</string>
+                                    <string>Nombre de place à reserver:</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -1960,6 +1962,349 @@ border-color:  rgb(46, 79, 79);</string>
                                    </property>
                                   </widget>
                                  </item>
+                                 <item row="16" column="0">
+                                  <widget class="QSpinBox" name="nombrePlace_2">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>80</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>16777215</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="11" column="1">
+                                  <widget class="QLabel" name="label_4">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="text">
+                                    <string>Heure de départ:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="16" column="1">
+                                  <widget class="QComboBox" name="frais_2">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>80</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>16777215</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
+                                   </property>
+                                   <item>
+                                    <property name="text">
+                                     <string>Non Payé</string>
+                                    </property>
+                                   </item>
+                                   <item>
+                                    <property name="text">
+                                     <string>Payé</string>
+                                    </property>
+                                   </item>
+                                  </widget>
+                                 </item>
+                                 <item row="0" column="0">
+                                  <widget class="QLabel" name="label_36">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">color: rgb(203, 228, 222);</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Nom:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="15" column="1">
+                                  <widget class="QLabel" name="label_31">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">color: rgb(203, 228, 222);</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Frais:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="18" column="1">
+                                  <widget class="Line" name="line_9">
+                                   <property name="orientation">
+                                    <enum>Qt::Horizontal</enum>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="1" column="1">
+                                  <widget class="QLineEdit" name="contactInput_2">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="2" column="0">
+                                  <widget class="QLabel" name="label_35">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">color: rgb(203, 228, 222);</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>CIN:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="23" column="0">
+                                  <spacer name="verticalSpacer_5">
+                                   <property name="orientation">
+                                    <enum>Qt::Vertical</enum>
+                                   </property>
+                                   <property name="sizeHint" stdset="0">
+                                    <size>
+                                     <width>20</width>
+                                     <height>40</height>
+                                    </size>
+                                   </property>
+                                  </spacer>
+                                 </item>
+                                 <item row="3" column="0">
+                                  <widget class="QLineEdit" name="cin_2">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="21" column="0">
+                                  <widget class="QPushButton" name="supprReservationBtn">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>26</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">#supprReservationBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#supprReservationBtn:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Supprimer</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="7" column="0">
+                                  <widget class="QLineEdit" name="refTrajet">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="5" column="1">
+                                  <widget class="QLineEdit" name="contactFamille_2">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="12" column="0">
+                                  <widget class="QDateEdit" name="dateVoyage">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>16777215</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border-radius: 0;
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="6" column="1">
+                                  <widget class="QLabel" name="label_34">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">color: rgb(203, 228, 222);</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Véhicule:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="4" column="1">
+                                  <widget class="QLabel" name="label_39">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">color: rgb(203, 228, 222);</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Contact:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="1" column="0">
+                                  <widget class="QLineEdit" name="nomInput_2">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border: 1px solid  rgb(46, 79, 79);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
                                  <item row="3" column="1">
                                   <widget class="QLineEdit" name="referencePlace">
                                    <property name="minimumSize">
@@ -1973,6 +2318,11 @@ border-color:  rgb(46, 79, 79);</string>
                                      <width>16777215</width>
                                      <height>25</height>
                                     </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
                                    </property>
                                    <property name="styleSheet">
                                     <string notr="true">background-color: rgb(54, 61, 61);
@@ -2012,93 +2362,87 @@ border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
-                                 <item row="11" column="1">
-                                  <widget class="QLabel" name="label_4">
+                                 <item row="12" column="1">
+                                  <widget class="QLineEdit" name="heureReserve">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color: rgb(54, 61, 61);
+color:  rgb(215, 215, 215);
+border-radius: 3px;</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="21" column="1">
+                                  <widget class="QPushButton" name="annulerReserve">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>26</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">#annulerReserve {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#annulerReserve:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Annuler</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item row="6" column="0">
+                                  <widget class="QLabel" name="label_10">
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string>Heure de départ:</string>
+                                    <string>Réference Trajet:</string>
                                    </property>
                                   </widget>
                                  </item>
-                                 <item row="5" column="1">
-                                  <widget class="QLineEdit" name="contactFamille_2">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
+                                 <item row="11" column="0">
+                                  <widget class="QLabel" name="label_8">
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
                                     </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="1" column="1">
-                                  <widget class="QLineEdit" name="contactInput_2">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="0" column="0">
-                                  <widget class="QLabel" name="label_36">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);</string>
                                    </property>
                                    <property name="text">
-                                    <string>Nom:</string>
+                                    <string>Date du voyage:</string>
                                    </property>
                                   </widget>
                                  </item>
-                                 <item row="1" column="0">
-                                  <widget class="QLineEdit" name="nomInput_2">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 3px;</string>
+                                 <item row="18" column="0">
+                                  <widget class="Line" name="line_8">
+                                   <property name="orientation">
+                                    <enum>Qt::Horizontal</enum>
                                    </property>
                                   </widget>
                                  </item>
@@ -2153,12 +2497,12 @@ border-bottom-left-radius: 3px;</string>
                                    </item>
                                   </widget>
                                  </item>
-                                 <item row="3" column="0">
-                                  <widget class="QLineEdit" name="cin_2">
+                                 <item row="20" column="0">
+                                  <widget class="QPushButton" name="majReservationBtn">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
-                                     <height>25</height>
+                                     <height>26</height>
                                     </size>
                                    </property>
                                    <property name="font">
@@ -2166,42 +2510,32 @@ border-bottom-left-radius: 3px;</string>
                                      <pointsize>10</pointsize>
                                     </font>
                                    </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="4" column="1">
-                                  <widget class="QLabel" name="label_39">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);</string>
+                                    <string notr="true">#majReservationBtn {
+	background-color: rgb(46, 79, 79);
+	color: rgb(203, 228, 222);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#majReservationBtn:Hover {
+	background-color: rgb(26, 59, 59);
+}</string>
                                    </property>
                                    <property name="text">
-                                    <string>Contact:</string>
+                                    <string>Mettre à jour</string>
                                    </property>
                                   </widget>
                                  </item>
-                                 <item row="18" column="0">
-                                  <widget class="Line" name="line_8">
-                                   <property name="orientation">
-                                    <enum>Qt::Horizontal</enum>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="19" column="0">
+                                 <item row="20" column="1">
                                   <widget class="QPushButton" name="reserver">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
-                                     <height>30</height>
+                                     <height>26</height>
                                     </size>
                                    </property>
                                    <property name="font">
@@ -2226,234 +2560,6 @@ border-radius: 3px;</string>
                                    </property>
                                    <property name="text">
                                     <string>Réserver</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="11" column="0">
-                                  <widget class="QLabel" name="label_8">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="text">
-                                    <string>Date du voyage:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="12" column="0">
-                                  <widget class="QDateEdit" name="dateVoyage">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="maximumSize">
-                                    <size>
-                                     <width>16777215</width>
-                                     <height>16777215</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border-radius: 0;
-border-top-left-radius: 3px;
-border-bottom-left-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="16" column="1">
-                                  <widget class="QComboBox" name="frais_2">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>80</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="maximumSize">
-                                    <size>
-                                     <width>16777215</width>
-                                     <height>16777215</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="cursor">
-                                    <cursorShape>PointingHandCursor</cursorShape>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;
-border-top-left-radius: 3px;
-border-bottom-left-radius: 3px;</string>
-                                   </property>
-                                   <item>
-                                    <property name="text">
-                                     <string>Non Payé</string>
-                                    </property>
-                                   </item>
-                                   <item>
-                                    <property name="text">
-                                     <string>Payé</string>
-                                    </property>
-                                   </item>
-                                  </widget>
-                                 </item>
-                                 <item row="15" column="1">
-                                  <widget class="QLabel" name="label_31">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);</string>
-                                   </property>
-                                   <property name="text">
-                                    <string>Frais:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="15" column="0">
-                                  <widget class="QLabel" name="label_37">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);</string>
-                                   </property>
-                                   <property name="text">
-                                    <string>Nombre de place à reserver:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="16" column="0">
-                                  <widget class="QSpinBox" name="nombrePlace_2">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>80</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="maximumSize">
-                                    <size>
-                                     <width>16777215</width>
-                                     <height>16777215</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border: 1px solid  rgb(46, 79, 79);
-border-radius: 0;
-border-top-left-radius: 3px;
-border-bottom-left-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="6" column="1">
-                                  <widget class="QLabel" name="label_34">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">color: rgb(203, 228, 222);</string>
-                                   </property>
-                                   <property name="text">
-                                    <string>Véhicule:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="6" column="0">
-                                  <widget class="QLabel" name="label_10">
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="text">
-                                    <string>Réference Trajet:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="7" column="0">
-                                  <widget class="QLineEdit" name="refTrajet">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="7" column="1">
-                                  <widget class="QLineEdit" name="vehicule">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border-radius: 3px;</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item row="12" column="1">
-                                  <widget class="QLineEdit" name="heureReserve">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>25</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <pointsize>10</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">background-color: rgb(54, 61, 61);
-color:  rgb(215, 215, 215);
-border-radius: 3px;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -3213,6 +3319,43 @@ border: none;</string>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QFrame" name="frame">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_28">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_13">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="Ressources.qrc">:/Icons/Bold Icons/logoecoop.svg</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_3">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -4035,8 +4178,8 @@ border-radius: 10px;</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>374</width>
-                                   <height>212</height>
+                                   <width>100</width>
+                                   <height>200</height>
                                   </rect>
                                  </property>
                                  <layout class="QGridLayout" name="gridLayout_15">
@@ -4061,6 +4204,12 @@ border-radius: 10px;</string>
                                     </property>
                                     <property name="styleSheet">
                                      <string notr="true"/>
+                                    </property>
+                                    <property name="editTriggers">
+                                     <set>QAbstractItemView::NoEditTriggers</set>
+                                    </property>
+                                    <property name="selectionMode">
+                                     <enum>QAbstractItemView::ExtendedSelection</enum>
                                     </property>
                                     <property name="selectionBehavior">
                                      <enum>QAbstractItemView::SelectRows</enum>
@@ -4705,8 +4854,8 @@ border-radius: 10px;</string>
                                <rect>
                                 <x>0</x>
                                 <y>0</y>
-                                <width>374</width>
-                                <height>216</height>
+                                <width>100</width>
+                                <height>68</height>
                                </rect>
                               </property>
                               <layout class="QGridLayout" name="gridLayout_16">
@@ -4728,6 +4877,9 @@ border-radius: 10px;</string>
                                   <font>
                                    <pointsize>10</pointsize>
                                   </font>
+                                 </property>
+                                 <property name="editTriggers">
+                                  <set>QAbstractItemView::NoEditTriggers</set>
                                  </property>
                                  <property name="selectionBehavior">
                                   <enum>QAbstractItemView::SelectRows</enum>
