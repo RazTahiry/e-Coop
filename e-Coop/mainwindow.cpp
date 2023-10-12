@@ -58,7 +58,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     {
         if(column == 0)
         {
-            ui->reservationTableView->setColumnWidth(column, 20);
+            ui->reservationTableView->setColumnWidth(column, 25);
         }
         else
         {
@@ -1217,20 +1217,46 @@ void MainWindow::on_reserver_clicked()
                     if(place.exec())
                     {
                         Reservation R;
-                        if(R.reserver(refPlace, nomPass, contactPass, cin, nbPlace, membreFamille,contactFamille, voiture, refTrajet, dateVoyage.toString(), heureDepart, isPaye, depart, dest))
+                        if(R.reserver(refPlace, nomPass, contactPass, cin, nbPlace, membreFamille,contactFamille, voiture, refTrajet, dateVoyage.toString("yyyy-MM-dd"), heureDepart, isPaye, depart, dest))
                         {
-                            int row = ui->reservationTableView->rowCount();
-                            ui->reservationTableView->insertRow(row);
-                            QTableWidgetItem *itemRefPlace = new QTableWidgetItem(refPlace);
-                            QTableWidgetItem *itemNom =  new QTableWidgetItem(nomPass);
-                            QTableWidgetItem *itemNbPlace =   new QTableWidgetItem(QString::number(nbPlace));
-                            QTableWidgetItem *itemFrais =    new QTableWidgetItem(isPaye ? "Payé" : "Non payé");
-                            QTableWidgetItem *itemContact =   new QTableWidgetItem(contactPass);
-                            ui->reservationTableView->setItem(row, 1, itemRefPlace);
-                            ui->reservationTableView->setItem(row, 2, itemNom);
-                            ui->reservationTableView->setItem(row, 3, itemNbPlace);
-                            ui->reservationTableView->setItem(row, 4, itemFrais);
-                            ui->reservationTableView->setItem(row, 5, itemContact);
+                            ui->reservationTableView->clearContents();
+                            ui->reservationTableView->setRowCount(0);
+
+                            DbManager dbPassager(pathToDB);
+                            if(dbPassager.isOpen())
+                            {
+                                QSqlQuery affichagePassager;
+                                affichagePassager.prepare("SELECT nomPass, nbPlaceReserve, isPaye, contactPass, Id FROM PASSAGER"
+                                                          " WHERE refTrajet = :ref AND dateVoyage = :date AND heureDepart = :heure");
+                                affichagePassager.bindValue(":ref", refTrajet);
+                                affichagePassager.bindValue(":date", dateVoyage.toString("yyyy-MM-dd"));
+                                affichagePassager.bindValue(":heure", heureDepart);
+
+                                if(affichagePassager.exec())
+                                {
+                                    while(affichagePassager.next())
+                                    {
+                                        QString nomPass = affichagePassager.value(0).toString();
+                                        int nbPlaceReserve = affichagePassager.value(1).toInt();
+                                        bool isPaye = affichagePassager.value(2).toBool();
+                                        QString contactPass = affichagePassager.value(3).toString();
+                                        int id = affichagePassager.value(4).toInt();
+
+                                        int row = ui->reservationTableView->rowCount();
+                                        ui->reservationTableView->insertRow(row);
+                                        ui->reservationTableView->setItem(row, 0, new QTableWidgetItem(QString::number(id)));
+                                        ui->reservationTableView->setItem(row, 1, new QTableWidgetItem(refPlace));
+                                        ui->reservationTableView->setItem(row, 2, new QTableWidgetItem(nomPass));
+                                        ui->reservationTableView->setItem(row, 3, new QTableWidgetItem(QString::number(nbPlaceReserve)));
+                                        ui->reservationTableView->setItem(row, 4, new QTableWidgetItem(isPaye ? "Payé" : "Non Payé"));
+                                        ui->reservationTableView->setItem(row, 5, new QTableWidgetItem(contactPass));
+                                    }
+                                }
+                                else
+                                {
+                                    qDebug() << "-----Erreur: " << affichagePassager.lastError().text();
+                                }
+                            }
 
                             for(int row = 0; row < ui->trajetReservationTableView->rowCount(); row++)
                             {
@@ -1593,7 +1619,7 @@ void MainWindow::on_trajetReservationTableView_itemClicked(QTableWidgetItem *ite
                     affichagePassager.prepare("SELECT refPlace, nomPass, nbPlaceReserve, isPaye, contactPass, Id FROM PASSAGER"
                                               " WHERE refTrajet = :ref AND dateVoyage = :date AND heureDepart = :heure");
                     affichagePassager.bindValue(":ref", refTrajet);
-                    affichagePassager.bindValue(":date", dateVoyage.toString());
+                    affichagePassager.bindValue(":date", dateVoyage.toString("yyyy-MM-dd"));
                     affichagePassager.bindValue(":heure", heure_depart);
 
                     if(affichagePassager.exec())
@@ -1735,7 +1761,6 @@ void MainWindow::on_reservationTableView_itemClicked(QTableWidgetItem *item)
     {
         ui->majReservationBtn->setDisabled(false);
         ui->reserver->setDisabled(true);
-        ui->supprReservationBtn->setDisabled(false);
 
         DbManager db3(pathToDB);
         if(db3.isOpen())
@@ -1780,10 +1805,12 @@ void MainWindow::on_reservationTableView_itemClicked(QTableWidgetItem *item)
                     if(frais == "Payé")
                     {
                         ui->frais_2->setCurrentIndex(1);
+                        ui->supprReservationBtn->setDisabled(true);
                     }
                     else if(frais == "Non Payé")
                     {
                         ui->frais_2->setCurrentIndex(0);
+                        ui->supprReservationBtn->setDisabled(false);
                     }
                 }
             }
@@ -1811,38 +1838,104 @@ void MainWindow::on_supprReservationBtn_clicked()
         if(idData.isValid())
         {
             int _id = idData.toInt();
-            Reservation R;
-            if(R.supprReservation(_id))
+
+            DbManager dbReserver(pathToDB);
+            if(dbReserver.isOpen())
             {
-                int selectedRow = ui->reservationTableView->currentRow();
-                ui->reservationTableView->removeRow(selectedRow);
-                ui->reservationTableView->update();
+                QSqlQuery query;
+                query.prepare("SELECT voiture, refTrajet, dateVoyage, nbPlaceReserve FROM PASSAGER WHERE Id = :Id");
+                query.bindValue(":Id", _id);
 
-                ui->majReservationBtn->setDisabled(true);
-                ui->supprReservationBtn->setDisabled(true);
-                ui->reserver->setEnabled(true);
+                if(query.exec())
+                {
+                    if(query.next())
+                    {
+                        QString voiture = query.value(0).toString();
+                        QString refTrajet = query.value(1).toString();
+                        QString dateVoyage = query.value(2).toString();
+                        int nbPlace = query.value(3).toInt();
 
-                QMessageBox msgBox;
-                msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
-                msgBox.setWindowTitle("");
-                msgBox.setText("Passager supprimé.");
-                msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
-                                     "color: rgb(203, 228, 222);"
-                                     "font-size: 13px;");
-                msgBox.exec();
+                        qDebug() << "Voiture: " << voiture;
+                        qDebug() << "refTrajet: " << refTrajet;
+                        qDebug() << "Date: " << dateVoyage;
 
-                ui->nomInput_2->clear();
-                ui->contactInput_2->clear();
-                ui->cin_2->clear();
-                ui->referencePlace->clear();
-                ui->membreFamille_2->setCurrentIndex(0);
-                ui->contactFamille_2->clear();
-                ui->vehicule->clear();
-                ui->refTrajet->clear();
-                ui->dateVoyage->setDate(QDate::currentDate());
-                ui->heureReserve->clear();
-                ui->nombrePlace_2->setValue(0);
-                ui->frais_2->setCurrentIndex(0);
+                        QSqlQuery queryplace;
+                        queryplace.prepare("SELECT placeDispo FROM GESTION WHERE numMAT = :numMat AND refTrajet = :refTrajet AND dateVoyage = :date");
+                        queryplace.bindValue(":numMat", voiture);
+                        queryplace.bindValue(":refTrajet", refTrajet);
+                        queryplace.bindValue(":date", dateVoyage);
+
+                        if(queryplace.exec())
+                        {
+                            if(queryplace.next())
+                            {
+                                int placeDispo = queryplace.value(0).toInt();
+                                placeDispo = placeDispo + nbPlace;
+
+                                QSqlQuery place;
+                                place.prepare("UPDATE GESTION SET placeDispo = :place WHERE numMAT = :numMat AND refTrajet = :refTrajet AND dateVoyage = :date");
+                                place.bindValue(":place", placeDispo);
+                                place.bindValue(":numMat", voiture);
+                                place.bindValue(":refTrajet", refTrajet);
+                                place.bindValue(":date", dateVoyage);
+
+                                Reservation R;
+                                if((place.exec()) && (R.supprReservation(_id)))
+                                {
+                                    for(int row = 0; row < ui->trajetReservationTableView->rowCount(); row++)
+                                    {
+                                        QTableWidgetItem *item = ui->trajetReservationTableView->item(row, 0);
+                                        if(item && item->text() == voiture)
+                                        {
+                                            QTableWidgetItem *placeDisponible = new QTableWidgetItem(QString::number(placeDispo));
+                                            ui->trajetReservationTableView->setItem(row, 3, placeDisponible);
+                                            break;
+                                        }
+                                    }
+                                    int selectedRow = ui->reservationTableView->currentRow();
+                                    ui->reservationTableView->removeRow(selectedRow);
+                                    ui->reservationTableView->update();
+
+                                    ui->majReservationBtn->setDisabled(true);
+                                    ui->supprReservationBtn->setDisabled(true);
+                                    ui->reserver->setEnabled(true);
+                                    QMessageBox msgBox;
+                                    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+                                    msgBox.setWindowTitle("");
+                                    msgBox.setText("Passager(s) supprimé(s).");
+                                    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                                         "color: rgb(203, 228, 222);"
+                                                         "font-size: 13px;");
+                                    msgBox.exec();
+
+                                    ui->nomInput_2->clear();
+                                    ui->contactInput_2->clear();
+                                    ui->cin_2->clear();
+                                    ui->referencePlace->clear();
+                                    ui->membreFamille_2->setCurrentIndex(0);
+                                    ui->contactFamille_2->clear();
+                                    ui->vehicule->clear();
+                                    ui->refTrajet->clear();
+                                    ui->dateVoyage->setDate(QDate::currentDate());
+                                    ui->heureReserve->clear();
+                                    ui->nombrePlace_2->setValue(0);
+                                    ui->frais_2->setCurrentIndex(0);
+                                }
+                                else
+                                {
+                                    QMessageBox msgBox;
+                                    msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.png"));
+                                    msgBox.setWindowTitle("");
+                                    msgBox.setText("On n'a pas pu supprimé le(s) passager(s).");
+                                    msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                                         "color: rgb(203, 228, 222);"
+                                                         "font-size: 13px;");
+                                    msgBox.exec();
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

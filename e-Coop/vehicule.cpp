@@ -32,7 +32,7 @@ bool Vehicule::ajouter_vehicule(QString num_Matriculation, QString nom, QString 
         query.prepare("INSERT INTO VEHICULE (numMAT, chauffeur, contactChauffeur, nbPlace, refTrajet) "
                       "VALUES (:numMAT, :chauffeur, :contactChauffeur, :nbPlace, :ref_trajet)");
         query.bindValue(":numMAT", num_Matriculation);
-        query.bindValue(":chauffeur", nom);
+        query.bindValue(":chauffeur", nom.toUpper());
         query.bindValue(":contactChauffeur", contact);
         query.bindValue(":nbPlace", nb_Place);
         query.bindValue(":ref_trajet", ref_trajet);

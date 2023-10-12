@@ -38,7 +38,7 @@ bool Reservation::reserver(QString ref_place, QString nom, QString contact, QStr
         query.prepare("INSERT INTO PASSAGER (refPlace, nomPass, contactPass, cin, nbPlaceReserve, membreFamille, contactFamille, voiture, refTrajet, dateVoyage, heureDepart, isPaye, lieuDepart, destination) "
                       "VALUES (:refPlace, :nomPass, :contactPass, :cin, :nbPlaceReserve, :membreFamille, :contactFamille, :voiture, :refTrajet, :dateVoyage, :heureDepart, :isPaye, :depart, :dest)");
         query.bindValue(":refPlace", ref_place);
-        query.bindValue(":nomPass", nom);
+        query.bindValue(":nomPass", nom.toUpper());
         query.bindValue(":contactPass", contact);
         query.bindValue(":cin", cin);
         query.bindValue(":nbPlaceReserve", nb_place_reserve);
