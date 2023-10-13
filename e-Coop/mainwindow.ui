@@ -404,13 +404,13 @@ QPushButton:pressed {
      <widget class="QWidget" name="leftMenubar" native="true">
       <property name="minimumSize">
        <size>
-        <width>159</width>
+        <width>150</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>159</width>
+        <width>150</width>
         <height>16777215</height>
        </size>
       </property>
@@ -534,8 +534,8 @@ QPushButton:Hover {
             </property>
             <property name="font">
              <font>
-              <family>Segoe UI Variable Text Semibold</family>
-              <pointsize>11</pointsize>
+              <family>Bahnschrift SemiBold SemiConden</family>
+              <pointsize>12</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -571,8 +571,8 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="gestionBtn">
             <property name="font">
              <font>
-              <family>Segoe UI Variable Text Semibold</family>
-              <pointsize>11</pointsize>
+              <family>Bahnschrift SemiBold SemiConden</family>
+              <pointsize>12</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -609,8 +609,8 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="GestionTrajetBtn">
             <property name="font">
              <font>
-              <family>Segoe UI Variable Text Semibold</family>
-              <pointsize>11</pointsize>
+              <family>Bahnschrift SemiBold SemiConden</family>
+              <pointsize>12</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -647,8 +647,8 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="historiqueBtn">
             <property name="font">
              <font>
-              <family>Segoe UI Variable Text Semibold</family>
-              <pointsize>11</pointsize>
+              <family>Bahnschrift SemiBold SemiConden</family>
+              <pointsize>12</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -684,8 +684,8 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="aproposBtn">
             <property name="font">
              <font>
-              <family>Segoe UI Variable Text Semibold</family>
-              <pointsize>11</pointsize>
+              <family>Bahnschrift SemiBold SemiConden</family>
+              <pointsize>12</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -735,8 +735,8 @@ padding: 10px 0 10px 10px;
            <widget class="QPushButton" name="quitterBtn">
             <property name="font">
              <font>
-              <family>Segoe UI Variable Text Semibold</family>
-              <pointsize>11</pointsize>
+              <family>Bahnschrift SemiBold SemiConden</family>
+              <pointsize>13</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -784,7 +784,7 @@ QPushButton:pressed {
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -1026,7 +1026,7 @@ border: none;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>761</width>
+                      <width>770</width>
                       <height>423</height>
                      </rect>
                     </property>
@@ -1048,6 +1048,9 @@ border: none;</string>
                      </property>
                      <item row="0" column="0">
                       <widget class="QTableWidget" name="accueilTableWidget">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
                        <property name="font">
                         <font>
                          <pointsize>10</pointsize>
@@ -1318,8 +1321,8 @@ margin-top: -10px;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>765</width>
-                      <height>639</height>
+                      <width>774</width>
+                      <height>641</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1351,8 +1354,8 @@ margin-top: -10px;</string>
                        </property>
                        <property name="font">
                         <font>
-                         <family>Segoe UI Variable Text Semibold</family>
-                         <pointsize>11</pointsize>
+                         <family>Bahnschrift SemiBold SemiConden</family>
+                         <pointsize>13</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -1374,7 +1377,7 @@ margin-top: -10px;</string>
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>315</width>
+                             <width>324</width>
                              <height>144</height>
                             </rect>
                            </property>
@@ -1707,8 +1710,8 @@ border-bottom-left-radius: 3px;</string>
                       <widget class="QGroupBox" name="groupBox_4">
                        <property name="font">
                         <font>
-                         <family>Segoe UI Semibold</family>
-                         <pointsize>11</pointsize>
+                         <family>Bahnschrift SemiBold SemiConden</family>
+                         <pointsize>13</pointsize>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -1785,7 +1788,7 @@ border-color:  rgb(46, 79, 79);</string>
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>313</width>
+                                   <width>322</width>
                                    <height>389</height>
                                   </rect>
                                  </property>
@@ -2274,7 +2277,7 @@ border-bottom-left-radius: 3px;</string>
                                     <string notr="true">color: rgb(203, 228, 222);</string>
                                    </property>
                                    <property name="text">
-                                    <string>Véhicule:</string>
+                                    <string>Voiture:</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2875,6 +2878,9 @@ border: none;</string>
               <property name="rightMargin">
                <number>0</number>
               </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QFrame" name="frame_12">
                 <property name="minimumSize">
@@ -2975,7 +2981,7 @@ border: none;</string>
                           </font>
                          </property>
                          <property name="text">
-                          <string>Véhicule:</string>
+                          <string>Voiture:</string>
                          </property>
                         </widget>
                        </item>
@@ -3138,6 +3144,228 @@ border-bottom-left-radius: 3px;</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_17">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="frame_16">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_29">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QScrollArea" name="scrollArea_8">
+                      <property name="widgetResizable">
+                       <bool>true</bool>
+                      </property>
+                      <widget class="QWidget" name="scrollAreaWidgetContents_6">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>478</width>
+                         <height>541</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_30">
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item row="0" column="0">
+                         <widget class="QTableWidget" name="historiqueTableWidget">
+                          <property name="enabled">
+                           <bool>true</bool>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: none;</string>
+                          </property>
+                          <property name="editTriggers">
+                           <set>QAbstractItemView::NoEditTriggers</set>
+                          </property>
+                          <property name="selectionBehavior">
+                           <enum>QAbstractItemView::SelectRows</enum>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_17">
+                   <property name="minimumSize">
+                    <size>
+                     <width>280</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>280</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_17">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="frame_18">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(203, 228, 222);</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_15">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_28">
+                         <property name="font">
+                          <font>
+                           <family>Bahnschrift SemiBold SemiConden</family>
+                           <pointsize>12</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(203, 228, 222);</string>
+                         </property>
+                         <property name="text">
+                          <string>Nombre des voyages fait par les véhicules:</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="vehiculeContainerHistorique">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>400</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel {
+	font-size: 12px;
+	color:  rgb(215, 215, 215);
+}</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_10">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>288</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
@@ -4362,7 +4590,7 @@ border-radius: 10px;</string>
                                      <enum>Qt::SolidLine</enum>
                                     </property>
                                     <property name="sortingEnabled">
-                                     <bool>true</bool>
+                                     <bool>false</bool>
                                     </property>
                                     <attribute name="horizontalHeaderCascadingSectionResizes">
                                      <bool>true</bool>
@@ -4981,7 +5209,7 @@ border-radius: 10px;</string>
                               <string notr="true">color: rgb(203, 228, 222);</string>
                              </property>
                              <property name="text">
-                              <string>Les Véhicules</string>
+                              <string>Les Voitures</string>
                              </property>
                             </widget>
                            </item>
@@ -5026,7 +5254,7 @@ border-radius: 10px;</string>
                                   <enum>QAbstractItemView::SelectRows</enum>
                                  </property>
                                  <property name="sortingEnabled">
-                                  <bool>true</bool>
+                                  <bool>false</bool>
                                  </property>
                                 </widget>
                                </item>

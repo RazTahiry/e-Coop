@@ -288,6 +288,7 @@
         <file>Bold Icons/zoom-in.svg</file>
         <file>Bold Icons/zoom-out.svg</file>
         <file>Bold Icons/logoecoop.svg</file>
+        <file>Bold Icons/logoecoop.ico</file>
     </qresource>
     <qresource prefix="/Database">
         <file>database.db</file>

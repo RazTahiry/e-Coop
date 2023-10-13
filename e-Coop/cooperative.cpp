@@ -66,7 +66,7 @@ bool Cooperative::reinitialiser()
                    " WHERE refCoop = 1");
         query.exec("DELETE FROM VEHICULE");
         query.exec("DELETE FROM TRAJET");
-        query.exec("DELETE FROM RESERVATION");
+        query.exec("DELETE FROM PASSAGER");
         query.exec("DELETE FROM GESTION");
 
         if(query.exec())

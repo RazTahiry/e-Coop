@@ -104,6 +104,14 @@ class MainWindow : public QMainWindow
 
         void on_supprReservationBtn_clicked();
 
+        void on_vehiculeCombobox_2_currentTextChanged(const QString &arg1);
+
+        void on_heureCombobox_2_currentTextChanged(const QString &arg1);
+
+        void on_dateFiltre_dateChanged(const QDate &date);
+
+        void on_searchInput_4_textChanged(const QString &arg1);
+
 private:
         Ui::MainWindow *ui;
 
