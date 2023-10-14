@@ -329,7 +329,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                     }
                 }
 
-                QLabel *numMatLabel = new QLabel("Voiture (" + numMatriculation + "): " + QString::number(occurence) + " voyages fait (Trajet " + reference + ")");
+                QLabel *numMatLabel = new QLabel("Voiture (" + numMatriculation + "): " + QString::number(occurence) + " voyages effectués (" + reference + ")");
                 numMatLabel->setParent(ui->vehiculeContainerHistorique);
                 numMatLabel->move(0, verticalOffset);
                 verticalOffset += 20;
@@ -365,6 +365,21 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->supprReservationBtn->setDisabled(true);
 
     ui->stackedWidget->setCurrentIndex(0);
+
+    QLabel *aproposLabel = new QLabel("\te-Coop est un logiciel capable de gérer les activités d’une entreprise de transport, tel que les coopératives."
+                                     "\n\n\tCe logiciel permettra de:\n"
+                                     "\n\t\t-Gérer les tours et l’horaire de voyages des véhicules de transport\n"
+                                     "\t\t-Ajouter, de modifier ou de supprimer un trajet (itinéraire) ou un véhicule\n"
+                                     "\t\t-Mettre à jour les informations de la base de données(BD)\n"
+                                     "\t\t-Gérer les réservations des passagers et Stocker tous les historiques des voyages effectués dans la BD\n"
+                                     "\n\n\tLes développeurs de ce logiciel sont:\n"
+                                     "\n\t\t--Nantenaina Jérémiah\t\t+261 34 78 668 89\t\tnantenainajeremiah@gmail.com"
+                                     "\n\t\t--Ny Aina Haritiana\t\t+261 34 61 716 42"
+                                     "\n\t\t--Tahiry Razanamara\t\t+261 34 55 958 62\t\ttahiryrazanamara01@gmail.com");
+    aproposLabel->setStyleSheet("font-size: 15px;"
+                               "font-family: Bahnschrift SemiBold;"
+                               "color: rgb(203, 228, 222);");
+    aproposLabel->setParent(ui->aproposFrame);
 }
 
 void MainWindow::on_refTrajet_2_currentTextChanged(const QString &arg1)
@@ -1323,7 +1338,7 @@ void MainWindow::on_reserver_clicked()
                                 if(dbPassager.isOpen())
                                 {
                                     QSqlQuery affichagePassager;
-                                    affichagePassager.prepare("SELECT nomPass, nbPlaceReserve, isPaye, contactPass, Id FROM PASSAGER"
+                                    affichagePassager.prepare("SELECT nomPass, nbPlaceReserve, isPaye, contactPass, Id, refPlace FROM PASSAGER"
                                                               " WHERE refTrajet = :ref AND dateVoyage = :date AND heureDepart = :heure");
                                     affichagePassager.bindValue(":ref", refTrajet);
                                     affichagePassager.bindValue(":date", dateVoyage.toString("yyyy-MM-dd"));
@@ -1338,11 +1353,12 @@ void MainWindow::on_reserver_clicked()
                                             bool isPaye = affichagePassager.value(2).toBool();
                                             QString contactPass = affichagePassager.value(3).toString();
                                             int id = affichagePassager.value(4).toInt();
+                                            QString referencePlace = affichagePassager.value(5).toString();
 
                                             int row = ui->reservationTableView->rowCount();
                                             ui->reservationTableView->insertRow(row);
                                             ui->reservationTableView->setItem(row, 0, new QTableWidgetItem(QString::number(id)));
-                                            ui->reservationTableView->setItem(row, 1, new QTableWidgetItem(refPlace));
+                                            ui->reservationTableView->setItem(row, 1, new QTableWidgetItem(referencePlace));
                                             ui->reservationTableView->setItem(row, 2, new QTableWidgetItem(nomPass));
                                             ui->reservationTableView->setItem(row, 3, new QTableWidgetItem(QString::number(nbPlaceReserve)));
                                             ui->reservationTableView->setItem(row, 4, new QTableWidgetItem(isPaye ? "Payé" : "Non Payé"));
