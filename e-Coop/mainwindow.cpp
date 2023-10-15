@@ -10,7 +10,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QDebug>
-#include <QSqlTableModel>
+//#include <QSqlTableModel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,6 +42,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                         "   padding: 6px;"
                         "   border-width: 1px;"
                         "   font-size: 13px;"
+                        "   font-family: Bahnschrift SemiBold;"
                         "}";
 
     ui->trajetReservationTableView->horizontalHeader()->setStyleSheet(styleSheet);
@@ -72,9 +73,9 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                         "   padding: 6px;"
                         "   border-width: 1px;"
                         "   font-size: 13px;"
+                        "   font-family: Bahnschrift SemiBold;"
                         "}";
 
-    //ui->reservationTableView->setColumnHidden(0, true);
     ui->reservationTableView->horizontalHeader()->setStyleSheet(style);
     ui->reservationTableView->horizontalHeader()->setStretchLastSection(true);
     ui->reservationTableView->verticalHeader()->setVisible(false);
@@ -95,6 +96,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                         "   padding: 6px;"
                         "   border-width: 1px;"
                         "   font-size: 13px;"
+                        "   font-family: Bahnschrift SemiBold;"
                         "}";
 
     ui->trajetGestionTableView->horizontalHeader()->setStyleSheet(stylesheet);
@@ -119,6 +121,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                         "   padding: 6px;"
                         "   border-width: 1px;"
                         "   font-size: 13px;"
+                        "   font-family: Bahnschrift SemiBold;"
                         "}";
 
     ui->vehiculeGestionTableView->horizontalHeader()->setStyleSheet(styleSheet1);
@@ -142,6 +145,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                         "   padding: 6px;"
                         "   border-width: 1px;"
                         "   font-size: 13px;"
+                        "   font-family: Bahnschrift SemiBold;"
                         "}";
 
     ui->accueilTableWidget->horizontalHeader()->setStyleSheet(styleSheet2);
@@ -165,6 +169,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                         "   padding: 6px;"
                         "   border-width: 1px;"
                         "   font-size: 13px;"
+                        "   font-family: Bahnschrift SemiBold;"
                         "}";
 
     ui->historiqueTableWidget->horizontalHeader()->setStyleSheet(styleSheetHistory);
@@ -265,7 +270,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
             QDate dateVoyage = query3.value(5).toDate();
             int placeDispo = query3.value(6).toInt();
 
-            if((dateVoyage >= QDate::currentDate()) && (dateVoyage <= QDate::currentDate().addDays(7)))
+            if((dateVoyage >= QDate::currentDate()) && (dateVoyage <= QDate::currentDate().addDays(8)))
             {
                 int row = ui->accueilTableWidget->rowCount();
 
@@ -367,19 +372,28 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
     ui->stackedWidget->setCurrentIndex(0);
 
     QLabel *aproposLabel = new QLabel("\te-Coop est un logiciel capable de gérer les activités d’une entreprise de transport, tel que les coopératives."
-                                     "\n\n\tCe logiciel permettra de:\n"
-                                     "\n\t\t-Gérer les tours et l’horaire de voyages des véhicules de transport\n"
-                                     "\t\t-Ajouter, de modifier ou de supprimer un trajet (itinéraire) ou un véhicule\n"
-                                     "\t\t-Mettre à jour les informations de la base de données(BD)\n"
-                                     "\t\t-Gérer les réservations des passagers et Stocker tous les historiques des voyages effectués dans la BD\n"
-                                     "\n\n\tLes développeurs de ce logiciel sont:\n"
-                                     "\n\t\t--Nantenaina Jérémiah\t\t+261 34 78 668 89\t\tnantenainajeremiah@gmail.com"
-                                     "\n\t\t--Ny Aina Haritiana\t\t+261 34 61 716 42"
-                                     "\n\t\t--Tahiry Razanamara\t\t+261 34 55 958 62\t\ttahiryrazanamara01@gmail.com");
+                                      "\n\n\tCe logiciel permettra de:\n"
+                                      "\n\t\t-Gérer les tours et l’horaire de voyages des véhicules de transport\n"
+                                      "\t\t-Ajouter, de modifier ou de supprimer un trajet (itinéraire) ou un véhicule\n"
+                                      "\t\t-Mettre à jour les informations de la base de données(BD)\n"
+                                      "\t\t-Gérer les réservations des passagers et Stocker tous les historiques des voyages effectués dans la BD\n"
+                                      "\n\n\tDéveloppé par :\n"
+                                      "\n\t\t--Nantenaina Jérémiah\t\t+261 34 78 668 89\t\tnantenainajeremiah@gmail.com"
+                                      "\n\t\t--Ny Aina Haritiana\t\t+261 34 61 716 42"
+                                      "\n\t\t--Tahiry Razanamara\t\t+261 34 55 958 62\t\ttahiryrazanamara01@gmail.com\n\n\n\n\n"
+                                      "\n\t\tVersion: 1.0 Beta\t\tDate de création: 9/10/2023\t\tSystème d'exploitation: Windows");
     aproposLabel->setStyleSheet("font-size: 15px;"
-                               "font-family: Bahnschrift SemiBold;"
-                               "color: rgb(203, 228, 222);");
+                                "font-family: Bahnschrift SemiBold;"
+                                "color: rgb(203, 228, 222);");
     aproposLabel->setParent(ui->aproposFrame);
+
+    QString copyrightText = "\t\t\t\t\t\tCopyrights©2023 | Tous droits réservés.";
+    QLabel *copyrightLabel = new QLabel(copyrightText);
+    copyrightLabel->setStyleSheet("font-size: 13px;"
+                                  "font-family: Bahnschrift SemiBold;"
+                                  "color: rgb(203, 228, 222);");
+    copyrightLabel->setParent(ui->aproposFrame);
+    copyrightLabel->move(0, 400);
 }
 
 void MainWindow::on_refTrajet_2_currentTextChanged(const QString &arg1)
@@ -418,14 +432,14 @@ void MainWindow::on_lieuDepart_currentTextChanged(const QString &arg1)
     if(index != -1 && index != 0)
     {
         ui->lieuArrive->setItemData(index, QVariant(index), Qt::UserRole - 1);
-    }
-    for (int i = 0; i < ui->lieuArrive->count(); ++i)
-    {
-        if (i != 0)
+        for (int i = 0; i < ui->lieuArrive->count(); ++i)
         {
-            ui->lieuArrive->setItemData(i, QVariant(true), Qt::UserRole);
+            if (i != 0 && i != index)
+            {
+                ui->lieuArrive->setItemData(i, QVariant(true), Qt::UserRole);
+            }
         }
-    }
+    }    
 }
 
 void MainWindow::on_lieuArrive_currentTextChanged(const QString &arg1)
@@ -434,14 +448,14 @@ void MainWindow::on_lieuArrive_currentTextChanged(const QString &arg1)
     if(index != -1 && index != 0)
     {
         ui->lieuDepart->setItemData(index, QVariant(index), Qt::UserRole - 1);
-    }
-    for (int i = 0; i < ui->lieuDepart->count(); ++i)
-    {
-        if (i != 0)
+        for (int i = 0; i < ui->lieuDepart->count(); ++i)
         {
-            ui->lieuDepart->setItemData(i, QVariant(true), Qt::UserRole);
+            if (i != 0 && i != index)
+            {
+                ui->lieuDepart->setItemData(i, QVariant(true), Qt::UserRole);
+            }
         }
-    }
+    }    
 }
 
 void MainWindow::on_stackedWidget_currentChanged(int index)
@@ -1774,6 +1788,7 @@ void MainWindow::on_parDefaut_clicked()
     ui->vehiculeCombobox_2->setCurrentIndex(0);
     ui->dateFiltre->setDate(QDate::currentDate());
     ui->heureCombobox_2->setCurrentIndex(0);
+    ui->historiqueTableWidget->clearSelection();
 }
 
 void MainWindow::on_gerer_clicked()
@@ -2004,10 +2019,11 @@ void MainWindow::on_trajetReservationTableView_itemClicked(QTableWidgetItem *ite
 
                     QSqlQuery affichagePassager;
                     affichagePassager.prepare("SELECT refPlace, nomPass, nbPlaceReserve, isPaye, contactPass, Id FROM PASSAGER"
-                                              " WHERE refTrajet = :ref AND dateVoyage = :date AND heureDepart = :heure");
+                                              " WHERE refTrajet = :ref AND dateVoyage = :date AND heureDepart = :heure AND voiture = :num");
                     affichagePassager.bindValue(":ref", refTrajet);
                     affichagePassager.bindValue(":date", dateVoyage.toString("yyyy-MM-dd"));
                     affichagePassager.bindValue(":heure", heure_depart);
+                    affichagePassager.bindValue(":num", numMat);
 
                     if(affichagePassager.exec())
                     {
