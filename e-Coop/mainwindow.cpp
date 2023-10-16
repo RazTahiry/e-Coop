@@ -10,7 +10,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QDebug>
-//#include <QSqlTableModel>
+#include <QApplication>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -379,7 +379,7 @@ void MainWindow::affichage_par_defaut_sur_MainWindow()
                                       "\t\t-Gérer les réservations des passagers et Stocker tous les historiques des voyages effectués dans la BD\n"
                                       "\n\n\tDéveloppé par :\n"
                                       "\n\t\t--Nantenaina Jérémiah\t\t+261 34 78 668 89\t\tnantenainajeremiah@gmail.com"
-                                      "\n\t\t--Ny Aina Haritiana\t\t+261 34 61 716 42"
+                                      "\n\t\t--Ny Aina Haritiana\t\t+261 34 61 716 42\t\tainaramandimby@gmail.com"
                                       "\n\t\t--Tahiry Razanamara\t\t+261 34 55 958 62\t\ttahiryrazanamara01@gmail.com\n\n\n\n\n"
                                       "\n\t\tVersion: 1.0 Beta\t\tDate de création: 9/10/2023\t\tSystème d'exploitation: Windows");
     aproposLabel->setStyleSheet("font-size: 15px;"

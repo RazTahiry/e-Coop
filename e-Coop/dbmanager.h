@@ -3,6 +3,8 @@
 
 #include <QString>
 #include <QSqlDatabase>
+#include <QCoreApplication>
+#include <QDir>
 
 //---- Le variable global qui contient le chemin vers la base des données
 static const QString pathToDB = "E:\\e-Coop\\e-Coop\\database.db";
