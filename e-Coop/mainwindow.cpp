@@ -818,7 +818,7 @@ void MainWindow::on_resetCoop_clicked()
             QMessageBox msgBox;
             msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.svg"));
             msgBox.setWindowTitle("");
-            msgBox.setText("Coopérative réinitialisée.");
+            msgBox.setText("Coopérative réinitialisée, redemarrage de l'application recommandé.");
 
             msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
                                  "color: rgb(203, 228, 222);"
@@ -877,6 +877,16 @@ void MainWindow::on_majVehiculeBtn_clicked()
             ui->vehiculeGestionTableView->clearSelection();
 
             ui->vehiculeGestionTableView->update();
+
+            QMessageBox msgBox;
+            msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.svg"));
+            msgBox.setWindowTitle("");
+            msgBox.setText("la voiture a été mise à jour.");
+
+            msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                 "color: rgb(203, 228, 222);"
+                                 "font-size: 13px;");
+            msgBox.exec();
         }
         else
         {
@@ -1122,46 +1132,61 @@ void MainWindow::on_ajoutTrajetBtn_clicked()
 
     if((index1 != 0) && (index2 != 0) && ((heureMatin != heureParDefaut.toString()) || (heureSoir != heureParDefaut.toString())) && (!refTrajet.isEmpty()) && (decalage != 0))
     {
-        Trajets T;
-        if(T.ajout_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir,decalage))
-        {
-            ui->refTrajetVehicule->addItem(refTrajet);
-            ui->refTrajet_2->addItem(refTrajet);
-            ui->heureCombobox_2->addItem(heureSoir);
-            ui->heureCombobox_2->addItem(heureMatin);
-
-            int rowCount = ui->trajetGestionTableView->rowCount();
-            ui->trajetGestionTableView->insertRow(rowCount);
-
-            QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajet);
-            QTableWidgetItem *itemLieuDepart = new QTableWidgetItem(lieuDepart);
-            QTableWidgetItem *itemLieuArrive = new QTableWidgetItem(lieuArrive);
-
-            ui->trajetGestionTableView->setItem(rowCount, 0, itemRefTrajet);
-            ui->trajetGestionTableView->setItem(rowCount, 1, itemLieuDepart);
-            ui->trajetGestionTableView->setItem(rowCount, 2, itemLieuArrive);
-
-            ui->lieuDepart->setCurrentIndex(0);
-            ui->lieuArrive->setCurrentIndex(0);
-            ui->heureMatin_2->setTime(heureParDefaut);
-            ui->heureSoir_2->setTime(heureParDefaut);
-            ui->referenceTrajet->clear();
-            ui->decalage->setValue(0);
-
-            ui->ajoutVehiculeBtn->setDisabled(false);
-        }
-        else
+        if(index1 == index2)
         {
             QMessageBox msgBox;
             msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.svg"));
             msgBox.setWindowTitle("");
-            msgBox.setText("On n'a pas pu ajouter le trajet.");
+            msgBox.setText("Vous ne pouvez pas entrer le même lieu de départ et de destination.");
 
             msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
                                  "color: rgb(203, 228, 222);"
                                  "font-size: 13px;");
             msgBox.exec();
-         }
+        }
+        else
+        {
+            Trajets T;
+            if(T.ajout_trajet(refTrajet,lieuDepart,lieuArrive,heureMatin,heureSoir,decalage))
+            {
+                ui->refTrajetVehicule->addItem(refTrajet);
+                ui->refTrajet_2->addItem(refTrajet);
+                ui->heureCombobox_2->addItem(heureSoir);
+                ui->heureCombobox_2->addItem(heureMatin);
+
+                int rowCount = ui->trajetGestionTableView->rowCount();
+                ui->trajetGestionTableView->insertRow(rowCount);
+
+                QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajet);
+                QTableWidgetItem *itemLieuDepart = new QTableWidgetItem(lieuDepart);
+                QTableWidgetItem *itemLieuArrive = new QTableWidgetItem(lieuArrive);
+
+                ui->trajetGestionTableView->setItem(rowCount, 0, itemRefTrajet);
+                ui->trajetGestionTableView->setItem(rowCount, 1, itemLieuDepart);
+                ui->trajetGestionTableView->setItem(rowCount, 2, itemLieuArrive);
+
+                ui->lieuDepart->setCurrentIndex(0);
+                ui->lieuArrive->setCurrentIndex(0);
+                ui->heureMatin_2->setTime(heureParDefaut);
+                ui->heureSoir_2->setTime(heureParDefaut);
+                ui->referenceTrajet->clear();
+                ui->decalage->setValue(0);
+
+                ui->ajoutVehiculeBtn->setDisabled(false);
+            }
+            else
+            {
+                QMessageBox msgBox;
+                msgBox.setWindowIcon(QIcon(":/Icons/Bold Icons/logoecoop.svg"));
+                msgBox.setWindowTitle("");
+                msgBox.setText("On n'a pas pu ajouter le trajet.");
+
+                msgBox.setStyleSheet("background-color: rgb(44, 51, 51);"
+                                     "color: rgb(203, 228, 222);"
+                                     "font-size: 13px;");
+                msgBox.exec();
+             }
+        }
     }
     else
     {
