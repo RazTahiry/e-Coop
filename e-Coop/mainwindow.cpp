@@ -941,7 +941,7 @@ void MainWindow::on_ajoutVehiculeBtn_clicked()
             ui->vehiculeGestionTableView->insertRow(rowCount);
 
             QTableWidgetItem *itemMatriculation = new QTableWidgetItem(matriculation);
-            QTableWidgetItem *itemChauffeur = new QTableWidgetItem(chauffeur);
+            QTableWidgetItem *itemChauffeur = new QTableWidgetItem(chauffeur.toUpper());
             QTableWidgetItem *itemRefTrajet = new QTableWidgetItem(refTrajetVehicule);
             QTableWidgetItem *itemNbPlace = new QTableWidgetItem(QString::number(nbPlace));
 
